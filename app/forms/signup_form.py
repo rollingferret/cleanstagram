@@ -20,8 +20,35 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
 
 
+def check_password(form, field):
+    # Checking if password is longer than or equal to 8 chars
+    # Checking if password contains !@#$%^&*(),./?
+    special_sym = '!@#$%^&*(),./?'
+    password = field.data
+
+    if len(password) < 8 or len(password) > 32:
+        raise ValidationError(
+            'Password must be between 8 to 32 characters long.')
+
+    # if none of the chars in password is in special_sym
+    if not any(char for char in password if char in special_sym):
+        raise ValidationError(
+            'Password must contain at least one of these following characters: !@#$%^&*(),./?')
+    if not any(char for char in password if char.isupper()):
+        raise ValidationError(
+            'Pasword must contain at least one uppercase letter.')
+    if not any(char for char in password if char.islower()):
+        raise ValidationError(
+            'Pasword must contain at least one lowercase letter.')
+    if not any(char for char in password if char.isdecimal()):
+        raise ValidationError(
+            'Pasword must contain at least one number.')
+
+
 class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
-    email = StringField('email', validators=[DataRequired(), user_exists])
-    password = StringField('password', validators=[DataRequired()])
+    email = StringField('email', validators=[
+                        DataRequired(), user_exists, Email()])
+    password = StringField('password', validators=[
+                           DataRequired(), check_password])
