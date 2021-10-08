@@ -26,10 +26,23 @@ def check_password(form, field):
     special_sym = '!@#$%^&*(),./?'
     password = field.data
 
+    if len(password) < 8 or len(password) > 32:
+        raise ValidationError(
+            'Password must be between 8 to 32 characters long.')
+
     # if none of the chars in password is in special_sym
     if not any(char for char in password if char in special_sym):
         raise ValidationError(
             'Password must contain at least one of these following characters: !@#$%^&*(),./?')
+    if not any(char for char in password if char.isupper()):
+        raise ValidationError(
+            'Pasword must contain at least one uppercase letter.')
+    if not any(char for char in password if char.islower()):
+        raise ValidationError(
+            'Pasword must contain at least one lowercase letter.')
+    if not any(char for char in password if char.isdecimal()):
+        raise ValidationError(
+            'Pasword must contain at least one number.')
 
 
 class SignUpForm(FlaskForm):
