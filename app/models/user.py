@@ -15,6 +15,8 @@ class User(db.Model, UserMixin):
     images = db.relationship('Image', back_populates='user')
     image_likes = db.relationship('ImageLike', back_populates='user')
     comments = db.relationship('Comment', back_populates='user')
+    following = db.relationship('Following', back_populates='following')
+    followers = db.relationship('Following', back_populates='follower')
 
     @property
     def password(self):
