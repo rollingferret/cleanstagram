@@ -12,9 +12,9 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # relationships
-    images = db.relationship('Image', back_populates='users')
-    image_likes = db.relationship('ImageLike', back_populates='users')
-    comments = db.relationship('Comment', back_populates='users')
+    images = db.relationship('Image', back_populates='user')
+    image_likes = db.relationship('ImageLike', back_populates='user')
+    comments = db.relationship('Comment', back_populates='user')
 
     @property
     def password(self):
