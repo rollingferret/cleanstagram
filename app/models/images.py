@@ -16,6 +16,7 @@ class Image(db.Model):
 
     # relationships
     user = db.relationship('User', back_populates='images', uselist=False)
+    image_likes = db.relationship('ImageLikes', back_populates='images')
 
     def to_dict(self):
         return {
