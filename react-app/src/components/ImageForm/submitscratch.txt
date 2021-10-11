@@ -1,0 +1,28 @@
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image);
+        formData.append("caption", caption);
+
+        // const payload = {
+        //     "image": image,
+        //     "caption": caption
+        // }
+
+        // aws uploads can be a bit slow—displaying
+        // some sort of loading message is a good idea
+        setImageLoading(true);
+
+        const response = await dispatch(addImage(formData))
+        if (response.ok) {
+            return history.push('/')
+        } else {
+            return "WE HIT AN ERROR"
+        }
+
+    }
+
+    const updateImage = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+    }
