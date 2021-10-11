@@ -26,13 +26,6 @@ function ImageForm() {
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);
-
-        // const res = await fetch('/api/images', {
-        //     method: "POST",
-        //     body:
-        //         formData,
-
-        // });
         let res = await dispatch(addImage(formData))
 
         if (res.ok) {
