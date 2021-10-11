@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addImage } from '../../store/images'
+import { useSelector } from 'react-redux';
+// import { addImage } from '../../store/images'
 
 import css from './ImageForm.module.css'
 
 function ImageForm() {
+    const sessionUser = useSelector(state => state.session.user);
+
     const history = useHistory();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const [caption, setCaption] = useState("");
     const [image, setImage] = useState(null);
@@ -15,34 +17,38 @@ function ImageForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // const formData = new FormData();
-        // formData.append("image_url", image);
-        // formData.append("caption", caption);
 
-        const payload = {
-            "image": image,
-            "caption": caption
-        }
+        const formData = new FormData();
+        formData.append("image", image);
+        formData.append("caption", caption);
+        formData.append("user_id", sessionUser.id);
 
         // aws uploads can be a bit slow—displaying
         // some sort of loading message is a good idea
         setImageLoading(true);
 
-        const response = await dispatch(addImage(payload))
-        if (response.ok) {
-            return history.push('/')
-        } else {
-            return "WE HIT AN ERROR"
+        const res = await fetch('/api/images', {
+            method: "POST",
+            body:
+                formData,
+        });
+        if (res.ok) {
+            await res.json();
+            setImageLoading(false);
+            history.push("/");
         }
-
+        else {
+            setImageLoading(false);
+            // a real app would probably use more advanced
+            // error handling
+            console.log("error");
+        }
     }
-
 
     const updateImage = (e) => {
         const file = e.target.files[0];
         setImage(file);
     }
-
 
     return (
         <>

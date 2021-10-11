@@ -23,8 +23,9 @@ def post_image():
     If succeed, return a url to render the picture.
     '''
 
-    form = ImageForm()
-    print("----we hit the post request----")
+    print("SURE KENNETH ------>", request)
+    print("THIS IS THE FORM KENNETH ------>", request.form)
+    print("THESE ARE THE REQUEST FILES ------->", request.files)
 
     if 'image' not in request.files:
         return {'errors': 'image required'}, 400
@@ -41,9 +42,9 @@ def post_image():
 
     url = upload['url']
     # testing, need to add caption from form
-    new_image = Image(user_id=request.current_user.id,
+    new_image = Image(user_id=request.form["user_id"],
                       image_url=url,
-                      caption=form.data["caption"],
+                      caption=request.form["caption"],
                       created_at=datetime.now(),
                       updated_at=datetime.now()
                       )

@@ -5,8 +5,10 @@ const add = image => ({
     image
 })
 
-export const addImage = (payload) => async() => {
-    // const { caption, image }
+export const addImage = (formData) => async() => {
+    console.log("FORM DATA -------->", formData)
+
+    // const { caption, image } = formData
 
     const res = await fetch('/api/images', {
         method: "POST",
@@ -14,11 +16,9 @@ export const addImage = (payload) => async() => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            payload
+            formData
         }),
     });
-
-    console.log("res in thunk", res)
 
     if (res.ok) {
         return { ok: true }
