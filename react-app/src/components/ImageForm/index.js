@@ -28,8 +28,6 @@ function ImageForm() {
         // some sort of loading message is a good idea
         setImageLoading(true);
 
-        console.log("payload data", payload)
-
         const response = await dispatch(addImage(payload))
         if (response.ok) {
             return history.push('/')
@@ -37,7 +35,7 @@ function ImageForm() {
             return "WE HIT AN ERROR"
         }
 
-        }
+    }
 
 
     const updateImage = (e) => {

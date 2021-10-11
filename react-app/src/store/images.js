@@ -6,11 +6,19 @@ const add = image => ({
 })
 
 export const addImage = (payload) => async() => {
+    // const { caption, image }
 
     const res = await fetch('/api/images', {
         method: "POST",
-        body: payload,
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            payload
+        }),
     });
+
+    console.log("res in thunk", res)
 
     if (res.ok) {
         return { ok: true }
