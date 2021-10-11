@@ -54,6 +54,7 @@ def https_redirect():
             return redirect(url, code=code)
 
 
+# comment out to test in postman?
 @app.after_request
 def inject_csrf_token(response):
     response.set_cookie(
