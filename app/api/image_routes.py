@@ -3,9 +3,8 @@ from flask import Blueprint, request
 from flask_login import login_required
 
 from app.aws import delete_from_s3, upload_file_to_s3, allowed_file, get_unique_filename
-from app.models import Image
+from app.models import User, Image, db
 from app.forms import ImageForm
-from app.models import db
 
 image_routes = Blueprint('images', __name__)
 
@@ -15,8 +14,9 @@ def get_image_by_id(id):
     '''
     Image GET route by ID.
     '''
-    # return f"Ay we got ya image {request.args.get('id')}"
-    return f"Ay we got ya image {id}"
+    image = Image.query.get(id)
+    # print(35*'-', image.to_dict())
+    return image.to_dict()
 
 
 @image_routes.route('', methods=['POST'])
@@ -49,7 +49,7 @@ def post_image():
                       )
     db.session.add(new_image)
     db.session.commit()
-    return {'url': url}
+    return new_image.to_dict()
 
 
 @image_routes.route('/<int:id>', methods=['DELETE'])

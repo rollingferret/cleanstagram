@@ -6,11 +6,13 @@ import { getImageById } from '../../store/images';
 function ImagePage() {
 	const { imageId } = useParams();
 	const dispatch = useDispatch();
-	const image = useSelector((state) => state.currentImage);
+	const image = useSelector((state) => state.images.currentImage);
 
 	useEffect(() => {
 		dispatch(getImageById(imageId));
-	});
+	}, [dispatch, imageId]);
+
+	if (!image) return null;
 
 	return (
 		<>
