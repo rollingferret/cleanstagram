@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-// import { addImage } from '../../store/images'
+import { useSelector, useDispatch } from 'react-redux';
+import { addImage } from '../../store/images'
 
 import css from './ImageForm.module.css'
 
@@ -9,7 +9,7 @@ function ImageForm() {
     const sessionUser = useSelector(state => state.session.user);
 
     const history = useHistory();
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     const [caption, setCaption] = useState("");
     const [image, setImage] = useState(null);
@@ -27,13 +27,15 @@ function ImageForm() {
         // some sort of loading message is a good idea
         setImageLoading(true);
 
-        const res = await fetch('/api/images', {
-            method: "POST",
-            body:
-                formData,
-        });
+        // const res = await fetch('/api/images', {
+        //     method: "POST",
+        //     body:
+        //         formData,
+
+        // });
+        let res = await dispatch(addImage(formData))
+
         if (res.ok) {
-            await res.json();
             setImageLoading(false);
             history.push("/");
         }

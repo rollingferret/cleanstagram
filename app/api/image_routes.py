@@ -50,4 +50,4 @@ def post_image():
                       )
     db.session.add(new_image)
     db.session.commit()
-    return {'url', url}
+    return {'url': url}

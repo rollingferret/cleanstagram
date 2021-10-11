@@ -6,18 +6,12 @@ const add = image => ({
 })
 
 export const addImage = (formData) => async() => {
-    console.log("FORM DATA -------->", formData)
 
     // const { caption, image } = formData
 
     const res = await fetch('/api/images', {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            formData
-        }),
+        body: formData
     });
 
     if (res.ok) {
