@@ -2,12 +2,13 @@ from datetime import date, datetime
 from flask import Blueprint, request
 from flask_login import login_required
 
-from app.aws import upload_file_to_s3, allowed_file, get_unique_filename
+from app.aws import delete_from_s3, upload_file_to_s3, allowed_file, get_unique_filename
 from app.models import Image
 from app.forms import ImageForm
 from app.models import db
 
 image_routes = Blueprint('images', __name__)
+
 
 @image_routes.route('')
 # @login_required
@@ -51,3 +52,30 @@ def post_image():
     db.session.add(new_image)
     db.session.commit()
     return {'url': url}
+
+
+@image_routes.route('/<int:id>', methods=['DELETE'])
+# @login_required
+def delete_image(id):
+    '''
+    Image delete route.
+    Work on deleting from AWS bucket and database
+    '''
+    image_to_delete = Image.query.filter(Image.id == id).first()
+
+    if not image_to_delete:
+        return 'Nothing to delete'
+    else:
+
+        image_url = image_to_delete.image_url
+        bucket_deletion = delete_from_s3(image_url)
+        print('-'*100)
+        print(bucket_deletion)
+        print('='*100)
+
+        if bucket_deletion['ok']:
+            db.session.delete(image_to_delete)
+            db.session.commit()
+            return {'deleted': True}
+        else:
+            return bucket_deletion

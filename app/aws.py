@@ -41,3 +41,13 @@ def upload_file_to_s3(file, acl="public-read"):
         return {"errors": str(e)}
 
     return {"url": f"{S3_LOCATION}{file.filename}"}
+
+
+def delete_from_s3(image_url):
+    # b9dba254a9ef43c78f35557fc2744057.png
+    filename = image_url.split(S3_LOCATION)[1]
+    try:
+        s3.delete_object(Bucket=BUCKET_NAME, Key=filename)
+        return {'ok': True}
+    except Exception as e:
+        return {'errors': str(e)}
