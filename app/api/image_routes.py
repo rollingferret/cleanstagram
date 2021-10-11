@@ -51,3 +51,26 @@ def post_image():
     db.session.add(new_image)
     db.session.commit()
     return {'url': url}
+
+
+
+
+@image_routes.route('/<int:id>', methods=['DELETE'])
+# @login_required
+def delete_image(id):
+    '''
+    Image delete route.
+    Work on deleting from AWS bucket and database
+    '''
+    image_to_delete = Image.query.filter(Image.id == id).first()
+
+    if not image_to_delete:
+        return 'Nothing to delete'
+    else:
+
+        # image_url = image_to_delete["image_url"]
+        print('999999999999999999999999999999999999', image_to_delete)
+
+        # db.session.delete(image_to_delete)
+        # db.session.commit()
+        return 
