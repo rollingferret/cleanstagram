@@ -9,10 +9,14 @@ from app.models import db
 
 image_routes = Blueprint('images', __name__)
 
-@image_routes.route('')
-# @login_required
-def get_image():
-    return "We've hit the GET route"
+@image_routes.route('/<int:id>', methods=['GET'])
+@login_required
+def get_image_by_id(id):
+    '''
+    Image GET route by ID.
+    '''
+    # return f"Ay we got ya image {request.args.get('id')}"
+    return f"Ay we got ya image {id}"
 
 
 @image_routes.route('', methods=['POST'])
