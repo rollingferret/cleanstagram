@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import { getImageById, deleteImage, updateCaption } from '../../store/images';
 
+import imageForm from './ImageForm.module.css'
+
 function ImagePage() {
 	const sessionUser = useSelector(state => state.session.user);
 	const image = useSelector((state) => state.images.currentImage);
@@ -26,7 +28,7 @@ function ImagePage() {
 		}
 	}, [sessionUser.id, image?.user_id])
 
-	const updateSubmit = async(e) => {
+	const updateSubmit = async (e) => {
 		e.preventDefault();
 
 		const payload = {
@@ -57,8 +59,10 @@ function ImagePage() {
 	if (editButtons) {
 		editDelBtns = (
 			<div>
-				<button onClick={onEdit}>Edit</button>
-				<button onClick={onDelete}>Delete</button>
+				<button className={imageForm.btns}
+					onClick={onEdit}>Edit</button>
+				<button className={imageForm.btns}
+					onClick={onDelete}>Delete</button>
 			</div>
 		)
 	}
@@ -85,20 +89,32 @@ function ImagePage() {
 	if (!image) return null;
 
 	return (
-		<>
-			<h1>Welcome to the picture</h1>
-			<img src={image.image_url} alt={image.caption} />
-			<Link to={`/users/${image.user_id}`}>{image.user.username}</Link>
-			<p>{image.likes_count} likes</p>
-			<p>{image.comments_count} comments</p>
-			<div>
-				{editForm}
+		<div className={imageForm.outercontainer}>
+			<div className={imageForm.innercontainer}>
+				<div className={imageForm.imgcontainer}>
+					<img className={imageForm.img} src={image.image_url} alt={image.caption} />
+				</div>
+				<div className={imageForm.rightcontainer}>
+					<div className={imageForm.usercontainer}>
+						<Link to={`/users/${image.user_id}`}
+							className={imageForm.username}
+						>{image.user.username}</Link>
+						{editForm}
+						{editDelBtns}
+					</div>
+					<div className={imageForm.commentcontainer}>
+						<p>this is a placeholder div for comments</p>
+					</div>
+					<div className={imageForm.likecommentcontainer}>
+						<div>
+							<span className={imageForm.likecomment}>{image.likes_count} likes</span>
+							<span className={imageForm.likecomment}>{image.comments_count} comments</span>
+						</div>
+						<p>{newDate[2]} {newDate[1]}, {newDate[3]}</p>
+					</div>
+				</div>
 			</div>
-			<p>{newDate[2]} {newDate[1]}, {newDate[3]}</p>
-			<div>
-				{editDelBtns}
-			</div>
-		</>
+		</div>
 	);
 }
 

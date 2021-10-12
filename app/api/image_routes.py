@@ -84,7 +84,7 @@ def get_comment_like_counts(id):
     counts = Image.query.with_entities(Image.likes_count, Image.comments_count).filter(Image.id==id).first()
     return {'likes': counts[0], 'comments': counts[1]}
 
-current_user.get_id()
+# current_user.get_id()
 @image_routes.route('/<int:id>', methods=['PATCH'])
 @login_required
 def edit_caption(id):
