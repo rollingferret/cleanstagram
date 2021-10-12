@@ -85,3 +85,15 @@ def get_comment_like_counts(id):
     return {'likes': counts[0], 'comments': counts[1]}
 
 current_user.get_id()
+@image_routes.route('/<int:id>', methods=['PATCH'])
+@login_required
+def edit_caption(id):
+    '''
+    Route to edit caption for specfied image.
+    '''
+    update_image = Image.query.filter(id == Image.id).first()
+    update_image.caption = request.data.decode('UTF-8')[1:-1] # Temporary solution -- * WILL COMEBACK AND REFACTOR *
+
+    db.session.commit()
+
+    return update_image.to_dict()
