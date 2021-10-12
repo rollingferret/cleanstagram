@@ -35,6 +35,7 @@ export const getImageById = (imageId) => async (dispatch) => {
 	if (res.ok) {
 		const query = await res.json();
 		dispatch(get(query));
+		return query;
 	}
 };
 
@@ -46,12 +47,15 @@ export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case ADD_IMAGE:
 			newState = Object.assign({}, state);
+			newState[action.payload.id] = action.payload;
 			newState.currentImage = action.payload;
 			return newState;
 		case GET_IMAGE:
 			newState = Object.assign({}, state);
+			newState[action.payload.id] = action.payload;
 			newState.currentImage = action.payload;
 			return newState;
+
 		default:
 			return state;
 	}

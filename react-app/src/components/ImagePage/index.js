@@ -8,9 +8,10 @@ function ImagePage() {
 	const dispatch = useDispatch();
 	const image = useSelector((state) => state.images.currentImage);
 
+
 	useEffect(() => {
 		dispatch(getImageById(imageId));
-	}, [dispatch, imageId]);
+	}, [dispatch]);
 
 	if (!image) return null;
 

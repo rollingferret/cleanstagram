@@ -12,6 +12,8 @@ import ImageForm from "./components/ImageForm";
 import ProfilePage from "./components/ProfilePage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
+import ImagePage from './components/ImagePage';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,6 +53,9 @@ function App() {
           {/* login form page */}
           <LoginFormPage />
         </Route>
+        <ProtectedRoute path="/images/:imageId">
+					<ImagePage />
+				</ProtectedRoute>
         <ProtectedRoute path="/home" exact={true}>
           {/* home page if logged in show photo feed */}
           <h1>My Home Page</h1>
