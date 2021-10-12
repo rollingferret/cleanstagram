@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory, Link } from 'react-router-dom';
+
+import LikeButton from '../LikeButton/index';
 import { getImageById, deleteImage, updateCaption } from '../../store/images';
 
 function ImagePage() {
-	const sessionUser = useSelector(state => state.session.user);
+	const sessionUser = useSelector((state) => state.session.user);
 	const image = useSelector((state) => state.images.currentImage);
 	const history = useHistory();
 	const dispatch = useDispatch();
@@ -14,7 +16,7 @@ function ImagePage() {
 	const [edit, setEdit] = useState(false);
 	const [caption, setCaption] = useState(image?.caption);
 
-	const newDate = image?.created_at.split(" ")
+	const newDate = image?.created_at.split(' ');
 
 	useEffect(() => {
 		dispatch(getImageById(imageId));
@@ -22,36 +24,36 @@ function ImagePage() {
 
 	useEffect(() => {
 		if (sessionUser.id === image?.user_id) {
-			setEditButtons(true)
+			setEditButtons(true);
 		}
-	}, [sessionUser.id, image?.user_id])
+	}, [sessionUser.id, image?.user_id]);
 
-	const updateSubmit = async(e) => {
+	const updateSubmit = async (e) => {
 		e.preventDefault();
 
 		const payload = {
 			id: image.id,
-			caption
-		}
+			caption,
+		};
 
-		let res = await dispatch(updateCaption(payload))
+		let res = await dispatch(updateCaption(payload));
 		if (res.ok) {
-			setEdit(false)
+			setEdit(false);
 		}
-	}
+	};
 
 	const onDelete = async () => {
-		const toDelete = image.id
+		const toDelete = image.id;
 
-		let res = await dispatch(deleteImage(toDelete))
+		let res = await dispatch(deleteImage(toDelete));
 		if (res.ok) {
 			history.push(`/home`);
 		}
-	}
+	};
 
 	const onEdit = () => {
-		setEdit(!edit)
-	}
+		setEdit(!edit);
+	};
 
 	let editDelBtns;
 	if (editButtons) {
@@ -60,7 +62,7 @@ function ImagePage() {
 				<button onClick={onEdit}>Edit</button>
 				<button onClick={onDelete}>Delete</button>
 			</div>
-		)
+		);
 	}
 
 	let editForm;
@@ -75,11 +77,9 @@ function ImagePage() {
 				<button type="submit">Update</button>
 				<button onClick={() => setEdit(false)}>Cancel</button>
 			</form>
-		)
+		);
 	} else {
-		editForm = (
-			<p>{image?.caption}</p>
-		)
+		editForm = <p>{image?.caption}</p>;
 	}
 
 	if (!image) return null;
@@ -89,15 +89,14 @@ function ImagePage() {
 			<h1>Welcome to the picture</h1>
 			<img src={image.image_url} alt={image.caption} />
 			<Link to={`/users/${image.user_id}`}>{image.user.username}</Link>
+			<LikeButton id={image.id} />
 			<p>{image.likes_count} likes</p>
 			<p>{image.comments_count} comments</p>
-			<div>
-				{editForm}
-			</div>
-			<p>{newDate[2]} {newDate[1]}, {newDate[3]}</p>
-			<div>
-				{editDelBtns}
-			</div>
+			<div>{editForm}</div>
+			<p>
+				{newDate[2]} {newDate[1]}, {newDate[3]}
+			</p>
+			<div>{editDelBtns}</div>
 		</>
 	);
 }

@@ -79,7 +79,7 @@ def delete_image(id):
 @image_routes.route('/<int:id>/counts', methods=['GET'])
 def get_comment_like_counts(id):
     '''
-    Get a posts like and comment counts
+    Get a post's like and comment counts
     '''
     counts = Image.query.with_entities(Image.likes_count, Image.comments_count).filter(Image.id==id).first()
     return {'likes': counts[0], 'comments': counts[1]}
@@ -88,6 +88,9 @@ def get_comment_like_counts(id):
 @image_routes.route('/<int:id>/is-liked', methods=['GET'])
 @login_required
 def check_if_liked(id):
+    '''
+    Check whether a post has been liked by the current user
+    '''
     user_id = current_user.get_id()
     isLiked = ImageLike.query.filter(ImageLike.image_id==id, ImageLike.user_id==user_id).first()
 
