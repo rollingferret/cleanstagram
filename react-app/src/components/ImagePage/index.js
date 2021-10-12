@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getImageById } from '../../store/images';
 
 function ImagePage() {
@@ -22,7 +22,7 @@ function ImagePage() {
 			<h1>Welcome to the picture</h1>
 			<img src={image.image_url} alt={image.caption} />
 			<p>{image.caption}</p>
-			<p>{image.user.username}</p>
+			<Link to={`/users/${image.user_id}`}>{image.user.username}</Link>
 			<p>{newDate[2]} {newDate[1]}, {newDate[3]}</p>
 			<p>{image.likes_count} likes</p>
 			<p>{image.comments_count} comments</p>
