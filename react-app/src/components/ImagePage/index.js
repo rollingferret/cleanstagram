@@ -127,9 +127,9 @@ function ImagePage() {
 							{newDate[2]} {newDate[1]}, {newDate[3]}
 						</p>
 					</div>
-					<LikeButton id={image.id} />
 				</div>
 			</div>
+			<LikeButton id={image.id} />
 		</div>
 	);
 }
