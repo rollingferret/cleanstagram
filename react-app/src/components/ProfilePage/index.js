@@ -16,17 +16,21 @@ function ProfilePage() {
 
   if (!user) return null;
   return (
-    <>
-      <div className={styles.profile_block}>
-        <h1>{user.username}</h1>
-        <h2>
-          <span>{user.followers.length}</span> followers
-        </h2>
-        <h2>
-          <span>{user.following.length}</span> followers
-        </h2>
+    <div className={styles.profile_block}>
+      <h1 className={styles.username}>{user.username}</h1>
+      <div className={styles.profile_stats}>
+        <div className={styles.following_stats}>
+          <h2>
+            <span>{user.followers.length}</span> followers
+          </h2>
+        </div>
+        <div className={styles.following_stats}>
+          <h2>
+            <span>{user.following.length}</span> followers
+          </h2>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
