@@ -1,58 +1,110 @@
 const ADD_IMAGE = 'images/ADD_IMAGE';
 const GET_IMAGE = 'images/GET_IMAGE';
+const EDIT_IMAGE = 'images/EDIT_IMAGE';
+const DEL_IMAGE = 'images/DEL_IMAGE';
 
 const add = (image) => ({
-	type: ADD_IMAGE,
-	payload: image,
+    type: ADD_IMAGE,
+    payload: image,
 });
 
 const get = (image) => ({
-	type: GET_IMAGE,
-	payload: image,
+    type: GET_IMAGE,
+    payload: image,
 });
 
+const del = (image) => ({
+    type: DEL_IMAGE,
+    payload: image,
+});
+
+const edit = (image) => ({
+    type: EDIT_IMAGE,
+    payload: image
+})
+
 export const addImage = (formData) => async (dispatch) => {
-	// const { caption, image } = formData
+    // const { caption, image } = formData
 
-	const res = await fetch('/api/images', {
-		method: 'POST',
-		body: formData,
-	});
+    const res = await fetch('/api/images', {
+        method: 'POST',
+        body: formData,
+    });
 
-	if (res.ok) {
-		// TODO: Finish stores/reducer
-		const new_image = await res.json();
-		console.log(new_image);
-		dispatch(add(new_image));
+    if (res.ok) {
+        // TODO: Finish stores/reducer
+        const new_image = await res.json();
 
-		return { ok: true, id: new_image.id };
-	}
+        dispatch(add(new_image));
+
+        return { ok: true, id: new_image.id };
+    }
 };
 
 export const getImageById = (imageId) => async (dispatch) => {
-	const res = await fetch(`/api/images/${imageId}`);
-	console.log('RES', res);
-	if (res.ok) {
-		const query = await res.json();
-		dispatch(get(query));
-	}
+    const res = await fetch(`/api/images/${imageId}`);
+
+    if (res.ok) {
+        const query = await res.json();
+        dispatch(get(query));
+    }
 };
+
+export const deleteImage = (imageId) => async (dispatch) => {
+
+    const res = await fetch(`/api/images/${imageId}`, {
+        method: "DELETE",
+    });
+
+    if (res.ok) {
+        const query = await res.json();
+        dispatch(del(query));
+        return { ok: true }
+    }
+};
+
+export const updateCaption = (data) => async (dispatch) => {
+    console.log("data id from edit button", data.id)
+    const res = await fetch(`/api/images/${data.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data.caption)
+    });
+
+    console.log("RES FROM BACKEND FLASK", res)
+
+    if (res.ok) {
+        const query = await res.json();
+        dispatch(edit(query));
+        return { ok: true }
+    }
+}
 
 // const initialState = { images: null, currentImage: null };
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
-	let newState;
-	switch (action.type) {
-		case ADD_IMAGE:
-			newState = Object.assign({}, state);
-			newState.currentImage = action.payload;
-			return newState;
-		case GET_IMAGE:
-			newState = Object.assign({}, state);
-			newState.currentImage = action.payload;
-			return newState;
-		default:
-			return state;
-	}
+    let newState;
+    switch (action.type) {
+        case ADD_IMAGE:
+            newState = Object.assign({}, state);
+            newState.currentImage = action.payload;
+            return newState;
+        case GET_IMAGE:
+            newState = Object.assign({}, state);
+            newState.currentImage = action.payload;
+            return newState;
+        case DEL_IMAGE:
+            newState = Object.assign({}, state);
+            delete newState["currentImage"]
+            return newState;
+        case EDIT_IMAGE:
+            newState = Object.assign({}, state);
+            newState["currentImage"]["caption"] = action.payload.caption;
+            return newState;
+        default:
+            return state;
+    }
 }
