@@ -1,6 +1,6 @@
 from datetime import date, datetime
 from flask import Blueprint, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from app.aws import delete_from_s3, upload_file_to_s3, allowed_file, get_unique_filename
 from app.models import User, Image, db
@@ -76,6 +76,15 @@ def delete_image(id):
             return bucket_deletion
 
 
+@image_routes.route('/<int:id>/counts', methods=['GET'])
+def get_comment_like_counts(id):
+    '''
+    Get a posts like and comment counts
+    '''
+    counts = Image.query.with_entities(Image.likes_count, Image.comments_count).filter(Image.id==id).first()
+    return {'likes': counts[0], 'comments': counts[1]}
+
+current_user.get_id()
 @image_routes.route('/<int:id>', methods=['PATCH'])
 @login_required
 def edit_caption(id):
