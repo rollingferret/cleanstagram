@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
 
-import LogoutButton from "../auth/LogoutButton";
 import styles from "./NavBar.module.css";
 
 const NavBar = () => {
