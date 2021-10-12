@@ -32,9 +32,6 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path="/user/:userId">
-          <ProfilePage />
-        </Route>
         <ProtectedRoute path="/add_image" exact={true}>
           <ImageForm />
         </ProtectedRoute>
@@ -44,9 +41,9 @@ function App() {
         <ProtectedRoute path="/users" exact={true}>
           <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
-        </ProtectedRoute>
+        <Route path="/users/:userId" exact={true}>
+          <ProfilePage />
+        </Route>
         <Route path="/" exact>
           {/* login form page */}
           <LoginFormPage />

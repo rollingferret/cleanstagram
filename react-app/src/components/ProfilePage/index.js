@@ -1,15 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+
+import styles from "./ProfilePage.module.css";
+import { getUser } from "../../store/users";
 
 function ProfilePage() {
-    const { userId } = useParams();
+  const { userId } = useParams();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.users[userId]);
 
+  useEffect(() => {
+    dispatch(getUser(userId));
+  }, [userId]);
 
-    return (
-        <>
-            <h1>Welcome {userId}</h1>
-        </>
-    )
+  if (!user) return null;
+  return (
+    <div className={styles.profile_block}>
+      <h1 className={styles.username}>{user.username}</h1>
+      <div className={styles.profile_stats}>
+        <div className={styles.following_stats}>
+          <h2>
+            <span>{user.followers.length}</span> followers
+          </h2>
+        </div>
+        <div className={styles.following_stats}>
+          <h2>
+            <span>{user.following.length}</span> followers
+          </h2>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default ProfilePage;

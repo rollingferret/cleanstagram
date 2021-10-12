@@ -1,0 +1,22 @@
+.profile_block {
+  border: 1px solid black; /* for debugging use */
+  font-size: 1rem;
+}
+
+.username {
+  font-weight: 100;
+}
+
+.profile_stats {
+  display: flex;
+}
+
+.following_stats {
+  box-sizing: border-box;
+  margin-right: 5%;
+}
+
+.following_stats h2 {
+  width: 100%;
+  border: 1px solid red;
+}

@@ -8,6 +8,7 @@ from app.forms import ImageForm
 
 image_routes = Blueprint('images', __name__)
 
+
 @image_routes.route('/<int:id>', methods=['GET'])
 @login_required
 def get_image_by_id(id):
@@ -81,10 +82,15 @@ def get_comment_like_counts(id):
     '''
     Get a posts like and comment counts
     '''
-    counts = Image.query.with_entities(Image.likes_count, Image.comments_count).filter(Image.id==id).first()
+    counts = Image.query.with_entities(
+        Image.likes_count, Image.comments_count).filter(Image.id == id).first()
     return {'likes': counts[0], 'comments': counts[1]}
 
+<<<<<<< HEAD
 # current_user.get_id()
+=======
+
+>>>>>>> main
 @image_routes.route('/<int:id>', methods=['PATCH'])
 @login_required
 def edit_caption(id):
@@ -92,7 +98,8 @@ def edit_caption(id):
     Route to edit caption for specfied image.
     '''
     update_image = Image.query.filter(id == Image.id).first()
-    update_image.caption = request.data.decode('UTF-8')[1:-1] # Temporary solution -- * WILL COMEBACK AND REFACTOR *
+    # Temporary solution -- * WILL COMEBACK AND REFACTOR *
+    update_image.caption = request.data.decode('UTF-8')[1:-1]
 
     db.session.commit()
 
