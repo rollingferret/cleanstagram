@@ -18,6 +18,11 @@ const NavBar = () => {
       return (
         <div className={styles.logged_in_buttons}>
           <li>
+            <NavLink to="/" exact={true} activeClassName="active">
+              <i className={`fas fa-home ${styles.home_icon}`}></i>
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/users" exact={true} activeClassName="active">
               Users
             </NavLink>
@@ -45,7 +50,7 @@ const NavBar = () => {
       <div className={styles.home_button}>
         <li>
           <NavLink to="/" exact={true} activeClassName="active">
-            Home
+            Cleanstagram
           </NavLink>
         </li>
       </div>

@@ -14,9 +14,21 @@
   margin-right: 2%;
 }
 
+.logged_in_buttons {
+  width: 20vw;
+}
+
+.logged_in_buttons li {
+  margin: 0 5%;
+}
+
 .logged_in_buttons li a,
 .logged_in_buttons li button {
   font-size: 1rem;
+}
+
+.home_icon {
+  font-size: 1.3rem;
 }
 
 .home_button {
