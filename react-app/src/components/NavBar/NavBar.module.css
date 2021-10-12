@@ -5,6 +5,7 @@
   align-items: center;
   height: 54px;
   border-bottom: 1px solid rgba(219, 219, 219, 1);
+  font-size: 1rem;
 }
 
 .logged_in_buttons,
@@ -13,7 +14,10 @@
   margin-right: 2%;
 }
 
-.logged_in_buttons
+.logged_in_buttons li a,
+.logged_in_buttons li button {
+  font-size: 1rem;
+}
 
 .home_button {
   margin-left: 2%;
