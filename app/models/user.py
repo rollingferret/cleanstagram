@@ -45,5 +45,6 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'followers': [follower.to_dict() for follower in self.followers]
         }

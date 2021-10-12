@@ -15,7 +15,7 @@ def get_image_by_id(id):
     Image GET route by ID.
     '''
     image = Image.query.get(id)
-    # print(35*'-', image.to_dict())
+
     return image.to_dict()
 
 

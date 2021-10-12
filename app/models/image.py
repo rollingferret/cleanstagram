@@ -22,6 +22,7 @@ class Image(db.Model):
         return {
             'id': self.id,
             'user_id': self.user_id,
+            'user': self.user.to_dict(),
             'image_url': self.image_url,
             'caption': self.caption,
             'likes_count': self.likes_count,

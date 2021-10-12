@@ -8,9 +8,12 @@ function ImagePage() {
 	const dispatch = useDispatch();
 	const image = useSelector((state) => state.images.currentImage);
 
+	const newDate = image?.created_at.split(" ")
+
 	useEffect(() => {
 		dispatch(getImageById(imageId));
 	}, [dispatch, imageId]);
+
 
 	if (!image) return null;
 
@@ -19,8 +22,8 @@ function ImagePage() {
 			<h1>Welcome to the picture</h1>
 			<img src={image.image_url} alt={image.caption} />
 			<p>{image.caption}</p>
-			<p>{image.user_id}</p>
-			<p>{image.created_at}</p>
+			<p>{image.user.username}</p>
+			<p>{newDate[2]} {newDate[1]}, {newDate[3]}</p>
 			<p>{image.likes_count} likes</p>
 			<p>{image.comments_count} comments</p>
 		</>
