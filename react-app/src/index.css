@@ -1,1 +1,64 @@
 /* TODO Add site wide styles */
+body {
+  padding: 50px;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+a {
+  color: #00b7ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+ol,
+li,
+ul,
+div,
+span,
+body,
+header,
+nav {
+  font-size: 1rem;
+  color: inherit;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  font-weight: normal;
+}
+
+li {
+  list-style: none;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+input {
+  border: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+a:hover {
+  text-decoration: none;
+}
