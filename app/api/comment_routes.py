@@ -86,7 +86,9 @@ def edit(id):
 @comment_routes.route('/delete/<int:id>', methods=['DELETE'])
 @login_required
 def delete(id):
-
+    '''
+    Comment DELETE route.
+    '''
     comment_to_delete = Comment.query.filter(Comment.id == id).first()
 
     if not comment_to_delete:
