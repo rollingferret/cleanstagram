@@ -1,6 +1,6 @@
 from datetime import date, datetime
 from flask import Blueprint, request
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from app.aws import delete_from_s3, upload_file_to_s3, allowed_file, get_unique_filename
 from app.models import User, Image, db
@@ -83,3 +83,5 @@ def get_comment_like_counts(id):
     '''
     counts = Image.query.with_entities(Image.likes_count, Image.comments_count).filter(Image.id==id).first()
     return {'likes': counts[0], 'comments': counts[1]}
+
+current_user.get_id()
