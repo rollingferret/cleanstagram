@@ -74,3 +74,12 @@ def delete_image(id):
             return {'deleted': True}
         else:
             return bucket_deletion
+
+
+@image_routes.route('/<int:id>/counts', methods=['GET'])
+def get_comment_like_counts(id):
+    '''
+    Get a posts like and comment counts
+    '''
+    counts = Image.query.with_entities(Image.likes_count, Image.comments_count).filter(Image.id==id).first()
+    return {'likes': counts[0], 'comments': counts[1]}
