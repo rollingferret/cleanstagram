@@ -3,7 +3,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 
 from app.aws import delete_from_s3, upload_file_to_s3, allowed_file, get_unique_filename
-from app.models import User, Image, db
+from app.models import User, Image, ImageLike, db
 from app.forms import ImageForm
 
 image_routes = Blueprint('images', __name__)
@@ -84,7 +84,19 @@ def get_comment_like_counts(id):
     counts = Image.query.with_entities(Image.likes_count, Image.comments_count).filter(Image.id==id).first()
     return {'likes': counts[0], 'comments': counts[1]}
 
-current_user.get_id()
+
+@image_routes.route('/<int:id>/is-liked', methods=['GET'])
+@login_required
+def check_if_liked(id):
+    user_id = current_user.get_id()
+    isLiked = ImageLike.query.filter(ImageLike.image_id==id, ImageLike.user_id==user_id).first()
+
+    if isLiked == None:
+        return {"isLiked": False}
+    else:
+        return {"isLiked": True}
+
+
 @image_routes.route('/<int:id>', methods=['PATCH'])
 @login_required
 def edit_caption(id):
