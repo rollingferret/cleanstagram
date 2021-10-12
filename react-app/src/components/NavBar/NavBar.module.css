@@ -14,10 +14,6 @@
   margin-right: 2%;
 }
 
-.logged_in_buttons {
-  width: 20vw;
-}
-
 .logged_in_buttons li {
   margin: 0 5%;
 }
@@ -33,4 +29,19 @@
 
 .home_button {
   margin-left: 2%;
+}
+
+.user_menu {
+  width: 250px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  right: 3px;
+  top: 54px;
+}
+
+.user_menu li,
+.user_menu button {
+  height: 30px;
+  line-height: 30px;
 }

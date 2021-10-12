@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
 
 import styles from "./NavBar.module.css";
@@ -9,9 +8,28 @@ import styles from "./NavBar.module.css";
 const NavBar = () => {
   const currentUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const [showMenu, setShowMenu] = useState(false);
+
   const onLogout = async (e) => {
     await dispatch(logout());
   };
+
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true);
+  };
+
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+
+    document.addEventListener("click", closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
   const user_buttons = () => {
     if (currentUser) {
@@ -23,13 +41,21 @@ const NavBar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/users" exact={true} activeClassName="active">
-              Users
-            </NavLink>
+            <button onClick={openMenu}>
+              <i className={`fas fa-user`}></i>
+            </button>
           </li>
-          <li>
-            <button onClick={onLogout}>Logout</button>
-          </li>
+          {showMenu && (
+            <div className={`profile-dropdown ${styles.dropdown}`}>
+              <ul className={styles.user_menu}>
+                <li>username: {currentUser.username}</li>
+                <li>email: {currentUser.email}</li>
+                <button className={styles.button} onClick={onLogout}>
+                  Log Out
+                </button>
+              </ul>
+            </div>
+          )}
         </div>
       );
     } else {
