@@ -10,6 +10,7 @@ import ProfilePage from './components/ProfilePage';
 import LoginFormPage from './components/LoginFormPage';
 import { authenticate } from './store/session';
 import ImagePage from './components/ImagePage';
+import Results from './components/Results';
 import { loadImages } from './store/images';
 import Feed from './components/Feed';
 
@@ -56,6 +57,9 @@ function App() {
 				<ProtectedRoute path="/images/:imageId">
 					<ImagePage />
 				</ProtectedRoute>
+				<Route path="/results/:term">
+					<Results />
+				</Route>
 			</Switch>
 		</BrowserRouter>
 	);
