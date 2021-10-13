@@ -13,7 +13,7 @@ def comments_route():
     '''
     Comment GET route for ALL.
     '''
-    comments = Comment.query.all()
+    comments = Comment.query.limit(20).all()
     return{
         'comments': {comment.id:comment.to_dict() for comment in comments}
     }
