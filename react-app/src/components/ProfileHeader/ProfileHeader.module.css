@@ -1,5 +1,6 @@
 .profile_block {
   border: 1px solid black; /* for debugging use */
+  width: 100vw;
   font-size: 1rem;
 }
 
