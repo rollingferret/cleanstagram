@@ -1,17 +1,10 @@
 const GET_USER = "users/GET_USER";
-const GET_USER_POSTS = "users/GET_USER_POSTS";
 
 // actions
 const get = (user) => {
   return {
     type: GET_USER,
     payload: user,
-  };
-};
-
-const getPosts = () => {
-  return {
-    // decide what to return to store
   };
 };
 

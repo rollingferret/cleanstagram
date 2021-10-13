@@ -18,6 +18,7 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
+      // dispatch thunk to get all images
       setLoaded(true);
     })();
   }, [dispatch]);

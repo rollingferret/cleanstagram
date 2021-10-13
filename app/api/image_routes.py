@@ -9,6 +9,12 @@ from app.forms import ImageForm
 image_routes = Blueprint('images', __name__)
 
 
+@image_routes.route('')
+def get_all_images():
+    all_images = Image.query.all()
+    return {image.id: image.to_dict() for image in all_images}
+
+
 @image_routes.route('/<int:id>', methods=['GET'])
 @login_required
 def get_image_by_id(id):
@@ -94,7 +100,8 @@ def check_if_liked(id):
     Check whether a post has been liked by the current user
     '''
     user_id = current_user.get_id()
-    isLiked = ImageLike.query.filter(ImageLike.image_id==id, ImageLike.user_id==user_id).first()
+    isLiked = ImageLike.query.filter(
+        ImageLike.image_id == id, ImageLike.user_id == user_id).first()
 
     if isLiked == None:
         return {"isLiked": False}
