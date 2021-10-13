@@ -131,6 +131,7 @@ export const checkLikeStatus = (imageId) => async (dispatch) => {
 		console.log('STATUS', status);
 		// status.id = imageId;
 		dispatch(displayLikeStatus(status));
+		return status;
 	}
 };
 
