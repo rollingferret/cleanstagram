@@ -11,11 +11,15 @@ const ProfileBody = ({ userId }) => {
     userImages = currentUser.image_ids.map((id) => allImages[id]);
   }
   return (
-    <div>
+    <div className={styles.profileBody}>
       {userImages?.map((image) => (
-        <div key={image.id}>
-          <img src={image.image_url}></img>
-        </div>
+        <div
+          key={image.id}
+          className={styles.image_box}
+          style={{
+            backgroundImage: `url(${image.image_url})`,
+          }}
+        ></div>
       ))}
     </div>
   );
