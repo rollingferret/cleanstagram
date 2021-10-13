@@ -6,6 +6,8 @@ import LikeButton from '../LikeButton/index';
 import { getImageById, deleteImage, updateCaption } from '../../store/images';
 
 import imageForm from './ImageForm.module.css';
+import GetAllCommentsForSinglePhoto from '../CommentDisplayComponent';
+
 
 function ImagePage() {
 	const sessionUser = useSelector((state) => state.session.user);
@@ -112,7 +114,7 @@ function ImagePage() {
 						{editDelBtns}
 					</div>
 					<div className={imageForm.commentcontainer}>
-						<p>this is a placeholder div for comments</p>
+					<GetAllCommentsForSinglePhoto />
 					</div>
 					<div className={imageForm.likecommentcontainer}>
 						<div>
