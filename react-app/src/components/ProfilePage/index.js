@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 
 import styles from "./ProfilePage.module.css";
 import { getUser } from "../../store/users";
+import ProfileHeader from "../ProfileHeader";
+import ProfileBody from "../ProfileBody";
 
 function ProfilePage() {
   const { userId } = useParams();
@@ -17,19 +19,8 @@ function ProfilePage() {
   if (!user) return null;
   return (
     <div className={styles.profile_block}>
-      <h1 className={styles.username}>{user.username}</h1>
-      <div className={styles.profile_stats}>
-        <div className={styles.following_stats}>
-          <h2>
-            <span>{user.followers.length}</span> followers
-          </h2>
-        </div>
-        <div className={styles.following_stats}>
-          <h2>
-            <span>{user.following.length}</span> followers
-          </h2>
-        </div>
-      </div>
+      <ProfileHeader />
+      <ProfileBody userId={userId} />
     </div>
   );
 }
