@@ -4,8 +4,15 @@ const GET_IMAGE = "images/GET_IMAGE";
 const EDIT_IMAGE = "images/EDIT_IMAGE";
 const DEL_IMAGE = "images/DEL_IMAGE";
 const DISPLAY_LIKED = "images/DISPLAY_LIKED";
+const DISLIKE_IMAGE = "images/DISLIKE_IMAGE";
+const LIKE_IMAGE = "images/LIKE_IMAGE";
 
-const load_images = (images) => ({ type: LOAD_IMAGES, payload: images });
+const load_images = (images) => {
+  return {
+    type: LOAD_IMAGES,
+    payload: images,
+  };
+};
 
 const add = (image) => ({
   type: ADD_IMAGE,
@@ -39,6 +46,37 @@ export const loadImages = () => async (dispatch) => {
   if (res.ok) {
     const allImages = await res.json();
     await dispatch(load_images(allImages));
+  }
+};
+const displayLike = (imageId) => ({
+  type: LIKE_IMAGE,
+  payload: imageId,
+});
+
+const displayDislike = (imageId) => ({
+  type: DISLIKE_IMAGE,
+  payload: imageId,
+});
+
+export const likeImage = (imageId) => async (dispatch) => {
+  const res = await fetch(`/api/images/${imageId}/like`, {
+    method: "POST",
+  });
+
+  if (res.ok) {
+    const like = await res.json();
+    dispatch(displayLike(like.image_id));
+  }
+};
+
+export const dislikeImage = (imageId) => async (dispatch) => {
+  const res = await fetch(`/api/images/${imageId}/dislike`, {
+    method: "DELETE",
+  });
+
+  if (res.ok) {
+    const dislike = await res.json();
+    dispatch(displayDislike(dislike.image_id));
   }
 };
 
@@ -111,36 +149,35 @@ export const checkLikeStatus = (imageId) => async (dispatch) => {
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
-  let newState;
+  let newState = Object.assign({}, state);
   switch (action.type) {
     case LOAD_IMAGES:
-      newState = Object.assign({}, state);
       Object.entries(action.payload).forEach(([id, image]) => {
         newState[id] = image;
       });
       return newState;
     case ADD_IMAGE:
-      newState = Object.assign({}, state);
       newState[action.payload.id] = action.payload;
       newState.currentImage = action.payload; //refactor later
       return newState;
     case GET_IMAGE:
-      newState = Object.assign({}, state);
       newState.currentImage = action.payload;
       newState[action.payload.id] = action.payload;
       return newState;
     case DEL_IMAGE:
-      newState = Object.assign({}, state);
       delete newState["currentImage"];
       return newState;
     case EDIT_IMAGE:
-      newState = Object.assign({}, state);
       newState["currentImage"]["caption"] = action.payload.caption;
       return newState;
     case DISPLAY_LIKED:
-      newState = Object.assign({}, state);
-      const id = action.payload.id;
-      newState[id].isLiked = action.payload.isLiked;
+      newState[action.payload.id].isLiked = action.payload.isLiked;
+      return newState;
+    case DISLIKE_IMAGE:
+      newState[action.payload].isLiked = false;
+      return newState;
+    case LIKE_IMAGE:
+      newState[action.payload].isLiked = true;
       return newState;
     default:
       return state;

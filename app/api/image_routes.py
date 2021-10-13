@@ -104,9 +104,38 @@ def check_if_liked(id):
         ImageLike.image_id == id, ImageLike.user_id == user_id).first()
 
     if isLiked == None:
-        return {"isLiked": False}
+        return {"isLiked": False, "id": id}
     else:
-        return {"isLiked": True}
+        return {"isLiked": True, "id": id}
+
+
+@image_routes.route('/<int:id>/like', methods=['POST'])
+@login_required
+def like_image(id):
+    '''
+    Like a post
+    '''
+    user_id = current_user.get_id()
+    like = ImageLike(user_id=user_id,
+                     image_id=id)
+    db.session.add(like);
+    db.session.commit();
+    return like.to_dict()
+
+
+@image_routes.route('/<int:id>/dislike', methods=['DELETE'])
+@login_required
+def dislike_image(id):
+    '''
+    Dislike a post
+    '''
+    user_id = current_user.get_id()
+
+    like_to_delete = ImageLike.query.filter(ImageLike.image_id==id, ImageLike.user_id==user_id).first()
+    db.session.delete(like_to_delete)
+    db.session.commit()
+    return like_to_delete.to_dict()
+
 
 
 @image_routes.route('/<int:id>', methods=['PATCH'])
