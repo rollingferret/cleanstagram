@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
 from flask_migrate import current
 from app.api.auth_routes import login
-from app.models import User, db
+from app.models import User, db, Image
 
 user_routes = Blueprint('users', __name__)
 
@@ -65,3 +65,10 @@ def unfollow_user(id):
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/<int:id>/images')
+def get_images_by_user(id):
+    posts_by_user = Image.query.filter(Image.user_id == id).all()
+    posts_list = {post.id: post.to_dict() for post in posts_by_user}
+    return posts_list

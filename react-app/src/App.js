@@ -5,14 +5,13 @@ import { useDispatch } from "react-redux";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
-import UsersList from "./components/UsersList";
-import User from "./components/User";
 import ImageForm from "./components/ImageForm";
 import ProfilePage from "./components/ProfilePage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import ImagePage from "./components/ImagePage";
 import Results from "./components/Results"
+import { loadImages } from "./store/images";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -20,7 +19,10 @@ function App() {
 
   useEffect(() => {
     (async () => {
+      console.log("hewwo world uwu");
       await dispatch(authenticate());
+      // dispatch thunk to get all images
+      await dispatch(loadImages());
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -39,9 +41,6 @@ function App() {
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path="/users" exact={true}>
-          <UsersList />
-        </ProtectedRoute>
         <Route path="/users/:userId" exact={true}>
           <ProfilePage />
         </Route>
