@@ -138,36 +138,29 @@ export const checkLikeStatus = (imageId) => async (dispatch) => {
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
-	let newState;
+	const newState = { ...state };
 	switch (action.type) {
 		case ADD_IMAGE:
-			newState = Object.assign({}, state);
 			newState[action.payload.id] = action.payload;
 			newState.currentImage = action.payload; //refactor later
 			return newState;
 		case GET_IMAGE:
-			newState = Object.assign({}, state);
 			newState.currentImage = action.payload;
 			newState[action.payload.id] = action.payload;
 			return newState;
 		case DEL_IMAGE:
-			newState = Object.assign({}, state);
 			delete newState['currentImage'];
 			return newState;
 		case EDIT_IMAGE:
-			newState = Object.assign({}, state);
 			newState['currentImage']['caption'] = action.payload.caption;
 			return newState;
 		case DISPLAY_LIKED:
-			newState = Object.assign({}, state);
 			newState[action.payload.id].isLiked = action.payload.isLiked;
 			return newState;
 		case DISLIKE_IMAGE:
-			newState = Object.assign({}, state);
 			newState[action.payload].isLiked = false;
 			return newState;
 		case LIKE_IMAGE:
-			newState = Object.assign({}, state);
 			newState[action.payload].isLiked = true;
 			return newState;
 		default:
