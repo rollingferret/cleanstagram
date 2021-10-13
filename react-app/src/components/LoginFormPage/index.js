@@ -20,7 +20,7 @@ const LoginFormPage = () => {
 
   return (
     <>
-      <div>placeholder FOR THE STUPID IMAGE</div>
+      <div>placeholder FOR THE STUPID IMAGE LOOOOOOOOOOOOOOOOL</div>
       <LoginForm />
       <button onClick={demoUser}>Demo User</button>
     </>
