@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
+import Search from "./Search"
 
 import styles from "./NavBar.module.css";
 
@@ -79,6 +80,9 @@ const NavBar = () => {
             Cleanstagram
           </NavLink>
         </li>
+      </div>
+      <div>
+        <Search />
       </div>
       {user_buttons()}
     </nav>

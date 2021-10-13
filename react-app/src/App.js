@@ -12,6 +12,7 @@ import ProfilePage from "./components/ProfilePage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import ImagePage from "./components/ImagePage";
+import Results from "./components/Results"
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -55,6 +56,9 @@ function App() {
         <ProtectedRoute path="/images/:imageId">
           <ImagePage />
         </ProtectedRoute>
+        <Route path="/results/:term">
+          <Results />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
