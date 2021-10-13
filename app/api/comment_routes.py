@@ -23,11 +23,11 @@ def comment_route(id):
     '''
     Comment GET route by ID.
     '''
-    comment = Comment.query.filter(Comment.id == id).first()
-    if not comment:
+    comments = Comment.query.filter(Comment.image_id == id).all()
+    if not comments:
         return 'No comment here!'
     else:
-        return comment.to_dict()
+        return {comment.id:comment.to_dict() for comment in comments}
 
 
 @comment_routes.route('/new/<int:id>', methods=['POST'])
