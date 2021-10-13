@@ -29,12 +29,12 @@ const delCommentsAction = (comment) => ({
     payload: comment,
 });
 
-export const getCommentByIdThunk = (commentId) => async (dispatch) => {
-    const res = await fetch(`/api/comments/${commentId}`);
+export const getCommentByIdThunk = (imageId) => async (dispatch) => {
+    const res = await fetch(`/api/comments/${imageId}`);
 
     if (res.ok) {
         const query = await res.json();
-        dispatch(getCommentAction(query));
+        dispatch(getAllCommentsAction(query));
     }
 };
 
@@ -100,16 +100,15 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case ADD_COMMENT:
             newState = Object.assign({}, state);
-            newState[action.id] = action.payload;
-            newState.currentComment = action.payload;
+            newState[action.payload.id] = action.payload;
             return newState;
         case GET_COMMENT:
             newState = Object.assign({}, state);
-            newState.currentComment = action.payload;
+            newState[action.payload.id] = action.payload;
             return newState;
         case GET_COMMENTS:
             newState = Object.assign({}, state);
-            newState.currentComment = action.payload;
+            newState = action.payload;
             return newState;
         case EDIT_COMMENT:
             newState = Object.assign({}, state);
