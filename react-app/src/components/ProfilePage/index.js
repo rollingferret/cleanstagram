@@ -20,7 +20,7 @@ function ProfilePage() {
   return (
     <div className={styles.profile_block}>
       <ProfileHeader />
-      <ProfileBody />
+      <ProfileBody userId={userId} />
     </div>
   );
 }
