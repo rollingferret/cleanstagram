@@ -2,7 +2,7 @@ const ADD_IMAGE = 'images/ADD_IMAGE';
 const GET_IMAGE = 'images/GET_IMAGE';
 const EDIT_IMAGE = 'images/EDIT_IMAGE';
 const DEL_IMAGE = 'images/DEL_IMAGE';
-const CHECK_IMAGE_LIKED = 'images/CHECK_IMAGE_LIKED';
+const DISPLAY_LIKED = 'images/DISPLAY_LIKED';
 
 const add = (image) => ({
 	type: ADD_IMAGE,
@@ -24,10 +24,12 @@ const edit = (image) => ({
 	payload: image,
 });
 
-const checkLike = (likeStatus) => ({
-	type: CHECK_IMAGE_LIKED,
-	payload: likeStatus,
-});
+const displayLikeStatus = (likeStatus) => {
+	return {
+		type: DISPLAY_LIKED,
+		payload: likeStatus,
+	};
+};
 
 export const addImage = (formData) => async (dispatch) => {
 	// const { caption, image } = formData
@@ -92,9 +94,8 @@ export const checkLikeStatus = (imageId) => async (dispatch) => {
 
 	if (res.ok) {
 		const status = await res.json();
-		console.log('STATUS+++++++++++++', status);
 		status.id = imageId;
-		dispatch(checkLike(status));
+		dispatch(displayLikeStatus(status));
 	}
 };
 
@@ -121,7 +122,7 @@ export default function reducer(state = initialState, action) {
 			newState = Object.assign({}, state);
 			newState['currentImage']['caption'] = action.payload.caption;
 			return newState;
-		case CHECK_IMAGE_LIKED:
+		case DISPLAY_LIKED:
 			newState = Object.assign({}, state);
 			const id = action.payload.id;
 			newState[id].isLiked = action.payload.isLiked;
