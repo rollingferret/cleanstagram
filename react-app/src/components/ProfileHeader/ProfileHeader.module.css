@@ -1,11 +1,27 @@
-.profile_block {
+.profile_header {
   border: 1px solid black; /* for debugging use */
   width: 100vw;
+  height: 100px;
   font-size: 1rem;
+  padding: 0 100px;
+  display: flex;
+  justify-content: center;
 }
 
+.profile_header_display {
+  width: 55vw;
+}
+
+.username_and_buttons {
+  display: flex;
+}
 .username {
-  font-weight: 100;
+  margin-bottom: 30px;
+  margin-right: 30px;
+}
+
+.username h1 {
+  font-weight: 300;
 }
 
 .profile_stats {
@@ -17,7 +33,13 @@
   margin-right: 5%;
 }
 
-.following_stats h2 {
+.following_stats h2,
+.following_stats span {
   width: 100%;
-  border: 1px solid red;
+  font-size: 1.3rem;
+  font-weight: 100;
+}
+
+.following_stats h2 {
+  font-weight: 300;
 }
