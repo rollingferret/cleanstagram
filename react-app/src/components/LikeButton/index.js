@@ -7,8 +7,8 @@ import css from './LikeComponent.module.css';
 function LikeButton({ id }) {
 	const dispatch = useDispatch();
 
-	const isLiked = useSelector((state) => {
-		return state.images[id].isLiked;
+	const image = useSelector((state) => {
+		return state.images[id]
 	});
 
 	useEffect(() => {
@@ -17,7 +17,7 @@ function LikeButton({ id }) {
 
 	return (
 		<div>
-			{isLiked ? (
+			{image && image?.isLiked ? (
 				<button className={css.redlikebutton}>Like</button>
 			) : (
 				<button className={css.whitelikebutton}>Like</button>
