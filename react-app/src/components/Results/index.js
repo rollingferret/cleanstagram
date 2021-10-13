@@ -16,6 +16,8 @@ function Result() {
 
     const userArr = Object.values(userQuery)
 
+    const filteredArr = userArr.filter((user) => user.username.toLowerCase().includes(term.toLowerCase()))
+
     useEffect(() => {
         dispatch(getResults());
     }, [dispatch]);
@@ -24,7 +26,7 @@ function Result() {
         <>
             <h1>We've hit the results page!</h1>
             <ul> Search Results:
-                {userArr.map((user) => (
+                {filteredArr.map((user) => (
                     <li>
                         <Link to={`/users/${user.id}`} key={user.id}>{user.username}</Link>
                     </li>
