@@ -99,7 +99,6 @@ export const checkLikeStatus = (imageId) => async (dispatch) => {
 	}
 };
 
-// const initialState = { images: null, currentImage: null };
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
