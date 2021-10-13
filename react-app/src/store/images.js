@@ -5,9 +5,7 @@ const EDIT_IMAGE = "images/EDIT_IMAGE";
 const DEL_IMAGE = "images/DEL_IMAGE";
 const DISPLAY_LIKED = "images/DISPLAY_LIKED";
 
-const load_images = () => {
-  return { type: LOAD_IMAGES };
-};
+const load_images = (images) => ({ type: LOAD_IMAGES, payload: images });
 
 const add = (image) => ({
   type: ADD_IMAGE,
@@ -37,7 +35,11 @@ const displayLikeStatus = (likeStatus) => {
 };
 
 export const loadImages = () => async (dispatch) => {
-	const res = await fetch('/')
+  const res = await fetch("/api/images");
+  if (res.ok) {
+    const allImages = await res.json();
+    await dispatch(load_images(allImages));
+  }
 };
 
 export const addImage = (formData) => async (dispatch) => {
@@ -111,6 +113,12 @@ const initialState = {};
 export default function reducer(state = initialState, action) {
   let newState;
   switch (action.type) {
+    case LOAD_IMAGES:
+      newState = Object.assign({}, state);
+      Object.entries(action.payload).forEach(([id, image]) => {
+        newState[id] = image;
+      });
+      return newState;
     case ADD_IMAGE:
       newState = Object.assign({}, state);
       newState[action.payload.id] = action.payload;

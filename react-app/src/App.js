@@ -10,6 +10,7 @@ import ProfilePage from "./components/ProfilePage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import ImagePage from "./components/ImagePage";
+import { loadImages } from "./store/images";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -17,8 +18,10 @@ function App() {
 
   useEffect(() => {
     (async () => {
+      console.log("hewwo world uwu");
       await dispatch(authenticate());
       // dispatch thunk to get all images
+      await dispatch(loadImages());
       setLoaded(true);
     })();
   }, [dispatch]);
