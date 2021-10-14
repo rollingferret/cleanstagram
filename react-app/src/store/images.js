@@ -85,16 +85,14 @@ export const addImage = (formData) => async (dispatch) => {
     method: "POST",
     body: formData,
   });
-
   if (res.ok) {
-    // TODO: Finish stores/reducer
     const new_image = await res.json();
-
     dispatch(add(new_image));
 
     return { ok: true, id: new_image.id };
-  } else if (res.errors) {
-    return res.errors;
+  } else {
+    const response = await res.json();
+    return { ok: false, errors: response.errors };
   }
 };
 

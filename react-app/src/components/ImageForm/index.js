@@ -14,6 +14,7 @@ function ImageForm() {
   const [caption, setCaption] = useState("");
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,14 +28,15 @@ function ImageForm() {
     // some sort of loading message is a good idea
     setImageLoading(true);
     let res = await dispatch(addImage(formData));
-
     if (res.ok) {
       setImageLoading(false);
-      history.push(`/images/${res.id}`);
+      return history.push(`/images/${res.id}`);
     } else {
       setImageLoading(false);
       // res returns an errors stirng, display it
-      console.log("error");
+      const { errors } = res;
+      setError(errors);
+      return;
     }
   };
 
@@ -46,7 +48,7 @@ function ImageForm() {
   return (
     <>
       <form onSubmit={handleSubmit} className={css.container}>
-        {/* add in displaying errors */}
+        {error && <h3 className={css.error}>{error}</h3>}
         <div>
           <label>Add Image</label>
           <input type="file" accept="image/*" onChange={updateImage} />

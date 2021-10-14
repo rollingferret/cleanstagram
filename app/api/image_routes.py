@@ -35,14 +35,13 @@ def post_image():
     '''
     form = ImageForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('='*100, request.files)
     if form.validate_on_submit():
         if 'image' not in request.files:
-            return {'errors': 'image required'}, 400
+            return {'errors': 'Please upload an image.'}, 400
 
         image = request.files['image']
         if not allowed_file(image.filename):
-            return {'errors': 'file type not permitted'}
+            return {'errors': 'File type is not supported. Please upload a file of one of these file types: PDF, PNG, JPG, JPEG, GIF'}
 
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
