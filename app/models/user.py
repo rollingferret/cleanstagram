@@ -48,6 +48,8 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
+            'bio': self.bio,
+            'profile_url': self.avatar_url,
             'followers': [follower.id for follower in self.followers],
             'following': [following.id for following in self.following],
             'image_ids': [image.id for image in self.images]

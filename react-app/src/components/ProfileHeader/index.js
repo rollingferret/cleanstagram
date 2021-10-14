@@ -19,9 +19,15 @@ function ProfileHeader() {
   return (
     <div className={styles.profile_header}>
       <div className={styles.profile_header_display}>
+        <div>
+          <img
+          className={styles.profile_picture}
+          src={user.profile_url} alt="user_profile_picture"/>
+        </div>
         <div className={styles.username_and_buttons}>
           <div className={styles.username}>
             <h1>{user.username}</h1>
+            <p>{user.bio}</p>
           </div>
           {currentUser && currentUser.id !== +userId && (
             // click the button and call function to call thunk to follow
