@@ -47,12 +47,17 @@ export const getAllCommentsThunk = () => async (dispatch) => {
     }
 };
 
-export const addCommentThunk = (formData) => async (dispatch) => {
+export const addCommentThunk = (comment) => async (dispatch) => {
 
     const res = await fetch('/api/comments/new', {
         method: 'POST',
-        body: formData,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(comment)
     });
+
+    console.log('add comment thunk -----------------', res)
 
     if (res.ok) {
 
@@ -60,7 +65,9 @@ export const addCommentThunk = (formData) => async (dispatch) => {
 
         dispatch(addCommentAction(new_comment));
 
-        return { ok: true, id: new_comment.id };
+        console.log(new_comment, 'this is new comment in thunk')
+
+        return { ok: true };
     }
 };
 
