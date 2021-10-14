@@ -5,6 +5,7 @@ function Feed() {
 	return (
 		<div className={css['feed-container']}>
 			<ImageCard />
+			<ImageCard />
 		</div>
 	);
 }

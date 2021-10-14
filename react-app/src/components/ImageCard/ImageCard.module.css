@@ -1,0 +1,45 @@
+.card-container {
+	width: 615px;
+	height: 1040px;
+	/* height: 1067px; */
+	border: 1px solid #dbdbdb;
+	border-radius: 3px;
+	margin-bottom: 24px;
+	background-color: #ffffff;
+}
+
+.user-container {
+	height: 60px;
+	border-bottom: 1px solid black;
+}
+
+.image-container {
+	height: 768px;
+	border-bottom: 1px solid black;
+}
+
+.btn-container {
+	height: 54px;
+	border-bottom: 1px solid black;
+}
+
+.like-display-container {
+	height: 24px;
+	border-bottom: 1px solid black;
+}
+
+.caption-container {
+	height: 60px;
+	border-bottom: 1px solid black;
+}
+
+.date-comment-container {
+	height: 20px;
+	/* border-bottom: 1px solid black; */
+	border-bottom: 1px solid #efefef;
+}
+
+.add-comment-container {
+	height: 54px;
+	/* border-top: 1px solid #efefef; */
+}
