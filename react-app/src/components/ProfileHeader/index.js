@@ -5,15 +5,10 @@ import { useParams } from "react-router-dom";
 import styles from "./ProfileHeader.module.css";
 import { getUsers } from "../../store/users";
 
-function ProfileHeader() {
+function ProfileHeader({ user }) {
   const { userId } = useParams();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.users[userId]);
   const currentUser = useSelector((state) => state.session.user);
-
-  useEffect(() => {
-    dispatch(getUsers(userId));
-  }, [dispatch, userId]);
 
   if (!user) return null;
   return (
