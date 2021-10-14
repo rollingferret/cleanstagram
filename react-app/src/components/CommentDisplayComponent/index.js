@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getCommentByIdThunk } from '../../store/comments';
 import { NavLink } from 'react-router-dom';
-
+import EditCommentForm from '../EditCommentForm'
+ 
 
 function GetAllCommentsForSinglePhoto() {
 
@@ -48,9 +49,11 @@ function GetAllCommentsForSinglePhoto() {
 
     const commentsSection = Object.values(commentList)?.map(comment => (
         <div key={comment.id} className='single-comment'>
-        <div>{comment.id}</div>
-        <div>{comment.content}</div>
-        <div>{comment.updated_at}</div>
+        <div>UserId: {comment.user_id}</div>
+        <div>CommendId: {comment.id}</div>
+        <div>CommentContent: {comment.content}</div>
+        <div>CommentDate:{comment.updated_at}</div>
+        <EditCommentForm />
       </div>
       ))
 

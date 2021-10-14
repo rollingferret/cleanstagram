@@ -57,7 +57,7 @@ export const addCommentThunk = (comment) => async (dispatch) => {
         body: JSON.stringify(comment)
     });
 
-    console.log('add comment thunk -----------------', res)
+    // console.log('add comment thunk -----------------', res)
 
     if (res.ok) {
 

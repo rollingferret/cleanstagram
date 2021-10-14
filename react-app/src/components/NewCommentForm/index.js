@@ -23,6 +23,7 @@ function CommentForm() {
         // formData.append('image_id', imageId);
 		// formData.append('content', content);
 
+		if (content) {
 		let comment = {
 			'user_id': sessionUser.id,
 			'image_id': imageId,
@@ -38,6 +39,9 @@ function CommentForm() {
 			// history.push(`/images/${imageId}`);
 		} else {
 			console.log('error');
+		}}
+		else {
+			console.log('missing content');
 		}
 	};
 
