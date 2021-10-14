@@ -18,7 +18,7 @@ function GetAllCommentsForSinglePhoto() {
         return state.comments;
     });
 
-    console.log(commentList, '9999999999999999999999999999999999999999999')
+    // console.log(commentList, '9999999999999999999999999999999999999999999')
 
     // const stateList = useSelector(state => {
     //     return state;
@@ -40,11 +40,11 @@ function GetAllCommentsForSinglePhoto() {
 
     // console.log(commentList.map((comment => {return comment.id})))
 
-    for (const property in commentList) {
-        console.log(`${property}: ${commentList[property].id}`);
-      }
+    // for (const property in commentList) {
+    //     console.log(`${property}: ${commentList[property].id}`);
+    //   }
 
-    console.log(Object.entries(commentList), '222222222222222222222222222222')
+    // console.log(Object.entries(commentList), '222222222222222222222222222222')
 
     const commentsSection = Object.values(commentList)?.map(comment => (
         <div key={comment.id} className='single-comment'>

@@ -7,6 +7,7 @@ import { getImageById, deleteImage, updateCaption } from '../../store/images';
 
 import imageForm from './ImageForm.module.css';
 import GetAllCommentsForSinglePhoto from '../CommentDisplayComponent';
+import NewCommentForm from '../NewCommentForm';
 
 
 function ImagePage() {
@@ -115,6 +116,7 @@ function ImagePage() {
 					</div>
 					<div className={imageForm.commentcontainer}>
 					<GetAllCommentsForSinglePhoto />
+					<NewCommentForm />
 					</div>
 					<div className={imageForm.likecommentcontainer}>
 						<div>
