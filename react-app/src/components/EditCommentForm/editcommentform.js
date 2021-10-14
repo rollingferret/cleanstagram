@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { updateCommentThunk } from '../../store/comments';
+// import { Modal } from '../../context/modal';
 
 
 function EditCommentForm(props) {
@@ -11,6 +12,7 @@ function EditCommentForm(props) {
 
 
 	const [content, setContent] = useState('');
+  // const [showModal,setShowModal] = useState(false);
 
 //   function reloadPage(){ 
 //       window.location.reload(); 
@@ -26,7 +28,7 @@ function EditCommentForm(props) {
 
 
       dispatch(updateCommentThunk(edited_comment));
-
+      // setShowModal(false);
       }
   
   return (
