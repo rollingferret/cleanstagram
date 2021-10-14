@@ -47,12 +47,17 @@ export const getAllCommentsThunk = () => async (dispatch) => {
     }
 };
 
-export const addCommentThunk = (formData) => async (dispatch) => {
+export const addCommentThunk = (comment) => async (dispatch) => {
 
     const res = await fetch('/api/comments/new', {
         method: 'POST',
-        body: formData,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(comment)
     });
+
+    // console.log('add comment thunk -----------------', res)
 
     if (res.ok) {
 
@@ -60,17 +65,19 @@ export const addCommentThunk = (formData) => async (dispatch) => {
 
         dispatch(addCommentAction(new_comment));
 
-        return { ok: true, id: new_comment.id };
+        console.log(new_comment, 'this is new comment in thunk')
+
+        return { ok: true };
     }
 };
 
-export const updateCommentThunk = ({commentId, comment}) => async (dispatch) => {
-    const res = await fetch(`/api/images/${commentId}`, {
+export const updateCommentThunk = ({id, content}) => async (dispatch) => {
+    const res = await fetch(`/api/comments/edit/${id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({comment})
+        body: JSON.stringify({content})
     });
 
     if (res.ok) {
@@ -112,11 +119,11 @@ export default function reducer(state = initialState, action) {
             return newState;
         case EDIT_COMMENT:
             newState = Object.assign({}, state);
-            newState["currentComment"] = action.payload;
+            newState[action.payload.id] = action.payload;
             return newState;
         case DEL_COMMENT:
             newState = Object.assign({}, state);
-            delete newState["currentComment"]
+            delete newState[action.payload.id]
             return newState;
         default:
             return state;
