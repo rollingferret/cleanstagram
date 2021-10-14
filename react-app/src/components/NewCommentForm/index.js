@@ -57,7 +57,7 @@ function CommentForm() {
 						onChange={(e) => setContent(e.target.value)}
 					/>
 				</div>
-				<button type="submit">Submit</button>
+				<button type="submit">Post!</button>
 			</form>
 		</>
 	);
