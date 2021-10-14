@@ -25,6 +25,7 @@ def check_password(form, field):
     # Checking if password contains !@#$%^&*(),./?
     special_sym = '!@#$%^&*(),./?'
     password = field.data
+    print(field.data, '99999999999999999999999999999999999999999999999999999')
 
     if len(password) < 8 or len(password) > 32:
         raise ValidationError(
@@ -52,3 +53,5 @@ class SignUpForm(FlaskForm):
                         DataRequired(), user_exists, Email()])
     password = StringField('password', validators=[
                            DataRequired(), check_password])
+    bio = StringField('bio')
+    profile_url = StringField('profile_url')
