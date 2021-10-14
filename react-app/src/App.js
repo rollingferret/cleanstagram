@@ -18,7 +18,6 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      console.log("hewwo world uwu");
       await dispatch(authenticate());
       // dispatch thunk to get all images
       await dispatch(loadImages());

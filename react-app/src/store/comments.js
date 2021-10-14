@@ -50,14 +50,10 @@ export const addCommentThunk = (comment) => async (dispatch) => {
     body: JSON.stringify(comment),
   });
 
-  // console.log('add comment thunk -----------------', res)
-
   if (res.ok) {
     const new_comment = await res.json();
 
     dispatch(addCommentAction(new_comment));
-
-    console.log(new_comment, "this is new comment in thunk");
 
     return { ok: true };
   }
