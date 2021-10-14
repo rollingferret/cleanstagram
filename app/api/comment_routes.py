@@ -1,12 +1,24 @@
 from datetime import date, datetime
-from flask import Blueprint
+from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Comment, db
 from app.forms import EditCommentForm
 from app.forms import NewCommentForm
+# from flask_wtf.csrf import generate_csrf
+# import os
+
+
 
 comment_routes = Blueprint('comments', __name__)
 
+# @comment_routes.after_request
+# def inject_csrf_token(response):
+#     response.set_cookie('csrf_token', 
+#                         generate_csrf(),
+#                         secure=True if os.environ.get('FLASK_ENV') == 'production' else False,
+#                         samesite='Strict' if os.environ.get('FLASK_ENV') == 'production' else None,
+#                         httponly=True)
+#     return response
 
 @comment_routes.route('/')
 def comments_route():
@@ -30,18 +42,19 @@ def comment_route(id):
         return {comment.id:comment.to_dict() for comment in comments}
 
 
-@comment_routes.route('/new/<int:id>', methods=['POST'])
+@comment_routes.route('/new', methods=['POST'])
 @login_required
-def add_new_comment(id):
+def add_new_comment():
     '''
     Comment POST route.
     '''
     userId = current_user.get_id()
     form = NewCommentForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         comment = Comment(
             user_id=userId,
-            image_id=id,
+            image_id=form.data['image_id'],
             content=form.data['content'],
             created_at=datetime.now(),
             updated_at=datetime.now()
