@@ -28,8 +28,12 @@ function ProfilePage() {
   }
   return (
     <div className={styles.profile_block}>
-      {users && users[userId] && <ProfileHeader user={users[userId]} />}
-      {/* <ProfileBody userId={userId} /> */}
+      {users && users[userId] && (
+        <>
+          <ProfileHeader user={users[userId]} />
+          <ProfileBody user={users[userId]} />
+        </>
+      )}
     </div>
   );
 }
