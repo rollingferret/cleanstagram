@@ -1,6 +1,8 @@
 import React, { useState} from 'react';
 import { useHistory } from 'react-router-dom'
 
+import styles from "./NavBar.module.css";
+
 function Search() {
     const history = useHistory()
 
@@ -19,6 +21,7 @@ function Search() {
                 placeholder="Search"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                className={styles.search_bar}
             />
             <button type="submit">Search</button>
         </form>
