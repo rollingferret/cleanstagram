@@ -81,19 +81,19 @@ export const dislikeImage = (imageId) => async (dispatch) => {
 };
 
 export const addImage = (formData) => async (dispatch) => {
-	const res = await fetch('/api/images', {
-		method: 'POST',
-		body: formData,
-	});
+  const res = await fetch("/api/images", {
+    method: "POST",
+    body: formData,
+  });
+  if (res.ok) {
+    const new_image = await res.json();
+    dispatch(add(new_image));
 
-	if (res.ok) {
-		// TODO: Finish stores/reducer
-		const new_image = await res.json();
-
-		dispatch(add(new_image));
-
-		return { ok: true, id: new_image.id };
-	}
+    return { ok: true, id: new_image.id };
+  } else {
+    const response = await res.json();
+    return { ok: false, errors: response.errors };
+  }
 };
 
 export const getImageById = (imageId) => async (dispatch) => {
