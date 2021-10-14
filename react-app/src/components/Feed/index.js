@@ -1,10 +1,10 @@
+import ImageCard from '../ImageCard/index';
 import css from './Feed.module.css';
 
 function Feed() {
 	return (
-		<div>
-			<span>BOOP</span>
-			<div>BOP</div>
+		<div className={css['feed-container']}>
+			<ImageCard />
 		</div>
 	);
 }
