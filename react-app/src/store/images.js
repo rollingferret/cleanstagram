@@ -93,6 +93,8 @@ export const addImage = (formData) => async (dispatch) => {
     dispatch(add(new_image));
 
     return { ok: true, id: new_image.id };
+  } else if (res.errors) {
+    return res.errors;
   }
 };
 

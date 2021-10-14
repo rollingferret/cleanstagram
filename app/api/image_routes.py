@@ -1,9 +1,9 @@
-from datetime import date, datetime
+from datetime import datetime
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 
 from app.aws import delete_from_s3, upload_file_to_s3, allowed_file, get_unique_filename
-from app.models import User, Image, ImageLike, db
+from app.models import Image, ImageLike, db
 from app.forms import ImageForm
 
 image_routes = Blueprint('images', __name__)
@@ -33,30 +33,35 @@ def post_image():
     Image post route. Check the image filenames, and upload to AWS.
     If succeed, return a url to render the picture.
     '''
+    form = ImageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    print('='*100, request.files)
+    if form.validate_on_submit():
+        if 'image' not in request.files:
+            return {'errors': 'image required'}, 400
 
-    if 'image' not in request.files:
-        return {'errors': 'image required'}, 400
+        image = request.files['image']
+        if not allowed_file(image.filename):
+            return {'errors': 'file type not permitted'}
 
-    image = request.files['image']
-    if not allowed_file(image.filename):
-        return {'errors': 'file type not permitted'}
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
 
-    image.filename = get_unique_filename(image.filename)
-    upload = upload_file_to_s3(image)
+        if 'url' not in upload:
+            return upload, 400
 
-    if 'url' not in upload:
-        return upload, 400
-
-    url = upload['url']
-    new_image = Image(user_id=request.form["user_id"],
-                      image_url=url,
-                      caption=request.form["caption"],
-                      created_at=datetime.now(),
-                      updated_at=datetime.now()
-                      )
-    db.session.add(new_image)
-    db.session.commit()
-    return new_image.to_dict()
+        url = upload['url']
+        new_image = Image(user_id=request.form["user_id"],
+                          image_url=url,
+                          caption=request.form["caption"],
+                          created_at=datetime.now(),
+                          updated_at=datetime.now()
+                          )
+        db.session.add(new_image)
+        db.session.commit()
+        return new_image.to_dict()
+    else:
+        return {'errors': 'missing data'}
 
 
 @image_routes.route('/<int:id>', methods=['DELETE'])
@@ -118,8 +123,8 @@ def like_image(id):
     user_id = current_user.get_id()
     like = ImageLike(user_id=user_id,
                      image_id=id)
-    db.session.add(like);
-    db.session.commit();
+    db.session.add(like)
+    db.session.commit()
     return like.to_dict()
 
 
@@ -131,11 +136,11 @@ def dislike_image(id):
     '''
     user_id = current_user.get_id()
 
-    like_to_delete = ImageLike.query.filter(ImageLike.image_id==id, ImageLike.user_id==user_id).first()
+    like_to_delete = ImageLike.query.filter(
+        ImageLike.image_id == id, ImageLike.user_id == user_id).first()
     db.session.delete(like_to_delete)
     db.session.commit()
     return like_to_delete.to_dict()
-
 
 
 @image_routes.route('/<int:id>', methods=['PATCH'])
