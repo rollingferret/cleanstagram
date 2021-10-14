@@ -46,12 +46,19 @@ function ImageForm() {
   };
 
   return (
-    <>
+    <div className={css.form_page_body}>
       <form onSubmit={handleSubmit} className={css.container}>
         {error && <h3 className={css.error}>{error}</h3>}
-        <div>
-          <label>Add Image</label>
-          <input type="file" accept="image/*" onChange={updateImage} />
+        <div className={css.add_image}>
+          <div className={css.add_image_label}>
+            <label>Add Image</label>
+          </div>
+          <input
+            className={css.file_input}
+            type="file"
+            accept="image/*"
+            onChange={updateImage}
+          />
         </div>
         <div>
           <label>Caption</label>
@@ -64,7 +71,7 @@ function ImageForm() {
         <button type="submit">Submit</button>
         {imageLoading && <p>Loading...</p>}
       </form>
-    </>
+    </div>
   );
 }
 
