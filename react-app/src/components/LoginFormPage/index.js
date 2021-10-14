@@ -20,7 +20,9 @@ const LoginFormPage = () => {
 
   return (
     <>
-      <div>placeholder FOR THE STUPID IMAGE LOOOOOOOOOOOOOOOOL</div>
+      <div className={styles.cool_pic}>
+        placeholder FOR THE STUPID IMAGE LOOOOOOOOOOOOOOOOL
+      </div>
       <LoginForm />
       <button onClick={demoUser}>Demo User</button>
     </>

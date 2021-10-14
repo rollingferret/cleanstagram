@@ -1,32 +1,19 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { delCommentThunk } from '../../store/comments';
-// import { Modal } from '../../context/modal';
-
+import { useDispatch } from "react-redux";
+import { delCommentThunk } from "../../store/comments";
 
 function DeleteCommentButton(props) {
-
   const dispatch = useDispatch();
-  // const [showModal,setShowModal] = useState(false);
-
-//   function reloadPage(){ 
-//       window.location.reload(); 
-//   }
-
   const handleSubmit = (e) => {
-      e.preventDefault();
+    e.preventDefault();
 
-    //   console.log(props.commentId)
-      dispatch(delCommentThunk(props.commentId));
-      // setShowModal(false);
-      }
-  
+    dispatch(delCommentThunk(props.commentId));
+  };
+
   return (
     <>
-    <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <button type="submit">Delete!</button>
-	</form>
+      </form>
     </>
   );
 }
