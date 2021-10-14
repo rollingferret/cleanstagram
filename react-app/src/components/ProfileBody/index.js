@@ -9,13 +9,8 @@ const ProfileBody = ({ userId }) => {
   const allImages = useSelector((state) => state.images);
   let userImages;
   if (allImages) {
-    // save in var and render
     userImages = currentUser.image_ids.map((id) => allImages[id]);
   }
-
-  const clickedImage = (e) => {
-    console.log(e.target);
-  };
 
   return (
     <div className={styles.profileBody}>

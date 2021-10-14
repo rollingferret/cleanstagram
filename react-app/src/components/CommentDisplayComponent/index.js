@@ -14,7 +14,7 @@ function GetAllCommentsForSinglePhoto({ imageId }) {
 
   useEffect(() => {
     dispatch(getCommentByIdThunk(singlePhotoId));
-  }, [dispatch]);
+  }, [dispatch, singlePhotoId]);
   const commentList = useSelector((state) => {
     return state.comments;
   });

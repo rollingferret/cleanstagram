@@ -14,7 +14,7 @@ function ProfilePage() {
 
   useEffect(() => {
     dispatch(getUser(userId));
-  }, [userId]);
+  }, [dispatch, userId]);
 
   if (!user) return null;
   return (
