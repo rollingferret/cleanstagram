@@ -3,7 +3,6 @@ body {
   padding: 50px;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
-  background-color: #fafafa;
 }
 
 a {
@@ -41,6 +40,10 @@ nav {
   padding: 0;
   outline: 0;
   font-weight: normal;
+}
+
+body {
+  background-color: #fafafa;
 }
 
 li {

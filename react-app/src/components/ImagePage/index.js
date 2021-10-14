@@ -7,7 +7,7 @@ import { getImageById, deleteImage, updateCaption } from '../../store/images';
 
 import imageForm from './ImageForm.module.css';
 import GetAllCommentsForSinglePhoto from '../CommentDisplayComponent';
-
+import NewCommentForm from '../NewCommentForm';
 
 function ImagePage() {
 	const sessionUser = useSelector((state) => state.session.user);
@@ -114,10 +114,12 @@ function ImagePage() {
 						{editDelBtns}
 					</div>
 					<div className={imageForm.commentcontainer}>
-					<GetAllCommentsForSinglePhoto />
+						<GetAllCommentsForSinglePhoto imageId={imageId} />
+						<NewCommentForm />
 					</div>
 					<div className={imageForm.likecommentcontainer}>
 						<div>
+							<LikeButton id={image.id} />
 							<span className={imageForm.likecomment}>
 								{image.likes_count} likes
 							</span>
@@ -131,7 +133,6 @@ function ImagePage() {
 					</div>
 				</div>
 			</div>
-			<LikeButton id={image.id} />
 		</div>
 	);
 }
