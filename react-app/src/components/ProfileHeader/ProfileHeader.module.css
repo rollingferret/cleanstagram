@@ -15,6 +15,11 @@
 .username_and_buttons {
   display: flex;
 }
+
+.username_and_buttons button:hover {
+  background-color: grey;
+}
+
 .username {
   margin-bottom: 30px;
   margin-right: 30px;
