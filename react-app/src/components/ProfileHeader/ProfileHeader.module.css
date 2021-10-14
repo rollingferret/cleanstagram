@@ -12,6 +12,13 @@
   width: 55vw;
 }
 
+.profile_picture {
+  width: 55px;
+  height: 55px;
+  border-radius: 36px;
+  border: 1px solid black;
+}
+
 .username_and_buttons {
   display: flex;
 }

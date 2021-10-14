@@ -9,6 +9,8 @@ const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [bio, setBio] = useState("");
+  const [profile_url, setProfile_Url] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const user = useSelector((state) => state.session.user);
@@ -23,7 +25,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, bio, profile_url, password));
       if (data) {
         setErrors(data);
       }
@@ -38,6 +40,14 @@ const SignUpForm = () => {
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
+  };
+  
+  const updateBio = (e) => {
+    setBio(e.target.value);
+  };
+
+  const updateProfile_Url = (e) => {
+    setProfile_Url(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -68,6 +78,24 @@ const SignUpForm = () => {
             onChange={updateUsername}
             value={username}
             required={true}
+          ></input>
+        </div>
+        <div>
+          <label>Bio</label>
+          <input
+            type="text"
+            name="bio"
+            onChange={updateBio}
+            value={bio}
+          ></input>
+        </div>
+        <div>
+          <label>Profile Image</label>
+          <input
+            type="text"
+            name="profile_url"
+            onChange={updateProfile_Url}
+            value={profile_url}
           ></input>
         </div>
         <div>

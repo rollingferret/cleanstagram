@@ -15,6 +15,8 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    bio = db.Column(db.String(255), nullable=True)
+    avatar_url = db.Column(db.String(255), nullable=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # relationships
@@ -46,6 +48,8 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
+            'bio': self.bio,
+            'profile_url': self.avatar_url,
             'followers': [follower.id for follower in self.followers],
             'following': [following.id for following in self.following],
             'image_ids': [image.id for image in self.images]
