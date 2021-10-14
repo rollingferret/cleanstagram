@@ -57,7 +57,7 @@ export const addCommentThunk = (comment) => async (dispatch) => {
         body: JSON.stringify(comment)
     });
 
-    console.log('add comment thunk -----------------', res)
+    // console.log('add comment thunk -----------------', res)
 
     if (res.ok) {
 
@@ -71,13 +71,13 @@ export const addCommentThunk = (comment) => async (dispatch) => {
     }
 };
 
-export const updateCommentThunk = ({commentId, comment}) => async (dispatch) => {
-    const res = await fetch(`/api/images/${commentId}`, {
+export const updateCommentThunk = ({id, content}) => async (dispatch) => {
+    const res = await fetch(`/api/comments/edit/${id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({comment})
+        body: JSON.stringify({content})
     });
 
     if (res.ok) {
@@ -119,11 +119,11 @@ export default function reducer(state = initialState, action) {
             return newState;
         case EDIT_COMMENT:
             newState = Object.assign({}, state);
-            newState["currentComment"] = action.payload;
+            newState[action.payload.id] = action.payload;
             return newState;
         case DEL_COMMENT:
             newState = Object.assign({}, state);
-            delete newState["currentComment"]
+            delete newState[action.payload.id]
             return newState;
         default:
             return state;

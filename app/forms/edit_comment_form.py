@@ -4,7 +4,6 @@ from wtforms.fields import (
 )
 from wtforms.validators import DataRequired
 
-
 class EditCommentForm(FlaskForm):
     content = TextField("Content", [DataRequired()])
     submit = SubmitField("Edit")

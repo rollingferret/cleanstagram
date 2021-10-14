@@ -9,6 +9,7 @@ import imageForm from "./ImageForm.module.css";
 import GetAllCommentsForSinglePhoto from "../CommentDisplayComponent";
 import NewCommentForm from "../NewCommentForm";
 
+
 function ImagePage() {
   const sessionUser = useSelector((state) => state.session.user);
   const image = useSelector((state) => state.images.currentImage);

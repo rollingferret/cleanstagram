@@ -74,9 +74,11 @@ def edit(id):
     '''
     userId = current_user.get_id()
     form = EditCommentForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    # print(form.validate_on_submit(), '8888888888888888888888')
     if form.validate_on_submit():
         edited_comment = Comment.query.get(id)
-        if userId == edited_comment.user_id:
+        if int(userId) == int(edited_comment.user_id):
             # db.session.delete(edited_comment)
             # db.session.add(comment)
             # db.session.commit()
@@ -109,7 +111,7 @@ def delete(id):
     else:
         db.session.delete(comment_to_delete)
         db.session.commit()
-        return {'deleted': True}
+        return comment_to_delete.to_dict()
 
     # deleted_comment = Comment.query.filter(Comment.id == id).first()
     # Comment.query.filter(Comment.id == id).delete()
