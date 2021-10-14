@@ -9,8 +9,6 @@ def search_results():
     Route to query database for search term results
     '''
 
-    print("We've hit this route!")
-
     results = User.query.all()
 
     users = {}

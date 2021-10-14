@@ -9,13 +9,13 @@ import ProfilePage from "./components/ProfilePage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import ImagePage from "./components/ImagePage";
-import Results from "./components/Results"
+import Results from "./components/Results";
 import { loadImages } from "./store/images";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-
+  let count = 0;
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());
@@ -55,6 +55,9 @@ function App() {
         </ProtectedRoute>
         <Route path="/results/:term">
           <Results />
+        </Route>
+        <Route>
+          <h1>imagine going to the wrong page</h1>
         </Route>
       </Switch>
     </BrowserRouter>

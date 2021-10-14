@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import styles from "./ProfilePage.module.css";
-import { getUser } from "../../store/users";
+import { getUsers } from "../../store/users";
 import ProfileHeader from "../ProfileHeader";
 import ProfileBody from "../ProfileBody";
 
@@ -13,8 +13,8 @@ function ProfilePage() {
   const user = useSelector((state) => state.users[userId]);
 
   useEffect(() => {
-    dispatch(getUser(userId));
-  }, [dispatch, userId]);
+    dispatch(getUsers());
+  }, [dispatch]);
 
   if (!user) return null;
   return (

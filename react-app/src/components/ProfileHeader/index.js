@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import styles from "./ProfileHeader.module.css";
-import { getUser } from "../../store/users";
+import { getUsers } from "../../store/users";
 
 function ProfileHeader() {
   const { userId } = useParams();
@@ -12,7 +12,7 @@ function ProfileHeader() {
   const currentUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(getUser(userId));
+    dispatch(getUsers(userId));
   }, [dispatch, userId]);
 
   if (!user) return null;
@@ -21,8 +21,10 @@ function ProfileHeader() {
       <div className={styles.profile_header_display}>
         <div>
           <img
-          className={styles.profile_picture}
-          src={user.profile_url} alt="user_profile_picture"/>
+            className={styles.profile_picture}
+            src={user.profile_url}
+            alt="user_profile_picture"
+          />
         </div>
         <div className={styles.username_and_buttons}>
           <div className={styles.username}>
