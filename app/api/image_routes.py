@@ -120,6 +120,8 @@ def like_image(id):
     Like a post
     '''
     user_id = current_user.get_id()
+    image = Image.query.get(id)
+    image.likes_count+=1
     like = ImageLike(user_id=user_id,
                      image_id=id)
     db.session.add(like)
@@ -134,9 +136,15 @@ def dislike_image(id):
     Dislike a post
     '''
     user_id = current_user.get_id()
+    image = Image.query.get(id)
+    like_to_delete = ImageLike.query.filter(ImageLike.image_id==id, ImageLike.user_id==user_id).first()
 
-    like_to_delete = ImageLike.query.filter(
-        ImageLike.image_id == id, ImageLike.user_id == user_id).first()
+    if image.likes_count<=0:
+        image.likes_count=0
+
+    if like_to_delete:
+        image.likes_count-=1
+
     db.session.delete(like_to_delete)
     db.session.commit()
     return like_to_delete.to_dict()
