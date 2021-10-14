@@ -8,17 +8,8 @@ from app.forms import NewCommentForm
 # import os
 
 
-
 comment_routes = Blueprint('comments', __name__)
 
-# @comment_routes.after_request
-# def inject_csrf_token(response):
-#     response.set_cookie('csrf_token', 
-#                         generate_csrf(),
-#                         secure=True if os.environ.get('FLASK_ENV') == 'production' else False,
-#                         samesite='Strict' if os.environ.get('FLASK_ENV') == 'production' else None,
-#                         httponly=True)
-#     return response
 
 @comment_routes.route('/')
 def comments_route():
@@ -27,8 +18,9 @@ def comments_route():
     '''
     comments = Comment.query.limit(20).all()
     return{
-        'comments': {comment.id:comment.to_dict() for comment in comments}
+        'comments': {comment.id: comment.to_dict() for comment in comments}
     }
+
 
 @comment_routes.route('/<int:id>')
 def comment_route(id):
@@ -39,7 +31,7 @@ def comment_route(id):
     if not comments:
         return 'No comment here!'
     else:
-        return {comment.id:comment.to_dict() for comment in comments}
+        return {comment.id: comment.to_dict() for comment in comments}
 
 
 @comment_routes.route('/new', methods=['POST'])
@@ -63,8 +55,9 @@ def add_new_comment():
         db.session.commit()
         return comment.to_dict()
     else:
-    
+
         return form.errors
+
 
 @comment_routes.route('/edit/<int:id>', methods=['PATCH'])
 @login_required
@@ -75,13 +68,11 @@ def edit(id):
     userId = current_user.get_id()
     form = EditCommentForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
-    # print(form.validate_on_submit(), '8888888888888888888888')
     if form.validate_on_submit():
         edited_comment = Comment.query.get(id)
         if int(userId) == int(edited_comment.user_id):
-            # db.session.delete(edited_comment)
-            # db.session.add(comment)
-            # db.session.commit()
+            print('-'*100, userId)
+            print('='*100, edited_comment.user_id)
             edited_comment.content = form.data['content']
             edited_comment.updated_at = datetime.now()
             db.session.commit()
@@ -92,10 +83,6 @@ def edit(id):
     else:
 
         return form.errors
-
-    # edited_comment = Comment.query.filter(Comment.id == id).first()
-    # Comment.query.filter(Comment.id == id).update()
-    # db.session.commit()
 
 
 @comment_routes.route('/delete/<int:id>', methods=['DELETE'])
@@ -112,11 +99,3 @@ def delete(id):
         db.session.delete(comment_to_delete)
         db.session.commit()
         return comment_to_delete.to_dict()
-
-    # deleted_comment = Comment.query.filter(Comment.id == id).first()
-    # Comment.query.filter(Comment.id == id).delete()
-    # db.session.commit()
-    # return {
-    #     'deleted_comment': deleted_comment.to_dict()
-    # }
-
