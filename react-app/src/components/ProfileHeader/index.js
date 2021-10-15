@@ -29,7 +29,7 @@ function ProfileHeader({ user }) {
               <p>{user.bio}</p>
             </div>
             {currentUser && currentUser.id !== +userId && (
-              <FollowButton currentUser={currentUser} />
+              <FollowButton currentUser={currentUser} userIdToFollow={userId} />
             )}
           </div>
           <div className={styles.profile_stats}>

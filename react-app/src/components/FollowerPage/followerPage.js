@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import FollowButton from "../FollowButton";
 import styles from "./followerPageModal.module.css";
 
 function FollowerPage({ user }) {

@@ -5,26 +5,25 @@ import { useDispatch } from "react-redux";
 import { follow_user, unfollow_user } from "../../store/users";
 import styles from "./FollowButton.module.css";
 
-const FollowButton = ({ currentUser }) => {
-  const { userId } = useParams();
+const FollowButton = ({ currentUser, userIdToFollow }) => {
   const dispatch = useDispatch();
   const [isFollowing, setIsFollowing] = useState();
 
   useEffect(() => {
     if (currentUser) {
-      setIsFollowing(currentUser.following.includes(+userId));
+      setIsFollowing(currentUser.following.includes(+userIdToFollow));
     }
   }, []);
 
   const followUser = () => {
     // call thunk to make request to /api/users/:userId/follow
-    dispatch(follow_user(userId));
+    dispatch(follow_user(userIdToFollow));
     setIsFollowing(true);
   };
 
   const unfollowUser = () => {
     // call thunk to make request to /api/users/:userId/unfollow
-    dispatch(unfollow_user(userId));
+    dispatch(unfollow_user(userIdToFollow));
     setIsFollowing(false);
   };
 
