@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import FollowButton from "../FollowButton";
 import styles from "./FollowingPageModal.module.css";
 
 function FollowingPage({ user }) {
@@ -12,8 +13,10 @@ function FollowingPage({ user }) {
   return (
     <div className={styles.modal_body}>
       {following?.map((following) => (
-        // need to add a follow/unfollow button, making a component for the follow/unfollow button
-        <h1>{following.username}</h1>
+        <>
+          <h1>{following.username}</h1>
+          <FollowButton userIdToFollow={following.id} />
+        </>
       ))}
     </div>
   );

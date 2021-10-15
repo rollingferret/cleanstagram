@@ -63,6 +63,7 @@ export const unfollow_user = (userId) => async (dispatch) => {
   if (res.ok) {
     const { follower, following } = await res.json();
     await dispatch(unfollowUser(follower, following));
+    await dispatch(setUser(follower));
   }
 };
 
