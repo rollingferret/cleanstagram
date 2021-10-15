@@ -35,7 +35,7 @@ function ImageCard({ image }) {
 		<div className={css['card-container']}>
 			<div className={css['user-container']}>
 				<img alt="profile_picture"
-				src={image?.user.profile_pic} />
+					src={image?.user.profile_pic} />
 				<Link to={`/users/${image.user.id}`}>
 					{image?.user.username}
 				</Link>
@@ -58,7 +58,9 @@ function ImageCard({ image }) {
 			<div className={css['like-display-container']}>
 				Liked by Bob and 414 others
 			</div>
-			<div className={css['caption-container']}>{image?.caption}</div>
+			<div className={css['caption-container']}>
+				<Link to={`/users/${image.user.id}`}
+					className={css.card_name}>{image?.user.username}</Link> {image?.caption}</div>
 			<div className={css['date-comment-container']}>
 				Posted {image?.created_at}
 			</div>

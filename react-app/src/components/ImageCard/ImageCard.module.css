@@ -120,3 +120,7 @@ input:focus {
 	/* max-height: 100%; */
 	height: 768px;
 }
+
+.card_name {
+	font-weight: bold;
+}
