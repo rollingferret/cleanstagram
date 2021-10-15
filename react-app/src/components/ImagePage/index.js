@@ -19,6 +19,11 @@ function ImagePage() {
 
 	const image = images[imageId]
 
+	console.log("image object", image)
+	const imgComments = Object.values(image.comments)
+
+	console.log("are these the img comments", imgComments)
+
 	let imagefilter = Object.entries(comments).filter(x => x[1].image_id === +imageId)
 	let commentlength = Object.keys(imagefilter).length;
 
