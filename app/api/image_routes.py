@@ -3,7 +3,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 
 from app.aws import delete_from_s3, upload_file_to_s3, allowed_file, get_unique_filename
-from app.models import Image, ImageLike, db
+from app.models import Image, ImageLike, User, db
 from app.forms import ImageForm
 
 image_routes = Blueprint('images', __name__)
@@ -121,7 +121,7 @@ def like_image(id):
     '''
     user_id = current_user.get_id()
     image = Image.query.get(id)
-    image.likes_count+=1
+    image.likes_count += 1
     like = ImageLike(user_id=user_id,
                      image_id=id)
     db.session.add(like)
@@ -137,13 +137,14 @@ def dislike_image(id):
     '''
     user_id = current_user.get_id()
     image = Image.query.get(id)
-    like_to_delete = ImageLike.query.filter(ImageLike.image_id==id, ImageLike.user_id==user_id).first()
+    like_to_delete = ImageLike.query.filter(
+        ImageLike.image_id == id, ImageLike.user_id == user_id).first()
 
-    if image.likes_count<=0:
-        image.likes_count=0
+    if image.likes_count <= 0:
+        image.likes_count = 0
 
     if like_to_delete:
-        image.likes_count-=1
+        image.likes_count -= 1
 
     db.session.delete(like_to_delete)
     db.session.commit()
@@ -163,3 +164,18 @@ def edit_caption(id):
     db.session.commit()
 
     return update_image.to_dict()
+
+
+@image_routes.route('/feed')
+@login_required
+def get_feed():
+    '''
+    Gets a selection of recent images/posts from a the user's that the current user follows
+    '''
+    user_id = current_user.get_id()
+    user = User.query.get(user_id).to_dict()
+    followed = user['following']
+    images = Image.query.filter(Image.user_id.in_(followed)).order_by(Image.created_at.desc()).limit(10).all()
+    image_list = [image.to_dict() for image in images]
+    image_dict = {'ordered_feed': image_list}
+    return image_dict

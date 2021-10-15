@@ -1,3 +1,5 @@
+const { setUser } = require("./session");
+
 const GET_USERS = "users/GET_USERS";
 const FOLLOW_USER = "users/FOLLOW_USERS";
 const UNFOLLOW_USER = "users/UNFOLLOW_USERS";
@@ -46,6 +48,8 @@ export const follow_user = (userId) => async (dispatch) => {
   if (res.ok) {
     const { follower, following } = await res.json();
     await dispatch(followUser(follower, following));
+    // dispatch setuser after importing
+    await dispatch(setUser(follower));
   }
 };
 
@@ -59,6 +63,7 @@ export const unfollow_user = (userId) => async (dispatch) => {
   if (res.ok) {
     const { follower, following } = await res.json();
     await dispatch(unfollowUser(follower, following));
+    await dispatch(setUser(follower));
   }
 };
 
@@ -74,10 +79,6 @@ export default function reducer(state = initialState, action) {
       return newState;
     case FOLLOW_USER:
       const { follower, following } = action.payload;
-      console.log(
-        "this is the payload in following user reducer",
-        action.payload
-      );
       newState[follower.id] = follower;
       newState[following.id] = following;
       return newState;

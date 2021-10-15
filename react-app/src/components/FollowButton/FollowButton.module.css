@@ -1,0 +1,20 @@
+.follow_button_div {
+  display: flex;
+  align-items: center;
+}
+
+.follow_button {
+  height: 30px;
+  border: 1px solid #0095f6;
+  background-color: #0095f6;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.follow_button:hover {
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
+}
+.follow_button:active {
+  background-color: #0078c7;
+}
