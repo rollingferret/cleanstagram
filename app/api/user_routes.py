@@ -33,10 +33,6 @@ def follow_user(id):
 
     curr_user.following.append(user_to_follow)
 
-    print('who i am currently following =========', curr_user.following.all())
-    print('who is currently folowing user to follow',
-          user_to_follow.followers.all())
-
     db.session.add(curr_user)
     db.session.add(user_to_follow)
     db.session.commit()

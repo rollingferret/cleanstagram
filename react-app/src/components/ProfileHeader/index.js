@@ -14,9 +14,15 @@ function ProfileHeader({ user }) {
 
   useEffect(() => {
     if (currentUser) {
-      console.log("this is who im following rn", currentUser.following);
-      if (currentUser.following.includes(userId) !== currentUserFollowingUser)
+      console.log(
+        "i am logged in, please change state to check if i am following"
+      );
+      if (
+        currentUser.following.includes(+userId) !== currentUserFollowingUser
+      ) {
+        console.log("who i am currently following", currentUser.following);
         setCurrentUserFollowingUser(currentUser.following.includes(userId));
+      }
     }
   });
 
@@ -81,7 +87,7 @@ function ProfileHeader({ user }) {
             </div>
             <div className={styles.following_stats}>
               <h2>
-                <span>{user.following.length}</span> followers
+                <span>{user.following.length}</span> following
               </h2>
             </div>
           </div>
