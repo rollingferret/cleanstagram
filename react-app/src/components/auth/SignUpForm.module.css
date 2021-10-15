@@ -9,6 +9,17 @@
   align-items: center;
 }
 
+.inputDiv {
+  margin: 10px 0;
+  border: 1px solid red;
+}
+
 .input {
-  /* height: ; */
+  height: 30px;
+  border: 1px solid black;
+}
+
+.button {
+  background-color: yellow;
+  padding: 10px 20px;
 }

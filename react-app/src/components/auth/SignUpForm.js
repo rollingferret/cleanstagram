@@ -66,14 +66,14 @@ const SignUpForm = () => {
   }
 
   return (
-    <>
-      <form onSubmit={onSignUp}>
+    <div className={styles.formDiv}>
+      <form onSubmit={onSignUp} className={styles.form}>
         <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
-        <div>
+        <div className={styles.inputDiv}>
           <label>User Name</label>
           <input
             type="text"
@@ -81,27 +81,30 @@ const SignUpForm = () => {
             onChange={updateUsername}
             value={username}
             required={true}
+            className={styles.input}
           ></input>
         </div>
-        <div>
+        <div className={styles.inputDiv}>
           <label>Bio</label>
           <input
             type="text"
             name="bio"
             onChange={updateBio}
             value={bio}
+            className={styles.input}
           ></input>
         </div>
-        <div>
+        <div className={styles.inputDiv}>
           <label>Profile Image</label>
           <input
             type="text"
             name="profile_url"
             onChange={updateProfile_Url}
             value={profile_url}
+            className={styles.input}
           ></input>
         </div>
-        <div>
+        <div className={styles.inputDiv}>
           <label>Email</label>
           <input
             type="text"
@@ -109,9 +112,10 @@ const SignUpForm = () => {
             onChange={updateEmail}
             value={email}
             required={true}
+            className={styles.input}
           ></input>
         </div>
-        <div>
+        <div className={styles.inputDiv}>
           <label>Password</label>
           <input
             type="password"
@@ -119,9 +123,10 @@ const SignUpForm = () => {
             onChange={updatePassword}
             value={password}
             required={true}
+            className={styles.input}
           ></input>
         </div>
-        <div>
+        <div className={styles.inputDiv}>
           <label>Repeat Password</label>
           <input
             type="password"
@@ -129,12 +134,17 @@ const SignUpForm = () => {
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
+            className={styles.input}
           ></input>
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit" className={styles.button}>
+          Sign Up
+        </button>
+        <button onClick={demoUser} className={styles.button}>
+          Demo User
+        </button>
       </form>
-      <button onClick={demoUser}>Demo User</button>
-    </>
+    </div>
   );
 };
 
