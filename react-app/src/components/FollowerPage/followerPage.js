@@ -17,10 +17,7 @@ function FollowerPage({ user }) {
         <>
           <h1>{follower.username}</h1>
           {currentUser && currentUser.id !== follower.id && (
-            <FollowButton
-              currentUser={currentUser}
-              userIdToFollow={follower.id}
-            />
+            <FollowButton userIdToFollow={follower.id} />
           )}
         </>
       ))}

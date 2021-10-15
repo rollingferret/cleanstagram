@@ -74,10 +74,6 @@ export default function reducer(state = initialState, action) {
       return newState;
     case FOLLOW_USER:
       const { follower, following } = action.payload;
-      console.log(
-        "this is the payload in following user reducer",
-        action.payload
-      );
       newState[follower.id] = follower;
       newState[following.id] = following;
       return newState;

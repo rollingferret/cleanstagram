@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { Modal } from "../../context/modal";
+import { getUsers } from "../../store/users";
 import FollowerPage from "./followerPage";
 import styles from "./FollowerPage.module.css";
 
 function FollowerPageModal({ user }) {
   const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
 
   const onClose = () => setShowModal(false);
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [showModal]);
 
   return (
     <>
