@@ -1,7 +1,6 @@
 .profile_header {
   border: 1px solid black; /* for debugging use */
   width: 100vw;
-  height: 100px;
   font-size: 1rem;
   padding: 0 100px;
   display: flex;
@@ -10,32 +9,56 @@
 
 .profile_header_display {
   width: 55vw;
+  height: 150px;
+  display: flex;
+  margin: 44px 0;
+  justify-content: center;
+}
+
+.avatar_div {
+  margin-right: 10%;
 }
 
 .profile_picture {
-  width: 55px;
-  height: 55px;
-  border-radius: 36px;
-  border: 1px solid black;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .username_and_buttons {
   display: flex;
-}
-
-.username_and_buttons button:hover {
-  background-color: grey;
+  height: 60px;
 }
 
 .username {
-  margin-bottom: 30px;
-  margin-right: 30px;
+  margin: auto 30px auto 0;
 }
 
 .username h1 {
   font-weight: 300;
 }
 
+.follow_button_div {
+  display: flex;
+  align-items: center;
+}
+
+.follow_button {
+  height: 30px;
+  border: 1px solid #0095f6;
+  background-color: #0095f6;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.follow_button:hover {
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
+}
+.follow_button:active {
+  background-color: #0078c7;
+}
 .profile_stats {
   display: flex;
 }
@@ -43,6 +66,7 @@
 .following_stats {
   box-sizing: border-box;
   margin-right: 5%;
+  width: 150px;
 }
 
 .following_stats h2,

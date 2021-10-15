@@ -15,8 +15,9 @@
   margin-right: 2%;
 }
 
-.logged_in_buttons li {
-  margin: 0 5%;
+.logged_in_buttons li button i {
+  vertical-align: middle;
+  font-size: 1.1rem;
 }
 
 .logged_in_buttons li a,
@@ -24,8 +25,10 @@
   font-size: 1rem;
 }
 
-.home_icon {
+.home_icon,
+.add_image {
   font-size: 1.3rem;
+  padding: 1px 6px;
 }
 
 .home_button {
@@ -39,6 +42,7 @@
   position: absolute;
   right: 3px;
   top: 54px;
+  background-color: #fafafa;
 }
 
 .user_menu li,
