@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
@@ -9,7 +9,8 @@ import ProfilePage from "./components/ProfilePage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import ImagePage from "./components/ImagePage";
-import Results from "./components/Results";
+import Results from "./components/Results"
+import ErrorPage from "./components/ErrorPage"
 import { loadImages } from "./store/images";
 
 function App() {
@@ -55,8 +56,11 @@ function App() {
         <Route path="/results/:term">
           <Results />
         </Route>
+        <Route path="/errors">
+          <ErrorPage />
+        </Route>
         <Route>
-          <h1>imagine going to the wrong page</h1>
+          <Redirect to="/errors" />
         </Route>
       </Switch>
     </BrowserRouter>

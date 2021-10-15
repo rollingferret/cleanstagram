@@ -6,6 +6,7 @@
   height: 54px;
   border-bottom: 1px solid rgba(219, 219, 219, 1);
   font-size: 1rem;
+  background-color: white;
 }
 
 .logged_in_buttons,
@@ -48,4 +49,11 @@
 .user_menu button {
   height: 30px;
   line-height: 30px;
+}
+
+input.search_bar {
+  background-color: rgb(245, 245, 245, .3);
+  border: 1px solid rgba(219, 219, 219, 1);
+  padding: 4% 13%;
+  border-radius: 8px;
 }
