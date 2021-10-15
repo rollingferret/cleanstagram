@@ -121,7 +121,7 @@ def like_image(id):
     '''
     user_id = current_user.get_id()
     image = Image.query.get(id)
-    image.likes_count+=1
+    image.likes_count += 1
     like = ImageLike(user_id=user_id,
                      image_id=id)
     db.session.add(like)
@@ -137,13 +137,14 @@ def dislike_image(id):
     '''
     user_id = current_user.get_id()
     image = Image.query.get(id)
-    like_to_delete = ImageLike.query.filter(ImageLike.image_id==id, ImageLike.user_id==user_id).first()
+    like_to_delete = ImageLike.query.filter(
+        ImageLike.image_id == id, ImageLike.user_id == user_id).first()
 
-    if image.likes_count<=0:
-        image.likes_count=0
+    if image.likes_count <= 0:
+        image.likes_count = 0
 
     if like_to_delete:
-        image.likes_count-=1
+        image.likes_count -= 1
 
     db.session.delete(like_to_delete)
     db.session.commit()
@@ -176,5 +177,5 @@ def get_feed():
     followed = user['following']
     images = Image.query.filter(Image.user_id.in_(followed)).order_by(Image.created_at.desc()).limit(10).all()
     image_list = [image.to_dict() for image in images]
-    image_dict = {'ordered_feed':image_list}
+    image_dict = {'ordered_feed': image_list}
     return image_dict
