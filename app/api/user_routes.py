@@ -71,6 +71,6 @@ def user(id):
 
 @user_routes.route('/<int:id>/images')
 def get_images_by_user(id):
-    posts_by_user = Image.query.filter(Image.user_id == id).all()
+    posts_by_user = Image.query.filter(Image.user_id == id).order_by(Image.created_at.desc()).all()
     posts_list = {post.id: post.to_dict() for post in posts_by_user}
     return posts_list

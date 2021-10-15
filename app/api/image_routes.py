@@ -175,6 +175,7 @@ def get_feed():
     user_id = current_user.get_id()
     user = User.query.get(user_id).to_dict()
     followed = user['following']
+    followed.append(user_id)
     images = Image.query.filter(Image.user_id.in_(followed)).order_by(Image.created_at.desc()).limit(10).all()
     image_list = [image.to_dict() for image in images]
     image_dict = {'ordered_feed': image_list}

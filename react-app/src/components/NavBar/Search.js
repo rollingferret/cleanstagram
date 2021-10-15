@@ -8,22 +8,26 @@ function Search() {
 
     const [search, setSearch] = useState('')
 
-    const onSearch = (e) => {
-        e.preventDefault();
+    const handleKeyDown = (e) => {
+        // e.preventDefault();
 
-        return history.push(`/results/${search}`)
+        if (e.key === 'Enter') {
+            console.log('do validate')
+            return history.push(`/results/${search}`)
+        }
     }
 
     return (
-        <form onSubmit={onSearch}>
+        <form>
             <input
                 type="text"
                 placeholder="Search"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={(e) => setSearch(e.target.value) }
+                onKeyDown={handleKeyDown}
                 className={styles.search_bar}
             />
-            <button type="submit">Search</button>
+            {/* <button type="submit">Search</button> */}
         </form>
     )
 }
