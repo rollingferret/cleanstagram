@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { follow_user, unfollow_user } from "../../store/users";
 import FollowerPageModal from "../FollowerPage";
+import FollowingPageModal from "../FollowingPage";
 
 import styles from "./ProfileHeader.module.css";
 
@@ -70,11 +71,7 @@ function ProfileHeader({ user }) {
               </h2>
             </div>
             <FollowerPageModal user={user} />
-            <div className={styles.following_stats}>
-              <h2>
-                <span>{user.following.length}</span> following
-              </h2>
-            </div>
+            <FollowingPageModal user={user} />
           </div>
         </div>
       </div>
