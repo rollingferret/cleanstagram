@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { login } from "../../store/session";
+import loginformcss from './loginformcss.css'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -31,14 +32,16 @@ const LoginForm = () => {
   }
 
   return (
+    <div className='authloginform_outter_container'>
     <form onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
+      <div className='authloginform_inner_container'>
       <div>
-        <label htmlFor="login_param">login_param</label>
+        <label htmlFor="login_param">tester</label>
         <input
           name="login_param"
           type="text"
@@ -56,9 +59,13 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
+        </div>
+        <div>
         <button type="submit">Login</button>
+        </div>
       </div>
     </form>
+    </div>
   );
 };
 
