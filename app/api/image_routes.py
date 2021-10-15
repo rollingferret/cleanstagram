@@ -169,7 +169,7 @@ def edit_caption(id):
 @login_required
 def get_feed(user_id):
     '''
-    Gets a selection of recent images/posts from a user's followers
+    Gets a selection of recent images/posts from a the user's that the current user follows
     '''
     followed = User.following
     print(followed)

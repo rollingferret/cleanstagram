@@ -2,6 +2,8 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+DEFAULT_AVATAR_URL = 'https://www.premiumseatsusa.com/special-events/wp-content/uploads/2019/03/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg'
+
 follows = db.Table(
     "follows",
     db.Column("follower_id", db.Integer, db.ForeignKey("users.id")),
@@ -16,7 +18,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     bio = db.Column(db.String(255), nullable=True)
-    avatar_url = db.Column(db.String(255), nullable=True)
+    avatar_url = db.Column(db.String(255), nullable=False,
+                           default=DEFAULT_AVATAR_URL)
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # relationships

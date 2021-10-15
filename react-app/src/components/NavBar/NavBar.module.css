@@ -6,6 +6,7 @@
   height: 54px;
   border-bottom: 1px solid rgba(219, 219, 219, 1);
   font-size: 1rem;
+  background-color: white;
 }
 
 .logged_in_buttons,
@@ -14,8 +15,9 @@
   margin-right: 2%;
 }
 
-.logged_in_buttons li {
-  margin: 0 5%;
+.logged_in_buttons li button i {
+  vertical-align: middle;
+  font-size: 1.1rem;
 }
 
 .logged_in_buttons li a,
@@ -23,8 +25,10 @@
   font-size: 1rem;
 }
 
-.home_icon {
+.home_icon,
+.add_image {
   font-size: 1.3rem;
+  padding: 1px 6px;
 }
 
 .home_button {
@@ -38,10 +42,18 @@
   position: absolute;
   right: 3px;
   top: 54px;
+  background-color: #fafafa;
 }
 
 .user_menu li,
 .user_menu button {
   height: 30px;
   line-height: 30px;
+}
+
+input.search_bar {
+  background-color: rgb(245, 245, 245, .3);
+  border: 1px solid rgba(219, 219, 219, 1);
+  padding: 4% 13%;
+  border-radius: 8px;
 }

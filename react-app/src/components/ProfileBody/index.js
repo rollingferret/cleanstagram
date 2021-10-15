@@ -3,13 +3,12 @@ import { useHistory } from "react-router-dom";
 
 import styles from "./ProfileBody.module.css";
 
-const ProfileBody = ({ userId }) => {
+const ProfileBody = ({ user }) => {
   const history = useHistory();
-  const currentUser = useSelector((state) => state.users[+userId]);
   const allImages = useSelector((state) => state.images);
   let userImages;
   if (allImages) {
-    userImages = currentUser.image_ids.map((id) => allImages[id]);
+    userImages = user.image_ids.map((id) => allImages[id]);
   }
 
   return (

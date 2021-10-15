@@ -1,26 +1,36 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import styles from "./ProfilePage.module.css";
-import { getUser } from "../../store/users";
+import { getUsers } from "../../store/users";
 import ProfileHeader from "../ProfileHeader";
 import ProfileBody from "../ProfileBody";
 
 function ProfilePage() {
   const { userId } = useParams();
+  const history = useHistory();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.users[userId]);
+  const users = useSelector((state) => state.users);
 
   useEffect(() => {
-    dispatch(getUser(userId));
-  }, [dispatch, userId]);
+    dispatch(getUsers());
+  }, [dispatch]);
 
-  if (!user) return null;
+  if (Object.keys(users).length === 0) {
+    return null;
+  }
+  if (Object.keys(users).length !== 0 && users[userId] === undefined) {
+    history.push("/errors");
+  }
   return (
     <div className={styles.profile_block}>
-      <ProfileHeader />
-      <ProfileBody userId={userId} />
+      {users && users[userId] && (
+        <>
+          <ProfileHeader user={users[userId]} />
+          <ProfileBody user={users[userId]} />
+        </>
+      )}
     </div>
   );
 }

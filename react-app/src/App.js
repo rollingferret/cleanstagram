@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -11,13 +10,13 @@ import LoginFormPage from './components/LoginFormPage';
 import { authenticate } from './store/session';
 import ImagePage from './components/ImagePage';
 import Results from './components/Results';
+import ErrorPage from './components/ErrorPage';
 import { loadImages } from './store/images';
 import Feed from './components/Feed';
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
 	const dispatch = useDispatch();
-
 	useEffect(() => {
 		(async () => {
 			await dispatch(authenticate());
@@ -58,6 +57,12 @@ function App() {
 				</ProtectedRoute>
 				<Route path="/results/:term">
 					<Results />
+				</Route>
+				<Route path="/errors">
+					<ErrorPage />
+				</Route>
+				<Route>
+					<Redirect to="/errors" />
 				</Route>
 			</Switch>
 		</BrowserRouter>

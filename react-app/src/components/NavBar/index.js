@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
-import Search from "./Search"
+import Search from "./Search";
 
 import styles from "./NavBar.module.css";
 
@@ -36,6 +36,11 @@ const NavBar = () => {
     if (currentUser) {
       return (
         <div className={styles.logged_in_buttons}>
+          <li>
+            <NavLink to="/add_image" exact={true} activeClassName="active">
+              <i className={`far fa-plus-square ${styles.add_image}`}></i>
+            </NavLink>
+          </li>
           <li>
             <NavLink to="/" exact={true} activeClassName="active">
               <i className={`fas fa-home ${styles.home_icon}`}></i>
