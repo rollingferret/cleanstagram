@@ -4,6 +4,7 @@ import styles from "./followerPageModal.module.css";
 
 function FollowerPage({ user }) {
   const allUsers = useSelector((state) => state.users);
+  const currentUser = useSelector((state) => state.session.user);
   let followers;
 
   if (Object.keys(allUsers).length > 0) {
@@ -13,8 +14,15 @@ function FollowerPage({ user }) {
   return (
     <div className={styles.modal_body}>
       {followers?.map((follower) => (
-        // need to add a follow/unfollow button, making a component for the follow/unfollow button
-        <h1>{follower.username}</h1>
+        <>
+          <h1>{follower.username}</h1>
+          {currentUser && currentUser.id !== follower.id && (
+            <FollowButton
+              currentUser={currentUser}
+              userIdToFollow={follower.id}
+            />
+          )}
+        </>
       ))}
     </div>
   );

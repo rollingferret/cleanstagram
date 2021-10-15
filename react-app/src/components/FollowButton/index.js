@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { follow_user, unfollow_user } from "../../store/users";
@@ -16,13 +15,11 @@ const FollowButton = ({ currentUser, userIdToFollow }) => {
   }, []);
 
   const followUser = () => {
-    // call thunk to make request to /api/users/:userId/follow
     dispatch(follow_user(userIdToFollow));
     setIsFollowing(true);
   };
 
   const unfollowUser = () => {
-    // call thunk to make request to /api/users/:userId/unfollow
     dispatch(unfollow_user(userIdToFollow));
     setIsFollowing(false);
   };
