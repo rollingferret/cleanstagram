@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import splash_page from "./splash_page.css";
 import LoginFormPage from "../LoginFormPage";
-import phoneborder from './images/phoneborder.png'
+import phoneborder from '../../assets/images/phoneborder.png'
+import logo from '../../assets/images/CleanstaGram.png'
 
 function SplashPage() {
 
@@ -12,7 +13,7 @@ function SplashPage() {
         <div className="splashpage_container_main_left" style={{backgroundImage: `url(${phoneborder})`}}>
         </div>
         <div className="splashpage_container_main_right">
-            <h1>We've hit the right side!</h1>
+            <div className="splashpage_container_logo" style={{backgroundImage: `url(${logo})`}}></div>
             <LoginFormPage />
         </div>
         </div>
