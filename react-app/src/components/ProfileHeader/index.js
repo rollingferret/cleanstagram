@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { follow_user } from "../../store/users";
+import { follow_user, unfollow_user } from "../../store/users";
 
 import styles from "./ProfileHeader.module.css";
 
@@ -9,51 +9,39 @@ function ProfileHeader({ user }) {
   const { userId } = useParams();
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
-  const [currentUserFollowingUser, setCurrentUserFollowingUser] =
-    useState(false);
+  const [isFollowing, setIsFollowing] = useState();
 
   useEffect(() => {
     if (currentUser) {
-      console.log(
-        "i am logged in, please change state to check if i am following"
-      );
-      if (
-        currentUser.following.includes(+userId) !== currentUserFollowingUser
-      ) {
-        console.log("who i am currently following", currentUser.following);
-        setCurrentUserFollowingUser(currentUser.following.includes(userId));
-      }
+      setIsFollowing(currentUser.following.includes(+userId));
     }
-  });
-
-  const followButton = () => {
-    if (!currentUserFollowingUser) {
-      console.log("curent user not folliwg this user, show foloow button");
-      return (
-        <div className={styles.follow_button_div}>
-          <button className={styles.follow_button} onClick={followUser}>
-            Follow
-          </button>
-        </div>
-      );
-    } else {
-      console.log(
-        "I AM ALKREADY FOLLOWING THIS PERSON! check onclick function thouh"
-      );
-      return (
-        <div className={styles.follow_button_div}>
-          <button className={styles.follow_button} onClick={followUser}>
-            Unfollow
-          </button>
-        </div>
-      );
-    }
-  };
+  }, []);
 
   const followUser = () => {
     // call thunk to make request to /api/users/:userId/follow
     dispatch(follow_user(userId));
+    setIsFollowing(true);
   };
+
+  const unfollowUser = () => {
+    // call thunk to make request to /api/users/:userId/unfollow
+    dispatch(unfollow_user(userId));
+    setIsFollowing(false);
+  };
+
+  const followButton = !isFollowing ? (
+    <div className={styles.follow_button_div}>
+      <button className={styles.follow_button} onClick={followUser}>
+        Follow
+      </button>
+    </div>
+  ) : (
+    <div className={styles.follow_button_div}>
+      <button className={styles.follow_button} onClick={unfollowUser}>
+        Unfollow
+      </button>
+    </div>
+  );
 
   if (!user) return null;
   return (
@@ -72,7 +60,7 @@ function ProfileHeader({ user }) {
               <h1>{user.username}</h1>
               <p>{user.bio}</p>
             </div>
-            {currentUser && currentUser.id !== +userId && followButton()}
+            {currentUser && currentUser.id !== +userId && followButton}
           </div>
           <div className={styles.profile_stats}>
             <div className={styles.following_stats}>

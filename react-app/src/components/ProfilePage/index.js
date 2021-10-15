@@ -18,12 +18,9 @@ function ProfilePage() {
   }, [dispatch]);
 
   if (Object.keys(users).length === 0) {
-    console.log("users is not loaded yet");
     return null;
   }
   if (Object.keys(users).length !== 0 && users[userId] === undefined) {
-    console.log("users is loaded but not this user");
-    console.log(users);
     history.push("/errors");
   }
   return (
