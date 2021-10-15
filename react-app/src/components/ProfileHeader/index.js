@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { follow_user } from "../../store/users";
@@ -12,13 +12,17 @@ function ProfileHeader({ user }) {
   const [currentUserFollowingUser, setCurrentUserFollowingUser] =
     useState(false);
 
-  if (currentUser) {
-    if (currentUser.following.includes(userId) !== currentUserFollowingUser)
-      setCurrentUserFollowingUser(currentUser.following.includes(userId));
-  }
+  useEffect(() => {
+    if (currentUser) {
+      console.log("this is who im following rn", currentUser.following);
+      if (currentUser.following.includes(userId) !== currentUserFollowingUser)
+        setCurrentUserFollowingUser(currentUser.following.includes(userId));
+    }
+  });
 
   const followButton = () => {
     if (!currentUserFollowingUser) {
+      console.log("curent user not folliwg this user, show foloow button");
       return (
         <div className={styles.follow_button_div}>
           <button className={styles.follow_button} onClick={followUser}>
@@ -27,6 +31,9 @@ function ProfileHeader({ user }) {
         </div>
       );
     } else {
+      console.log(
+        "I AM ALKREADY FOLLOWING THIS PERSON! check onclick function thouh"
+      );
       return (
         <div className={styles.follow_button_div}>
           <button className={styles.follow_button} onClick={followUser}>

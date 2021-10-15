@@ -15,7 +15,6 @@ import { loadImages } from "./store/images";
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  let count = 0;
   useEffect(() => {
     (async () => {
       await dispatch(authenticate());

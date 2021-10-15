@@ -26,8 +26,14 @@ export const getUsers = () => async (dispatch) => {
 
 export const follow_user = (userId) => async (dispatch) => {
   console.log("we are now in follow user thunk");
-  const res = await fetch(`api/users/${userId}/follow`);
-  console.log(res);
+  console.log(window.location);
+  const res = await fetch(
+    `${window.location.origin}/api/users/${userId}/follow`
+  );
+  if (res.ok) {
+    const response = await res.json();
+    console.log(response);
+  }
 };
 
 const initialState = {};

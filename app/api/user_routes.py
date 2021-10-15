@@ -28,7 +28,14 @@ def follow_user(id):
     if not user_to_follow:
         return {'errors': 'User to be followed does not exist.'}
 
-    curr_user.followers.append(user_to_follow)
+    if user_to_follow in curr_user.followers.all():
+        return {'errors': 'User already followed.'}
+
+    curr_user.following.append(user_to_follow)
+
+    print('who i am currently following =========', curr_user.following.all())
+    print('who is currently folowing user to follow',
+          user_to_follow.followers.all())
 
     db.session.add(curr_user)
     db.session.add(user_to_follow)
@@ -51,7 +58,10 @@ def unfollow_user(id):
     if not user_to_unfollow:
         return {'errors': 'User to be followed does not exist.'}
 
-    curr_user.followers.remove(user_to_unfollow)
+    if user_to_unfollow not in curr_user.followers.all():
+        return {'errors': 'User already unfollowed.'}
+
+    curr_user.following.remove(user_to_unfollow)
 
     db.session.add(curr_user)
     db.session.add(user_to_unfollow)
