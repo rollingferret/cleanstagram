@@ -7,6 +7,11 @@
 .splashpage_container_main_left {
     margin-right: 30px;
     border: 1px solid black;
+    height: 800px;
+    width: 600px;
+    background-position: center;
+    background-size: cover;
+
 
 
 }
