@@ -3,3 +3,10 @@
 	flex-direction: column;
 	align-items: center;
 }
+
+.my_feed {
+	font-size: x-large;
+	text-align: center;
+	font-weight: bold;
+	margin: 1rem;
+}

@@ -29,8 +29,10 @@ function Feed() {
 
 	console.log(imageCards);
 	return (
-		<div className={css['feed-container']}>
-			{/* <ImageCard
+		<>
+			<p className={css.my_feed}>My Feed:</p>
+			<div className={css['feed-container']}>
+				{/* <ImageCard
 				image={{
 					caption: 'werfjiowefjiowerfjio;rge',
 					comments_count: 0,
@@ -54,8 +56,9 @@ function Feed() {
 				}}
 			/>
 			<ImageCard /> */}
-			{imageCards}
-		</div>
+				{imageCards}
+			</div>
+		</>
 	);
 }
 

@@ -50,8 +50,6 @@ function App() {
 				</Route>
 				<ProtectedRoute path="/home" exact={true}>
           <NavBar />
-					{/* home page if logged in show photo feed */}
-					<h1>My Home Page</h1>
 					<Feed />
 				</ProtectedRoute>
 				<ProtectedRoute path="/images/:imageId">
