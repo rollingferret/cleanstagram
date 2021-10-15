@@ -5,6 +5,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { signUp } from "../../store/session";
 import { login } from "../../store/session";
 import styles from "./SignUpForm.module.css";
+import logo from "../../assets/images/CleanstaGram.png";
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -67,6 +68,15 @@ const SignUpForm = () => {
 
   return (
     <div className={styles.formDiv}>
+      <div
+        style={{
+          backgroundImage: `url(${logo})`,
+          height: "100px",
+          width: "100px",
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+        }}
+      ></div>
       <form onSubmit={onSignUp} className={styles.form}>
         <div>
           {errors.map((error, ind) => (
