@@ -6,7 +6,7 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import ImageForm from './components/ImageForm';
 import ProfilePage from './components/ProfilePage';
-import LoginFormPage from './components/LoginFormPage';
+import SplashPage from './components/SplashPage';
 import { authenticate } from './store/session';
 import ImagePage from './components/ImagePage';
 import Results from './components/Results';
@@ -32,33 +32,38 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<NavBar />
 			<Switch>
 				<ProtectedRoute path="/add_image" exact={true}>
+          <NavBar />
 					<ImageForm />
 				</ProtectedRoute>
 				<Route path="/sign-up" exact={true}>
+          <NavBar />
 					<SignUpForm />
 				</Route>
 				<Route path="/users/:userId" exact={true}>
+          <NavBar />
 					<ProfilePage />
 				</Route>
 				<Route path="/" exact>
-					{/* login form page */}
-					<LoginFormPage />
+					<SplashPage />
 				</Route>
 				<ProtectedRoute path="/home" exact={true}>
+          <NavBar />
 					{/* home page if logged in show photo feed */}
 					<h1>My Home Page</h1>
 					<Feed />
 				</ProtectedRoute>
 				<ProtectedRoute path="/images/:imageId">
+          <NavBar />
 					<ImagePage />
 				</ProtectedRoute>
 				<Route path="/results/:term">
+          <NavBar />
 					<Results />
 				</Route>
 				<Route path="/errors">
+          <NavBar />
 					<ErrorPage />
 				</Route>
 				<Route>
