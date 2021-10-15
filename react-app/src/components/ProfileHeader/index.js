@@ -29,7 +29,9 @@ function ProfileHeader({ user }) {
             </div>
             {currentUser && currentUser.id !== +userId && (
               // click the button and call function to call thunk to follow
-              <button>Follow</button>
+              <div className={styles.follow_button_div}>
+                <button className={styles.follow_button}>Follow</button>
+              </div>
             )}
           </div>
           <div className={styles.profile_stats}>
