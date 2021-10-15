@@ -165,12 +165,16 @@ def edit_caption(id):
     return update_image.to_dict()
 
 
-@image_routes.route('/feed/<int:user_id>', methods=['GET'])
+@image_routes.route('/feed')
 @login_required
-def get_feed(user_id):
+def get_feed():
     '''
     Gets a selection of recent images/posts from a the user's that the current user follows
     '''
-    followed = User.following
-    print(followed)
-    return followed
+    user_id = current_user.get_id()
+    user = User.query.get(user_id).to_dict()
+    followed = user['followers']
+    images = Image.query.filter(Image.user_id.in_(followed)).order_by(Image.created_at.desc()).limit(10).all()
+    image_list = [image.to_dict() for image in images]
+    image_dict = {'ordered_feed':image_list}
+    return image_dict

@@ -42,8 +42,11 @@ function ImageCard({ image }) {
 			</div>
 			<div className={css['btn-container']}>
 				{/* <btn className={css['interaction-btn']} id={css.red}></btn> */}
-				<i class="far fa-heart"></i>
-				<btn className={css['interaction-btn']} id={css.blue}></btn>
+				<i className="far fa-heart"></i>
+				<button
+					className={css['interaction-button']}
+					id={css.blue}
+				></button>
 			</div>
 			<div className={css['like-display-container']}>
 				Liked by Bob and 414 others
