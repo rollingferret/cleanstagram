@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addImage } from "../../store/images";
 
@@ -15,6 +15,7 @@ function ImageForm() {
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [error, setError] = useState("");
+  const [imageFile, setImageFile] = useState("Current Image: ")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,33 +44,54 @@ function ImageForm() {
   const updateImage = (e) => {
     const file = e.target.files[0];
     setImage(file);
+    const path = e.target.value.split("\\")
+    const fileName = path[path.length - 1]
+    setImageFile("Current Image: " + fileName)
   };
 
   return (
     <div className={css.form_page_body}>
       <form onSubmit={handleSubmit} className={css.container}>
+        <img alt="cleanstagram logo"
+        src="https://cdn.discordapp.com/attachments/894686389084495952/898675950680686722/CleanstaGram_500_x_300_px_400_x_200_px_300_x_100_px_300_x_200_px_200_x_100_px_1.png"
+        className={css.logo} />
+        <h3>Make a Post</h3>
         {error && <h3 className={css.error}>{error}</h3>}
         <div className={css.add_image}>
           <div className={css.add_image_label}>
-            <label>Add Image</label>
+            <label className={`fas fa-plus ${css.file_input}`}
+              for="pic_upload"
+            ></label>
           </div>
-          <input
-            className={css.file_input}
-            type="file"
-            accept="image/*"
-            onChange={updateImage}
-          />
+          <div>
+            <input
+              className={css.file_input}
+              id="pic_upload"
+              type="file"
+              accept="image/*"
+              onChange={updateImage}
+            />
+          </div>
         </div>
+        <div className={css.img_file}>{imageFile}</div>
         <div>
-          <label>Caption</label>
-          <input
+          <textarea
             type="text"
             value={caption}
             onChange={(e) => setCaption(e.target.value)}
+            className={css.caption_text}
+            placeholder="Add a caption..."
           />
         </div>
-        <button type="submit">Submit</button>
-        {imageLoading && <p>Loading...</p>}
+        <div>
+          <button type="submit"
+            className={css.btns}
+          >Share</button>
+          <Link to="/"
+            className={css.btns}
+          >Cancel</Link>
+          {imageLoading && <p>Loading...</p>}
+        </div>
       </form>
     </div>
   );
