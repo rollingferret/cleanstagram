@@ -4,6 +4,7 @@ import { Redirect, useHistory } from "react-router-dom";
 
 import { signUp } from "../../store/session";
 import { login } from "../../store/session";
+import styles from "./SignUpForm.module.css";
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -25,7 +26,9 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, bio, profile_url, password));
+      const data = await dispatch(
+        signUp(username, email, bio, profile_url, password)
+      );
       if (data) {
         setErrors(data);
       }
@@ -41,7 +44,7 @@ const SignUpForm = () => {
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
-  
+
   const updateBio = (e) => {
     setBio(e.target.value);
   };
