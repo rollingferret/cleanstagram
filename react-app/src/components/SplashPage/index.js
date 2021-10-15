@@ -7,6 +7,7 @@ import logo from '../../assets/images/CleanstaGram.png'
 
 function SplashPage() {
 
+    //test
     return (
         <>
         <div className="splashpage_container_main">
