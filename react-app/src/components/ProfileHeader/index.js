@@ -14,33 +14,40 @@ function ProfileHeader({ user }) {
   return (
     <div className={styles.profile_header}>
       <div className={styles.profile_header_display}>
-        <div>
+        <div className={styles.avatar_div}>
           <img
             className={styles.profile_picture}
             src={user.profile_url}
             alt="user_profile_picture"
           />
         </div>
-        <div className={styles.username_and_buttons}>
-          <div className={styles.username}>
-            <h1>{user.username}</h1>
-            <p>{user.bio}</p>
+        <div>
+          <div className={styles.username_and_buttons}>
+            <div className={styles.username}>
+              <h1>{user.username}</h1>
+              <p>{user.bio}</p>
+            </div>
+            {currentUser && currentUser.id !== +userId && (
+              // click the button and call function to call thunk to follow
+              <button>Follow</button>
+            )}
           </div>
-          {currentUser && currentUser.id !== +userId && (
-            // click the button and call function to call thunk to follow
-            <button>Follow</button>
-          )}
-        </div>
-        <div className={styles.profile_stats}>
-          <div className={styles.following_stats}>
-            <h2>
-              <span>{user.followers.length}</span> followers
-            </h2>
-          </div>
-          <div className={styles.following_stats}>
-            <h2>
-              <span>{user.following.length}</span> followers
-            </h2>
+          <div className={styles.profile_stats}>
+            <div className={styles.following_stats}>
+              <h2>
+                <span>{user.image_ids.length}</span> posts
+              </h2>
+            </div>
+            <div className={styles.following_stats}>
+              <h2>
+                <span>{user.followers.length}</span> followers
+              </h2>
+            </div>
+            <div className={styles.following_stats}>
+              <h2>
+                <span>{user.following.length}</span> followers
+              </h2>
+            </div>
           </div>
         </div>
       </div>
