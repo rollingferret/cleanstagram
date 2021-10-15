@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addImage } from "../../store/images";
 
@@ -48,28 +48,39 @@ function ImageForm() {
   return (
     <div className={css.form_page_body}>
       <form onSubmit={handleSubmit} className={css.container}>
+        <h1>Make a Post</h1>
         {error && <h3 className={css.error}>{error}</h3>}
         <div className={css.add_image}>
           <div className={css.add_image_label}>
             <label>Add Image</label>
           </div>
-          <input
-            className={css.file_input}
-            type="file"
-            accept="image/*"
-            onChange={updateImage}
-          />
+          <div>
+            <input
+              className={css.file_input}
+              type="file"
+              accept="image/*"
+              onChange={updateImage}
+            />
+          </div>
         </div>
         <div>
-          <label>Caption</label>
-          <input
+          <textarea
             type="text"
             value={caption}
             onChange={(e) => setCaption(e.target.value)}
+            className={css.caption_text}
+            placeholder="Add a caption..."
           />
         </div>
-        <button type="submit">Submit</button>
-        {imageLoading && <p>Loading...</p>}
+        <div>
+          <button type="submit"
+            className={css.btns}
+          >Share</button>
+          <Link to="/"
+            className={css.btns}
+          >Cancel</Link>
+          {imageLoading && <p>Loading...</p>}
+        </div>
       </form>
     </div>
   );

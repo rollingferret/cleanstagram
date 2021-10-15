@@ -5,25 +5,24 @@ import { useParams, useHistory, Link } from 'react-router-dom';
 import LikeButton from '../LikeButton/index';
 import { getImageById, deleteImage, updateCaption } from '../../store/images';
 
-import imageForm from './ImageForm.module.css';
+import imageForm from './ImagePage.module.css';
 import GetAllCommentsForSinglePhoto from '../CommentDisplayComponent';
 import NewCommentForm from '../NewCommentForm';
 
 function ImagePage() {
 	const sessionUser = useSelector((state) => state.session.user);
-	const image = useSelector((state) => state.images.currentImage);
+	const images = useSelector((state) => state.images);
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const { imageId } = useParams();
 	const comments = useSelector((state) => state.comments)
-	// console.log(comments, '99999999999999999999999999999999999999999999999999')
-	// console.log(Object.entries(comments).filter(x => console.log(x[1].image_id)))
+
+	const image = images[imageId]
+
 	let imagefilter = Object.entries(comments).filter(x => x[1].image_id === +imageId)
 	let commentlength = Object.keys(imagefilter).length;
-	
-	const imagelikes = useSelector((state) => state.images);
-	// console.log(imagelikes[imageId].likes_count)
 
+	const imagelikes = useSelector((state) => state.images);
 
 	const [editButtons, setEditButtons] = useState(false);
 	const [edit, setEdit] = useState(false);
@@ -40,6 +39,13 @@ function ImagePage() {
 			setEditButtons(true);
 		}
 	}, [sessionUser.id, image?.user_id]);
+
+	if (Object.keys(images).length === 0) {
+		return null;
+	}
+	if (Object.keys(images).length !== 0 && images[imageId] === undefined) {
+		history.push("/errors");
+	}
 
 	const updateSubmit = async (e) => {
 		e.preventDefault();

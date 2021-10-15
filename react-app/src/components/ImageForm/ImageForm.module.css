@@ -4,32 +4,41 @@
 }
 
 .container {
-  width: 80%;
-  height: 80vh;
+  width: 35%;
+  height: 40vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 35%;
+  max-height: 35%;
   border: 1px solid black;
   border-radius: 3px;
-}
-
-.add_image {
-  height: 20%;
-  display: flex;
-}
-
-.add_image_label {
-  padding: 10px;
+  margin-top: 2rem;
+  background-color: white;
 }
 
 .file_input {
-  border: 1px solid black;
+  margin: 0;
+  padding: 0;
 }
 
 .error {
   font-weight: 900;
   color: red;
+}
+
+.caption_text {
+  width: 300px;
+  height: 150px;
+  resize: none;
+  background-color: rgb(245, 245, 245, .3);
+}
+
+.btns {
+  color: royalblue;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 1.25rem;
+  padding: 0;
 }
