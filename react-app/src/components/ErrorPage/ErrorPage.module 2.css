@@ -1,0 +1,20 @@
+.errorContainer {
+    text-align: center;
+    margin: 5%;
+}
+
+.errorHeader {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 2%;
+}
+
+.errorMessage {
+    margin: 2%;
+}
+
+.errorLink {
+    font-size: .9rem;
+    color: royalblue;
+    margin: 2%;
+}
