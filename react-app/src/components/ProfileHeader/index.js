@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
@@ -10,6 +11,11 @@ import styles from "./ProfileHeader.module.css";
 function ProfileHeader({ user }) {
   const { userId } = useParams();
   const currentUser = useSelector((state) => state.session.user);
+  const allUsers = useSelector((state) => state.users);
+
+  useEffect(() => {
+    
+  }, [allUsers[currentUser.id].following]);
 
   if (!user) return null;
   return (

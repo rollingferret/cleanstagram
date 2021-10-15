@@ -1,3 +1,5 @@
+const { setUser } = require("./session");
+
 const GET_USERS = "users/GET_USERS";
 const FOLLOW_USER = "users/FOLLOW_USERS";
 const UNFOLLOW_USER = "users/UNFOLLOW_USERS";
@@ -46,6 +48,8 @@ export const follow_user = (userId) => async (dispatch) => {
   if (res.ok) {
     const { follower, following } = await res.json();
     await dispatch(followUser(follower, following));
+    // dispatch setuser after importing
+    await dispatch(setUser(follower));
   }
 };
 
