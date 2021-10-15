@@ -12,6 +12,7 @@ function FollowerPage({ user }) {
   return (
     <div className={styles.modal_body}>
       {followers?.map((follower) => (
+        // need to add a follow/unfollow button, making a component for the follow/unfollow button
         <h1>{follower.username}</h1>
       ))}
     </div>
