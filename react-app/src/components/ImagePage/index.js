@@ -15,6 +15,15 @@ function ImagePage() {
 	const history = useHistory();
 	const dispatch = useDispatch();
 	const { imageId } = useParams();
+	const comments = useSelector((state) => state.comments)
+	// console.log(comments, '99999999999999999999999999999999999999999999999999')
+	// console.log(Object.entries(comments).filter(x => console.log(x[1].image_id)))
+	let imagefilter = Object.entries(comments).filter(x => x[1].image_id === +imageId)
+	let commentlength = Object.keys(imagefilter).length;
+	
+	const imagelikes = useSelector((state) => state.images);
+	// console.log(imagelikes[imageId].likes_count)
+
 
 	const [editButtons, setEditButtons] = useState(false);
 	const [edit, setEdit] = useState(false);
@@ -121,10 +130,10 @@ function ImagePage() {
 						<div>
 							<LikeButton id={image.id} />
 							<span className={imageForm.likecomment}>
-								{image.likes_count} likes
+								{imagelikes[imageId].likes_count} likes
 							</span>
 							<span className={imageForm.likecomment}>
-								{image.comments_count} comments
+								{commentlength} comments
 							</span>
 						</div>
 						<p>
