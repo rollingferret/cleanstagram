@@ -34,7 +34,7 @@ def follow_user(id):
     db.session.add(user_to_follow)
     db.session.commit()
 
-    return {'ok': True, 'follower': curr_user.to_dict(), 'following': user_to_follow.to_dict()}
+    return {'ok': True, 'follower_id': curr_user.id, 'following_id': user_to_follow.id}
 
 
 @user_routes.route('/<int:id>/follow', methods=['DELETE'])
