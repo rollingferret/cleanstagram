@@ -1,0 +1,19 @@
+.splashpage_container_main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.splashpage_container_main_left {
+    margin-right: 30px;
+    border: 1px solid black;
+
+
+}
+
+.right {
+    margin-left: 30px;
+    border: 1px solid black;
+
+
+}
