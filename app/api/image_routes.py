@@ -3,7 +3,7 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 
 from app.aws import delete_from_s3, upload_file_to_s3, allowed_file, get_unique_filename
-from app.models import Image, ImageLike, db
+from app.models import Image, ImageLike, User, db
 from app.forms import ImageForm
 
 image_routes = Blueprint('images', __name__)
@@ -163,3 +163,14 @@ def edit_caption(id):
     db.session.commit()
 
     return update_image.to_dict()
+
+
+@image_routes.route('/feed/<int:user_id>', methods=['GET'])
+@login_required
+def get_feed(user_id):
+    '''
+    Gets a selection of recent images/posts from a user's followers
+    '''
+    followed = User.following
+    print(followed)
+    return followed
