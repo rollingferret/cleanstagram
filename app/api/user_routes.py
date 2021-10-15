@@ -7,11 +7,10 @@ from app.models import User, db, Image
 user_routes = Blueprint('users', __name__)
 
 
-@user_routes.route('/')
-@login_required
+@user_routes.route('')
 def users():
     users = User.query.all()
-    return {'users': [user.to_dict() for user in users]}
+    return {user.id: user.to_dict() for user in users}
 
 
 @user_routes.route('/<int:id>/follow', methods=['GET'])
@@ -23,19 +22,20 @@ def follow_user(id):
 
     curr_user = User.query.get(current_user.get_id())
     if not curr_user:
-        return {'errors': 'Current user does not exist.'}
+        return {'errors': 'Current user does not exist.'}, 401
 
     user_to_follow = User.query.get(id)
     if not user_to_follow:
-        return {'errors': 'User to be followed does not exist.'}
+        return {'errors': 'User to be followed does not exist.'}, 401
 
-    curr_user.followers.append(user_to_follow)
+    if user_to_follow in curr_user.following.all():
+        return {'errors': 'User already followed.'}, 401
 
-    db.session.add(curr_user)
-    db.session.add(user_to_follow)
+    curr_user.following.append(user_to_follow)
+
     db.session.commit()
 
-    return {'ok': True, 'follower': curr_user.to_dict(), 'following': user_to_follow.to_dict()}
+    return {'follower': curr_user.to_dict(), 'following': user_to_follow.to_dict()}
 
 
 @user_routes.route('/<int:id>/follow', methods=['DELETE'])
@@ -44,21 +44,23 @@ def unfollow_user(id):
     '''
     user that is currently logged in can unfollow the user whose id is in the params
     '''
+    print('0'*100, 'hitting the unfollow route')
     curr_user = User.query.get(current_user.get_id())
     if not curr_user:
-        return {'errors': 'Current user does not exist.'}
+        return {'errors': 'Current user does not exist.'}, 401
 
     user_to_unfollow = User.query.get(id)
     if not user_to_unfollow:
-        return {'errors': 'User to be followed does not exist.'}
+        return {'errors': 'User to be followed does not exist.'}, 401
 
-    curr_user.followers.remove(user_to_unfollow)
+    if user_to_unfollow not in curr_user.following.all():
+        return {'errors': 'User already unfollowed.'}, 401
 
-    db.session.add(curr_user)
-    db.session.add(user_to_unfollow)
+    curr_user.following.remove(user_to_unfollow)
+
     db.session.commit()
 
-    return {'ok': True}
+    return {'follower': curr_user.to_dict(), 'following': user_to_unfollow.to_dict()}
 
 
 @user_routes.route('/<int:id>')
