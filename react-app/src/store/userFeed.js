@@ -7,7 +7,7 @@ const load_feed = (images) => {
 	};
 };
 
-export const loadFeed = () => async (dispatch) => {
+export const loadFeedThunk = () => async (dispatch) => {
 	const res = await fetch('/api/images/feed');
 
 	if (res.ok) {
@@ -26,7 +26,7 @@ export default function reducer(state = initialState, action) {
 			Object.entries(action.payload).forEach(([id, image]) => {
 				newState[id] = image;
 			});
-            return newState
+			return newState;
 		default:
 			return state;
 	}

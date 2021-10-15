@@ -1,10 +1,36 @@
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { loadFeedThunk } from '../../store/userFeed';
 import ImageCard from '../ImageCard/index';
+
 import css from './Feed.module.css';
 
 function Feed() {
+	const dispatch = useDispatch();
+	const [isLoaded, setIsLoaded] = useState(false);
+
+	const feed = useSelector((state) => state.userFeed);
+	console.log(feed);
+	useEffect(() => {
+		(async () => {
+			await dispatch(loadFeedThunk());
+		})();
+		setIsLoaded(true);
+	}, [dispatch]);
+
+	if (!isLoaded) {
+		return false;
+	}
+
+	const imageCards = Object.values(feed).map((image, idx) => {
+		return <ImageCard image={image} key={idx} />;
+	});
+
+	console.log(imageCards);
 	return (
 		<div className={css['feed-container']}>
-			<ImageCard
+			{/* <ImageCard
 				image={{
 					caption: 'werfjiowefjiowerfjio;rge',
 					comments_count: 0,
@@ -27,7 +53,8 @@ function Feed() {
 					user_id: 1,
 				}}
 			/>
-			<ImageCard />
+			<ImageCard /> */}
+			{imageCards}
 		</div>
 	);
 }
