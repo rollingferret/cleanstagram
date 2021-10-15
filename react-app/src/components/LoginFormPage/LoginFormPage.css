@@ -1,0 +1,25 @@
+.login_form_main_container {
+
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    transform: translateY(-125px);
+
+}
+
+.login_form_demo_user_container {
+
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.login_form_inner_container_bot {
+    display: flex;
+    justify-content: center;
+
+}

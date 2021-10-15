@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { login } from "../../store/session";
 import LoginForm from "../auth/LoginForm";
-import styles from "./LoginFormPage.module.css";
+import LoginFormPageCSS from './LoginFormPage.css'
 
 const LoginFormPage = () => {
   const history = useHistory();
@@ -20,11 +20,16 @@ const LoginFormPage = () => {
 
   return (
     <>
-      <div className={styles.cool_pic}>
-        placeholder FOR THE STUPID IMAGE LOOOOOOOOOOOOOOOOL
-      </div>
+    <div className="login_form_main_container">
+    <div>
       <LoginForm />
+    </div>
+    <div className="login_form_inner_container_bot">
+    <div className="login_form_demo_user_container">
       <button onClick={demoUser}>Demo User</button>
+    </div>
+    </div>
+    </div>
     </>
   );
 };
