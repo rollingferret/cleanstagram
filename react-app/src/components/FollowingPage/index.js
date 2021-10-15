@@ -1,9 +1,11 @@
-const FollowingPage = () => {
+function FollowingPage({ ...props }) {
+  const dispatch = useDispatch();
+
   return (
-    <>
-      <h1>THIS IS THE FOLLOWING PAGE BROTHER!</h1>
-    </>
+    <div>
+      <p>FOLLOWING PAGE!</p>
+    </div>
   );
-};
+}
 
 export default FollowingPage;
