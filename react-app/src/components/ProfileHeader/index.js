@@ -18,7 +18,7 @@ function ProfileHeader({ user }) {
         <div className={styles.avatar_div}>
           <img
             className={styles.profile_picture}
-            src={user.profile_url}
+            src={user.profile_url?user.profile_url:'https://icon-library.com/images/cat-icon-gif/cat-icon-gif-19.jpg'}
             alt="user_profile_picture"
           />
         </div>
