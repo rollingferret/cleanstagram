@@ -5,7 +5,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import { signUp } from "../../store/session";
 import { login } from "../../store/session";
 import styles from "./SignUpForm.module.css";
-import logo from "../../assets/images/CleanstaGram.png";
+import logo from "../../assets/images/cleanstagramBig.png";
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);

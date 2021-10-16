@@ -18,10 +18,37 @@
 .logoDiv {
   height: 120px;
   width: 70%;
-  background-size: cover;
+  background-position: center;
+  background-size: 100%;
   background-repeat: no-repeat;
-  margin: 20px 0;
+  margin-top: 30px;
+  animation-name: change-background-image;
+  animation-duration: 3.1s;
+  background-image: url("../../assets/images/cleanstagramBig.png");
 }
+
+
+.logoDiv:hover {
+
+/* background-image: url("../../assets/images/cleanstagramBig.png");
+background-image: url("../../assets/images/cleanstagramBig.gif"); */
+animation-name: change-background-image-hover;
+animation-duration: 3s;
+background-image: url("../../assets/images/cleanstagramBig.png");
+
+} 
+
+@keyframes change-background-image {
+  0% { background-image: url("../../assets/images/cleanstagramBig.png"); }
+  1%   { background-image: url("../../assets/images/cleanstagramBig.gif"); }
+  100% { background-image: url("../../assets/images/cleanstagramBig.png"); }
+}
+
+@keyframes change-background-image-hover {
+  0%   { background-image: url("../../assets/images/cleanstagramBig.gif"); }
+}
+
+
 
 .caption {
   width: 70%;
@@ -38,8 +65,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   width: 350px;
   height: 542px;
+  margin-bottom: 40px;
 }
 
 .inputDiv {
