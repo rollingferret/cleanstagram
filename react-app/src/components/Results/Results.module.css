@@ -1,0 +1,32 @@
+.list {
+    max-width: 75%;
+    max-height: 80%;
+    margin: 3% 30%;
+}
+
+.results_title {
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 4%;
+    text-align: center;
+}
+
+.card_container {
+    display: flex;
+    margin: 1%;
+}
+
+.profile_picture {
+    max-width: 65px;
+    max-height: 65px;
+    border-radius: 36px;
+}
+
+.user_info {
+    margin-left: 3%;
+}
+
+.user_name {
+    font-weight: bold;
+
+}
