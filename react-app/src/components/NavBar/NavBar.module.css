@@ -72,14 +72,14 @@ input.search_bar {
 .logobackground {
 
   position: absolute;
-  top: -10px;
-  left: 10px;
+  top: 4px;
+  left: 4px;
   background-image: url("../../assets/images/navbarlogo.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   min-width: 200px;
-  min-height: 80px;
+  min-height: 50px;
 
 }
 
