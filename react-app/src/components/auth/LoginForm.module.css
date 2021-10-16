@@ -1,8 +1,7 @@
 .authloginform_outter_container {
   display: flex;
-  background-color: white;
+  flex-direction: row;
   height: 200px;
-  justify-content: center;
   align-items: center;
   /* transform: translateY(20px); */
 }
@@ -10,6 +9,45 @@
 .authloginform_inner_container {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  align-content: space-between;
+  width: 100%;
+  height: 175px;
+  justify-content: space-around;
+}
+
+
+.button {
+  border-radius: 3px;
+  background-color: rgba(178, 223, 252, 1);
+  width: 300px;
+  padding: 10px 20px;
+  margin: 5px 0;
+  color: white;
+  font-weight: 900;
+  transition-duration:500ms;
+}
+
+.button:hover {
+  background-color: rgba(0, 149, 246, 0.8);
+  cursor: pointer;
+}
+
+.input_div {
+  width: 300px;
+  height: 35px;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(178, 223, 252, 0.2);
+  font-size: 20px;
+}
+
+.authloginform_errors {
+
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+  height: 150px;
+  justify-content: space-around;
+  border-radius: 15px;
+  position: relative;
+  left: 20px;
 }

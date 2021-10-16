@@ -65,7 +65,7 @@
 
 
 
-.splash_page_link_to_sign_up {
+/* .splash_page_link_to_sign_up {
     width: 300px;
     border: 1px solid black;
     text-align: center;
@@ -74,7 +74,26 @@
     transition-duration:500ms;
 }
 
-.splash_page_link_to_sign_up:hover{ background:lightgrey}
+.splash_page_link_to_sign_up:hover{ background:lightgrey} */
+
+.splash_page_link_to_sign_up {
+  text-align: center;
+  border-radius: 3px;
+  background-color: rgba(178, 223, 252, 1);
+  width: 300px;
+  padding: 10px 20px;
+  margin: 5px 0;
+  color: white;
+  font-weight: 900;
+  transition-duration:500ms;
+}
+
+.splash_page_link_to_sign_up:hover {
+  background-color: rgba(0, 149, 246, 0.8);
+  cursor: pointer;
+}
+
+
 
 .splashpage_container_inner_right {
     background-color: white;
@@ -85,6 +104,8 @@
 
 
 }
+
+
 
 .carousel{
     transform: translate(163px, 100px);
@@ -151,7 +172,7 @@
     position: absolute;
     bottom: 0;
     width:100%;
-    height: 60px;
+    height: 50px;
     position: absolute;
     display: flex;
     justify-content: space-around;
@@ -165,11 +186,16 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  transition-duration:500ms;
 }
 
 .splashpage_github_logo:hover {
 
   border-radius: 50%;
+}
+
+.githubfooter { 
+  transition-duration:500ms;
 }
 
 .githubfooter:hover { 

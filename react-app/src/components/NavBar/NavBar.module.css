@@ -18,11 +18,15 @@
 .logged_in_buttons li button i {
   vertical-align: middle;
   font-size: 1.1rem;
+  margin-right: 5px;
 }
 
 .logged_in_buttons li a,
 .logged_in_buttons li button {
   font-size: 1rem;
+  margin-right: 5px;
+
+
 }
 
 .home_icon,
@@ -43,6 +47,8 @@
   right: 3px;
   top: 54px;
   background-color: #fafafa;
+  text-align: center;
+
 }
 
 .user_menu li,
@@ -52,9 +58,61 @@
 }
 
 input.search_bar {
+  position: relative;
+  left: 50px;
   background-color: rgb(245, 245, 245, .3);
   border: 1px solid rgba(219, 219, 219, 1);
-  width: 145%;
+  width: 225px;
   height: 1.75rem;
   border-radius: 3px;
+  text-align: center;
+}
+
+
+.logobackground {
+
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background-image: url("../../assets/images/navbarlogo.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-width: 200px;
+  min-height: 50px;
+
+}
+
+.button{
+  text-align: center;
+  border-radius: 3px;
+  background-color: rgba(178, 223, 252, 1);
+  width: 75px;
+  margin-bottom: 10px;
+  color: white;
+  font-weight: 900;
+  transition-duration:500ms;
+}
+
+.button:hover {
+  background-color: rgba(0, 149, 246, 0.8);
+  cursor: pointer;
+}
+
+@media screen and (max-width:650px) {
+  
+  .search_bar {
+
+    display: none;
+  }
+  
+}
+
+.buffer {
+
+  width: 140px;
+}
+
+.test:hover {
+  cursor: pointer;
 }

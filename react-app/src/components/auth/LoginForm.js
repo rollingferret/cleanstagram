@@ -34,34 +34,36 @@ const LoginForm = () => {
   return (
     <div className={styles.authloginform_outter_container}>
       <form onSubmit={onLogin}>
-        <div>
+        <div className={styles.authloginform_errors}>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
         </div>
         <div className={styles.authloginform_inner_container}>
+          {/* <div className={styles.flex_end}> */}
           <div>
-            <label htmlFor="login_param">tester</label>
             <input
               name="login_param"
               type="text"
-              placeholder="login_param"
+              placeholder="Username or Email"
               value={login_param}
               onChange={updateLoginParam}
+              className={styles.input_div}
             />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
             <input
               name="password"
               type="password"
               placeholder="Password"
               value={password}
               onChange={updatePassword}
+              className={styles.input_div}
             />
           </div>
+          {/* </div> */}
           <div>
-            <button type="submit">Login</button>
+            <button className={styles.button} type="submit">Login</button>
           </div>
         </div>
       </form>

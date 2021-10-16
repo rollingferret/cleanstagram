@@ -48,7 +48,7 @@ const NavBar = () => {
           </li>
           <li>
             <button onClick={openMenu}>
-              <i className={`fas fa-user`}></i>
+              <i className={`fas fa-user ${styles.test}`}></i>
             </button>
           </li>
           {showMenu && (
@@ -74,6 +74,11 @@ const NavBar = () => {
           </li>
         </div>
       );
+    } else if (window.location.pathname === "/sign-up") {
+      return (
+        <div className={styles.buffer}>
+        </div>
+      );
     }
   };
 
@@ -81,9 +86,8 @@ const NavBar = () => {
     <nav className={styles.navbar}>
       <div className={styles.home_button}>
         <li>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Cleanstagram
-          </NavLink>
+          <a href="/" exact={true} activeClassName="active" className={styles.logobackground}>
+          </a>
         </li>
       </div>
       <div>

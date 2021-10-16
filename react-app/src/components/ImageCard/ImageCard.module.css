@@ -10,7 +10,7 @@
 
 .user-container {
 	height: 60px;
-	border-bottom: 1px solid black;
+	/* border-bottom: 1px solid black; */
 }
 
 .image-container {
@@ -119,8 +119,81 @@ input:focus {
 	max-width: 100%;
 	/* max-height: 100%; */
 	height: 768px;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin-top: 10px;
 }
 
 .card_name {
 	font-weight: bold;
 }
+
+.profile_pic {
+	border: 1px solid lightgrey;
+	border-radius: 50%;
+	height: 65px;
+	margin-left: 10px;
+	display: flex;
+	position: relative;
+	top: -12px;
+	margin-top: 10px;
+
+}	
+
+.link_to_user {
+	text-align: center;
+	position: relative;
+	top: -50px;
+	left: 90px;
+	max-width: 150px;
+	border-radius: 3px;
+	background-color: rgba(178, 223, 252, 1);
+	padding: 5px;
+	color: white;
+	font-weight: 900;
+	transition-duration:500ms;
+	display: flex;
+	justify-content: center;
+
+	background: linear-gradient(to left, rgba(178, 223, 252, 1) 50%, rgba(0, 149, 246, 0.8) 50%) right;
+    background-size: 200%;
+    transition: 0.8s ease-in-out;
+
+	/* z-index: -1; */
+
+
+}
+
+.link_to_user:hover {
+  background-color: rgba(0, 149, 246, 0.8);
+  cursor: pointer;
+  background-position: left;
+
+}
+
+.profilepiclink {
+
+	background-color: rgba(178, 223, 252, 1);
+	display: flex;
+	position: relative;
+	top: 7px;
+	left: 15px;
+	height: 80px;
+	width: 80px;
+	border-radius: 50%;
+	/* transition-duration:500ms; */
+	background: linear-gradient(to right, rgba(178, 223, 252, 1) 50%, rgba(0, 149, 246, 0.8) 50%) left;
+    background-size: 200%;
+    transition: 0.8s ease-in-out;
+	z-index: +1;
+
+
+
+}
+
+.profilepiclink:hover {
+	background-color: rgba(0, 149, 246, 0.8);
+	background-position: right;
+
+  }

@@ -17,10 +17,10 @@ function SplashPage() {
         <div>
         <div className="splashpage_container_main_left" style={{backgroundImage: `url(${phoneborder})`}}>
         <div className='carousel'>
-        <div className='inner_carousel' style={{backgroundImage: `url(https://cdn.pixabay.com/photo/2015/04/04/19/13/one-706897_960_720.jpg)`}}></div>
-        <div className='inner_carousel' style={{backgroundImage: `url(https://fox2now.com/wp-content/uploads/sites/14/2020/02/cropped-FOX2NOW.png)`}}></div>
-        <div className='inner_carousel' style={{backgroundImage: `url(https://images.macrumors.com/t/dWZC3bgM6yoTMTkvYPaxNXvIr5k=/800x0/article-new/2021/01/AirPods-Gen-3-Feature.jpg?lossy)`}}></div>
-        <div className='inner_carousel' style={{backgroundImage: `url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQL9B8MDp84PJcyb_FK1Yo5JkJg66bvYW-OKg&usqp=CAU)`}}></div>
+        <div className='inner_carousel' style={{backgroundImage: `url(https://cleanstagram.s3.amazonaws.com/d8183d8e9fcc4484b3656b060f9665f6.jpg)`}}></div>
+        <div className='inner_carousel' style={{backgroundImage: `url(https://cleanstagram.s3.amazonaws.com/385692a0d7df4522a758e55beb106d93.jpg)`}}></div>
+        <div className='inner_carousel' style={{backgroundImage: `url(https://cleanstagram.s3.amazonaws.com/7bcb7dd1ca1e41579d8fd36f8abfb668.jpg)`}}></div>
+        <div className='inner_carousel' style={{backgroundImage: `url(https://cleanstagram.s3.amazonaws.com/a8b78c941d0d49a59ee18252dca056fb.jpg)`}}></div>
         <div className='inner_carousel' style={{backgroundImage: `url(https://cleanstagram.s3.amazonaws.com/2a52403dbff841b69bc954e20aef1997.jpg)`}}></div>
         </div>
         </div>
