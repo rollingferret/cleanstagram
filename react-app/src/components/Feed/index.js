@@ -13,12 +13,12 @@ function Feed() {
   let feed;
 
   feed = useSelector((state) =>
-    Object.values(state.userFeed).filter((image) =>
-      currentUser?.following.includes(image.user_id) || currentUser?.image_ids.includes(image.user_id)
+    Object.values(state.userFeed).filter(
+      (image) =>
+        currentUser?.following.includes(image.user_id) ||
+        image.user_id === currentUser.id
     )
   );
-
-
 
   useEffect(() => {
     (async () => {
