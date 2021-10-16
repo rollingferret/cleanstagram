@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 import FollowButton from "../FollowButton";
 import styles from "./FollowingPageModal.module.css";
 
-function FollowingPage({ user }) {
+function FollowingPage({ onClose, user }) {
   const allUsers = useSelector((state) => state.users);
   const currentUser = useSelector((state) => state.session.user);
 
@@ -14,13 +16,25 @@ function FollowingPage({ user }) {
 
   return (
     <div className={styles.modal_body}>
+      <div className={styles.header_bar}>
+        <div className={styles.title_display}>
+          <h2>Following</h2>
+          <i className="fas fa-times" onClick={() => onClose()}></i>
+        </div>
+      </div>
       {following?.map((following) => (
-        <>
-          <h1>{following.username}</h1>
+        <div className={styles.username_and_follow} key={following.id}>
+          <Link
+            to={`/users/${following.id}`}
+            className={styles.username}
+            onClick={() => onClose()}
+          >
+            {following.username}
+          </Link>
           {currentUser && currentUser.id !== following.id && (
             <FollowButton userIdToFollow={following.id} />
           )}
-        </>
+        </div>
       ))}
     </div>
   );
