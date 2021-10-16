@@ -75,6 +75,7 @@ def delete_image(id):
     if not image_to_delete:
         return 'Nothing to delete'
     else:
+        print('\n'*5, image_to_delete.to_dict(), '\n'*5)
 
         image_url = image_to_delete.image_url
         bucket_deletion = delete_from_s3(image_url)
@@ -176,7 +177,8 @@ def get_feed():
     user = User.query.get(user_id).to_dict()
     followed = user['following']
     followed.append(user_id)
-    images = Image.query.filter(Image.user_id.in_(followed)).order_by(Image.created_at.desc()).limit(10).all()
+    images = Image.query.filter(Image.user_id.in_(followed)).order_by(
+        Image.created_at.desc()).limit(10).all()
     image_list = [image.to_dict() for image in images]
     image_dict = {'ordered_feed': image_list}
     return image_dict
