@@ -74,6 +74,11 @@ const NavBar = () => {
           </li>
         </div>
       );
+    } else if (window.location.pathname === "/sign-up") {
+      return (
+        <div className={styles.buffer}>
+        </div>
+      );
     }
   };
 
