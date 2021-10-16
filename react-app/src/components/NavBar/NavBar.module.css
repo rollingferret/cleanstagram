@@ -72,11 +72,11 @@ input.search_bar {
 .logobackground {
 
   position: absolute;
-  top: -15px;
-  left: -5px;
-  background-image: url("../../assets/images/CleanstaGram.png");
+  top: -10px;
+  left: 10px;
+  background-image: url("../../assets/images/navbarlogo.png");
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   min-width: 200px;
   min-height: 80px;
