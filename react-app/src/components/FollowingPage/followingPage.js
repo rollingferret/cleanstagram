@@ -4,6 +4,8 @@ import styles from "./FollowingPageModal.module.css";
 
 function FollowingPage({ user }) {
   const allUsers = useSelector((state) => state.users);
+  const currentUser = useSelector((state) => state.session.user);
+
   let following;
 
   if (Object.keys(allUsers).length > 0) {
@@ -15,7 +17,9 @@ function FollowingPage({ user }) {
       {following?.map((following) => (
         <>
           <h1>{following.username}</h1>
-          <FollowButton userIdToFollow={following.id} />
+          {currentUser && currentUser.id !== following.id && (
+            <FollowButton userIdToFollow={following.id} />
+          )}
         </>
       ))}
     </div>

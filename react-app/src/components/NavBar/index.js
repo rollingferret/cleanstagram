@@ -54,8 +54,9 @@ const NavBar = () => {
           {showMenu && (
             <div className={`profile-dropdown ${styles.dropdown}`}>
               <ul className={styles.user_menu}>
-                <li>username: {currentUser.username}</li>
-                <li>email: {currentUser.email}</li>
+                <NavLink to={`/users/${currentUser.id}`}>
+                  <li>username: {currentUser.username}</li>
+                </NavLink>
                 <button className={styles.button} onClick={onLogout}>
                   Log Out
                 </button>
@@ -75,10 +76,7 @@ const NavBar = () => {
         </div>
       );
     } else if (window.location.pathname === "/sign-up") {
-      return (
-        <div className={styles.buffer}>
-        </div>
-      );
+      return <div className={styles.buffer}></div>;
     }
   };
 
@@ -86,8 +84,12 @@ const NavBar = () => {
     <nav className={styles.navbar}>
       <div className={styles.home_button}>
         <li>
-          <a href="/" exact={true} activeClassName="active" className={styles.logobackground}>
-          </a>
+          <a
+            href="/"
+            exact={true}
+            activeClassName="active"
+            className={styles.logobackground}
+          ></a>
         </li>
       </div>
       <div>
