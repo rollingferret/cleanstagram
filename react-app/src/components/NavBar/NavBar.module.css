@@ -1,12 +1,19 @@
-.navbar {
+.nav {
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(219, 219, 219, 1);
+  background-color: white;
+}
+
+.navbar {
+  width: 70vw;
+  max-width: 975px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 54px;
-  border-bottom: 1px solid rgba(219, 219, 219, 1);
   font-size: 1rem;
-  background-color: white;
 }
 
 .logged_in_buttons,
@@ -25,8 +32,6 @@
 .logged_in_buttons li button {
   font-size: 1rem;
   margin-right: 5px;
-
-
 }
 
 .home_icon,
@@ -39,19 +44,28 @@
   margin-left: 2%;
 }
 
+.user_avatar {
+  height: 20px;
+  width: 20px;
+}
+
 .user_menu {
   width: 250px;
   border-radius: 3px;
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
-  position: absolute;
-  right: 3px;
+  position: fixed;
+  /* FIXME - position of the drop down menu */
+  right: 20vw;
   top: 54px;
+  padding-left: 10px;
   background-color: #fafafa;
-  text-align: center;
-
 }
 
-.user_menu li,
+.user_menu li {
+  line-height: 40px;
+  vertical-align: middle;
+}
+
 .user_menu button {
   height: 30px;
   line-height: 30px;
@@ -60,7 +74,7 @@
 input.search_bar {
   position: relative;
   left: 50px;
-  background-color: rgb(245, 245, 245, .3);
+  background-color: rgb(245, 245, 245, 0.3);
   border: 1px solid rgba(219, 219, 219, 1);
   width: 225px;
   height: 1.75rem;
@@ -68,22 +82,19 @@ input.search_bar {
   text-align: center;
 }
 
-
 .logobackground {
-
   position: absolute;
   top: 4px;
-  left: 4px;
   background-image: url("../../assets/images/navbarlogo.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  z-index: 5;
   min-width: 200px;
   min-height: 50px;
-
 }
 
-.button{
+.button {
   text-align: center;
   border-radius: 3px;
   background-color: rgba(178, 223, 252, 1);
@@ -91,7 +102,7 @@ input.search_bar {
   margin-bottom: 10px;
   color: white;
   font-weight: 900;
-  transition-duration:500ms;
+  transition-duration: 500ms;
 }
 
 .button:hover {
@@ -99,20 +110,12 @@ input.search_bar {
   cursor: pointer;
 }
 
-@media screen and (max-width:650px) {
-  
+@media screen and (max-width: 650px) {
   .search_bar {
-
     display: none;
   }
-  
 }
 
 .buffer {
-
   width: 140px;
-}
-
-.test:hover {
-  cursor: pointer;
 }
