@@ -44,18 +44,28 @@
   margin-left: 2%;
 }
 
+.user_avatar {
+  height: 20px;
+  width: 20px;
+}
+
 .user_menu {
   width: 250px;
   border-radius: 3px;
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
   position: fixed;
-  right: inherit;
+  /* FIXME - position of the drop down menu */
+  right: 20vw;
   top: 54px;
+  padding-left: 10px;
   background-color: #fafafa;
-  text-align: center;
 }
 
-.user_menu li,
+.user_menu li {
+  line-height: 40px;
+  vertical-align: middle;
+}
+
 .user_menu button {
   height: 30px;
   line-height: 30px;
@@ -108,8 +118,4 @@ input.search_bar {
 
 .buffer {
   width: 140px;
-}
-
-.test:hover {
-  cursor: pointer;
 }

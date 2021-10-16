@@ -48,7 +48,13 @@ const NavBar = () => {
           </li>
           <li>
             <button onClick={openMenu}>
-              <i className={`fas fa-user ${styles.test}`}></i>
+              {/* change this to user icon */}
+              <div
+                className={styles.user_avatar}
+                styles={{
+                  backgroundImage: `url(${currentUser.avatar_url})`,
+                }}
+              ></div>
             </button>
           </li>
           {showMenu && (
