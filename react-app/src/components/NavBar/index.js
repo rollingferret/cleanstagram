@@ -54,8 +54,11 @@ const NavBar = () => {
           {showMenu && (
             <div className={`profile-dropdown ${styles.dropdown}`}>
               <ul className={styles.user_menu}>
-                <li>username: {currentUser.username}</li>
-                <li>email: {currentUser.email}</li>
+                <li>
+                  <NavLink to={`/users/${currentUser.id}`}>
+                    username: {currentUser.username}
+                  </NavLink>
+                </li>
                 <button className={styles.button} onClick={onLogout}>
                   Log Out
                 </button>
