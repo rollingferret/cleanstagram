@@ -100,7 +100,10 @@ export default function reducer(state = initialState, action) {
       return newState;
     case GET_COMMENTS:
       newState = Object.assign({}, state);
-      newState = action.payload;
+      const allComments = action.payload;
+      Object.values(allComments).forEach((comment) => {
+        newState[comment.id] = comment;
+      });
       return newState;
     case EDIT_COMMENT:
       newState = Object.assign({}, state);
