@@ -14,9 +14,12 @@ function Feed() {
 
   feed = useSelector((state) =>
     Object.values(state.userFeed).filter((image) =>
-      currentUser?.following.includes(image.user_id)
+      currentUser?.following.includes(image.user_id) || currentUser?.image_ids.includes(image.user_id)
     )
   );
+
+
+
   useEffect(() => {
     (async () => {
       await dispatch(loadFeedThunk());
