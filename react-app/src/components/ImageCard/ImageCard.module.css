@@ -10,7 +10,7 @@
 
 .user-container {
 	height: 60px;
-	border-bottom: 1px solid black;
+	/* border-bottom: 1px solid black; */
 }
 
 .image-container {
@@ -122,6 +122,7 @@ input:focus {
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
+	margin-top: 10px;
 }
 
 .card_name {
@@ -131,6 +132,58 @@ input:focus {
 .profile_pic {
 	border: 1px solid lightgrey;
 	border-radius: 50%;
-	height: 100%;
-	margin-left: 15px;
+	height: 65px;
+	margin-left: 10px;
+	display: flex;
+	position: relative;
+	top: -12px;
+	margin-top: 10px;
+
+}	
+
+.link_to_user {
+	text-align: center;
+	position: relative;
+	top: 15px;
+	left: 15px;
+	max-width: 150px;
+	border: 1px solid lightgrey;
+	border-radius: 3px;
+	background-color: rgba(178, 223, 252, 1);
+	padding: 5px;
+	color: white;
+	font-weight: 900;
+	transition-duration:500ms;
+	display: flex;
+	justify-content: center;
+
+
+
+	/* z-index: -1; */
+
+
 }
+
+.link_to_user:hover {
+  background-color: rgba(0, 149, 246, 0.8);
+  cursor: pointer;
+}
+
+.profilepiclink {
+
+	background-color: rgba(178, 223, 252, 1);
+	display: flex;
+	position: relative;
+	top: 7px;
+	left: 15px;
+	height: 80px;
+	width: 80px;
+	border-radius: 50%;
+
+
+
+}
+
+.profilepiclink:hover {
+	background-color: rgba(0, 149, 246, 0.8);
+  }
