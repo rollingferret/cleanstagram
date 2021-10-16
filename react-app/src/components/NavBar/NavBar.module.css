@@ -59,7 +59,7 @@
 
 input.search_bar {
   position: relative;
-  left: 33px;
+  left: 50px;
   background-color: rgb(245, 245, 245, .3);
   border: 1px solid rgba(219, 219, 219, 1);
   width: 225px;

@@ -52,9 +52,7 @@ function ImageForm() {
   return (
     <div className={css.form_page_body}>
       <form onSubmit={handleSubmit} className={css.container}>
-        <img alt="cleanstagram logo"
-        src="https://cdn.discordapp.com/attachments/894686389084495952/898675950680686722/CleanstaGram_500_x_300_px_400_x_200_px_300_x_100_px_300_x_200_px_200_x_100_px_1.png"
-        className={css.logo} />
+        <div className={css.container_logo} />
         <h3>Make a Post</h3>
         {error && <h3 className={css.error}>{error}</h3>}
         <div className={css.add_image}>

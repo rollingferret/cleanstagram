@@ -11,7 +11,7 @@
 .container {
 	width: 525px;
 	/* height: 1040px; */
-	height: 800px;
+	height: 850px;
 	border: 1px solid #dbdbdb;
 	border-radius: 3px;
   margin-top: 2%;
@@ -19,7 +19,8 @@
 	background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  padding: 40px;
 }
 
 input[type="file"] {
@@ -59,4 +60,24 @@ input[type="file"] {
 
 .img_file {
   font-size: small;
+}
+
+
+.container_logo {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width:500px;
+  height: 300px;
+  transform: translateY(-36px);
+  animation-name: change-background-image;
+  animation-duration: 3.1s;
+  background-image: url("../../assets/images/cleanstagramBig.png");
+}
+
+
+@keyframes change-background-image {
+0% { background-image: url("../../assets/images/cleanstagramBig.png"); }
+1%   { background-image: url("../../assets/images/cleanstagramBig.gif"); }
+100% { background-image: url("../../assets/images/cleanstagramBig.png"); }
 }
