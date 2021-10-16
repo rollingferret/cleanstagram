@@ -75,25 +75,28 @@ const NavBar = () => {
         </div>
       );
     } else if (window.location.pathname === "/sign-up") {
-      return (
-        <div className={styles.buffer}>
-        </div>
-      );
+      return <div className={styles.buffer}></div>;
     }
   };
 
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.home_button}>
-        <li>
-          <a href="/" exact={true} activeClassName="active" className={styles.logobackground}>
-          </a>
-        </li>
+    <nav className={styles.nav}>
+      <div className={styles.navbar}>
+        <div className={styles.home_button}>
+          <li>
+            <a
+              href="/"
+              exact={true}
+              activeClassName="active"
+              className={styles.logobackground}
+            ></a>
+          </li>
+        </div>
+        <div>
+          <Search />
+        </div>
+        {user_buttons()}
       </div>
-      <div>
-        <Search />
-      </div>
-      {user_buttons()}
     </nav>
   );
 };
