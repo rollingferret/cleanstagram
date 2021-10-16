@@ -8,7 +8,7 @@
 }
 
 .splashpage_container_main_left {
-    margin-right: 30px;
+    margin-right: 20px;
     height: 700px;
     width: 500px;
     min-width: 500px;
@@ -25,7 +25,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-left: 30px;
+    margin-left: 20px;
     height: 600px;
 
 
@@ -174,4 +174,19 @@
 
 .githubfooter:hover { 
   font-style: italic;
+}
+
+@media screen and (max-width:1100px) {
+  
+.splashpage_container_main_left {
+  display: none;
+}
+
+.splashpage_github_logo {
+  display: none;
+}
+
+.splashpage_container_main_right {
+  margin: 0;
+}
 }
