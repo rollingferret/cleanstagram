@@ -13,12 +13,12 @@ function Feed() {
   let feed;
 
   feed = useSelector((state) =>
-    Object.values(state.userFeed).filter((image) =>
-      currentUser?.following.includes(image.user_id) || currentUser?.image_ids.includes(image.user_id)
+    Object.values(state.userFeed).filter(
+      (image) =>
+        currentUser?.following.includes(image.user_id) ||
+        image.user_id === currentUser.id
     )
   );
-
-
 
   useEffect(() => {
     (async () => {
@@ -35,7 +35,6 @@ function Feed() {
     return <ImageCard image={image} key={idx} />;
   });
 
-  console.log(imageCards);
   return (
     <>
       <p className={css.my_feed}>My Feed:</p>
