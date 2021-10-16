@@ -48,7 +48,7 @@ const NavBar = () => {
           </li>
           <li>
             <button onClick={openMenu}>
-              <i className={`fas fa-user`}></i>
+              <i className={`fas fa-user ${styles.test}`}></i>
             </button>
           </li>
           {showMenu && (

@@ -112,3 +112,7 @@ input.search_bar {
 
   width: 140px;
 }
+
+.test:hover {
+  cursor: pointer;
+}
