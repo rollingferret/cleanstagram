@@ -26,7 +26,7 @@ const LoginFormPage = () => {
     </div>
     <div className="login_form_inner_container_bot">
     <div className="login_form_demo_user_container">
-      <button onClick={demoUser}>Demo User</button>
+      <button onClick={demoUser} className="login_form_demo_user_container_inner">Demo User</button>
     </div>
     </div>
     </div>
