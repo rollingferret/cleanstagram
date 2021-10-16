@@ -64,7 +64,7 @@ const NavBar = () => {
           )}
         </div>
       );
-    } else {
+    } else if (window.location.pathname !== "/sign-up") {
       return (
         <div className={styles.logged_out_buttons}>
           <li>
