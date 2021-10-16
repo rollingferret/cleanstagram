@@ -34,34 +34,34 @@ function App() {
 		<BrowserRouter>
 			<Switch>
 				<ProtectedRoute path="/add_image" exact={true}>
-          <NavBar />
+					<NavBar />
 					<ImageForm />
 				</ProtectedRoute>
 				<Route path="/sign-up" exact={true}>
-          <NavBar />
+					<NavBar />
 					<SignUpForm />
 				</Route>
 				<Route path="/users/:userId" exact={true}>
-          <NavBar />
+					<NavBar />
 					<ProfilePage />
 				</Route>
 				<Route path="/" exact>
 					<SplashPage />
 				</Route>
 				<ProtectedRoute path="/home" exact={true}>
-          <NavBar />
+					<NavBar />
 					<Feed />
 				</ProtectedRoute>
-				<ProtectedRoute path="/images/:imageId">
-          <NavBar />
+				<Route path="/images/:imageId">
+					<NavBar />
 					<ImagePage />
-				</ProtectedRoute>
+				</Route>
 				<Route path="/results/:term">
-          <NavBar />
+					<NavBar />
 					<Results />
 				</Route>
 				<Route path="/errors">
-          <NavBar />
+					<NavBar />
 					<ErrorPage />
 				</Route>
 				<Route>
