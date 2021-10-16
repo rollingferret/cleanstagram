@@ -189,4 +189,8 @@
 .splashpage_container_main_right {
   margin: 0;
 }
+
+.splashpage_container_footer_buffer {
+  display: none;
+}
 }
