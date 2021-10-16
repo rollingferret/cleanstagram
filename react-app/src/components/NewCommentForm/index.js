@@ -16,22 +16,26 @@ function CommentForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (content) {
-      let comment = {
-        user_id: sessionUser.id,
-        image_id: imageId,
-        content: content,
-      };
-
-      let res = await dispatch(addCommentThunk(comment));
-
-      if (res) {
-        setContent("");
-      } else {
-        console.log("error");
-      }
+    if (!sessionUser) {
+      history.push("/")
     } else {
-      console.log("missing content");
+      if (content) {
+        let comment = {
+          user_id: sessionUser.id,
+          image_id: imageId,
+          content: content,
+        };
+
+        let res = await dispatch(addCommentThunk(comment));
+
+        if (res) {
+          setContent("");
+        } else {
+          console.log("error");
+        }
+      } else {
+        console.log("missing content");
+      }
     }
   };
 

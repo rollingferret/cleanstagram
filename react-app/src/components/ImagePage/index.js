@@ -40,10 +40,12 @@ function ImagePage() {
 	}, [dispatch, imageId]);
 
 	useEffect(() => {
-		if (sessionUser.id === image?.user_id) {
-			setEditButtons(true);
+		if (sessionUser?.id) {
+			if (sessionUser?.id === image?.user_id) {
+				setEditButtons(true);
+			}
 		}
-	}, [sessionUser.id, image?.user_id]);
+	}, [sessionUser?.id, image?.user_id]);
 
 	if (Object.keys(images).length === 0) {
 		return null;
@@ -110,6 +112,19 @@ function ImagePage() {
 		editForm = <p>{image?.caption}</p>;
 	}
 
+	let addComments;
+	if (sessionUser) {
+		addComments = (
+			<NewCommentForm />
+		)
+	} else {
+		addComments = (
+			<div>
+				<Link to='/'>Log In</Link> to post a comment
+			</div>
+		)
+	}
+
 	if (!image) return null;
 
 	return (
@@ -135,7 +150,7 @@ function ImagePage() {
 					</div>
 					<div className={imageForm.commentcontainer}>
 						<GetAllCommentsForSinglePhoto imageId={imageId} />
-						<NewCommentForm />
+						{addComments}
 					</div>
 					<div className={imageForm.likecommentcontainer}>
 						<div>
