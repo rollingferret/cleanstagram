@@ -44,10 +44,13 @@ function ImageCard({ image }) {
 				</Link>
 			</div>
 			<div className={css['image-container']}>
+
+				<Link to={`/images/${image.id}`}>
 				<div style = {{ backgroundImage: `url(${image?.image_url})`}}
 					alt={`${image?.user.username}'s pic'`}
-					className={css.image}
-				/>
+					className={css.image}/>
+				</Link>
+
 			</div>
 			<div className={css['btn-container']}>
 				{/* <btn className={css['interaction-btn']} id={css.red}></btn> */}
