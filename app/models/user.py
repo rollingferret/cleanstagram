@@ -23,12 +23,9 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # relationships
-    images = db.relationship(
-        'Image', back_populates='user', cascade="all, delete-orphan")
-    image_likes = db.relationship(
-        'ImageLike', back_populates='user', cascade="all, delete-orphan")
-    comments = db.relationship(
-        'Comment', back_populates='user', cascade="all, delete-orphan")
+    images = db.relationship('Image', back_populates='user')
+    image_likes = db.relationship('ImageLike', back_populates='user')
+    comments = db.relationship('Comment', back_populates='user')
     followers = db.relationship(
         "User",
         secondary=follows,
