@@ -54,9 +54,7 @@ const NavBar = () => {
                 styles={{
                   backgroundImage: `url(${currentUser.avatar_url})`,
                 }}
-              >
-                <i className="fas fa-user"></i>
-              </div>
+              ></div>
             </button>
           </li>
           {showMenu && (
