@@ -41,8 +41,7 @@ function ImageCard({ image }) {
 				</Link>
 			</div>
 			<div className={css['image-container']}>
-				<img
-					src={image?.image_url}
+				<div style = {{ backgroundImage: `url(${image?.image_url})`}}
 					alt={`${image?.user.username}'s pic'`}
 					className={css.image}
 				/>
