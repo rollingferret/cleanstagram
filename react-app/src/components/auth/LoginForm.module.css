@@ -14,6 +14,7 @@
   justify-content: space-around;
 }
 
+
 .button {
   border-radius: 3px;
   background-color: rgba(178, 223, 252, 1);
@@ -22,7 +23,7 @@
   margin: 5px 0;
   color: white;
   font-weight: 900;
-  transition-duration: 500ms;
+  transition-duration:500ms;
 }
 
 .button:hover {
@@ -36,10 +37,11 @@
   text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.2);
   background-color: rgba(178, 223, 252, 0.2);
-  font-size: 1rem;
+  font-size: 20px;
 }
 
 .authloginform_errors {
+
   display: flex;
   flex-direction: column;
   background-color: red;

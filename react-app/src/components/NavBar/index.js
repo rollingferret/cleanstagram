@@ -37,34 +37,25 @@ const NavBar = () => {
       return (
         <div className={styles.logged_in_buttons}>
           <li>
-            <NavLink to="/add_image">
+            <NavLink to="/add_image" exact={true} activeClassName="active">
               <i className={`far fa-plus-square ${styles.add_image}`}></i>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/">
+            <NavLink to="/" exact={true} activeClassName="active">
               <i className={`fas fa-home ${styles.home_icon}`}></i>
             </NavLink>
           </li>
           <li>
             <button onClick={openMenu}>
-              {/* change this to user icon */}
-              <div
-                className={styles.user_avatar}
-                styles={{
-                  backgroundImage: `url(${currentUser.avatar_url})`,
-                }}
-              ></div>
+              <i className={`fas fa-user ${styles.test}`}></i>
             </button>
           </li>
           {showMenu && (
             <div className={`profile-dropdown ${styles.dropdown}`}>
               <ul className={styles.user_menu}>
-                <li>
-                  <NavLink to={`/users/${currentUser.id}`}>
-                    username: {currentUser.username}
-                  </NavLink>
-                </li>
+                <li>username: {currentUser.username}</li>
+                <li>email: {currentUser.email}</li>
                 <button className={styles.button} onClick={onLogout}>
                   Log Out
                 </button>
@@ -77,28 +68,32 @@ const NavBar = () => {
       return (
         <div className={styles.logged_out_buttons}>
           <li>
-            <NavLink to="/sign-up">Sign Up</NavLink>
+            <NavLink to="/sign-up" exact={true} activeClassName="active">
+              Sign Up
+            </NavLink>
           </li>
         </div>
       );
     } else if (window.location.pathname === "/sign-up") {
-      return <div className={styles.buffer}></div>;
+      return (
+        <div className={styles.buffer}>
+        </div>
+      );
     }
   };
 
   return (
-    <nav className={styles.nav}>
-      <div className={styles.navbar}>
-        <div className={styles.home_button}>
-          <li>
-            <a href="/" className={styles.logobackground}></a>
-          </li>
-        </div>
-        <div>
-          <Search />
-        </div>
-        {user_buttons()}
+    <nav className={styles.navbar}>
+      <div className={styles.home_button}>
+        <li>
+          <a href="/" exact={true} activeClassName="active" className={styles.logobackground}>
+          </a>
+        </li>
       </div>
+      <div>
+        <Search />
+      </div>
+      {user_buttons()}
     </nav>
   );
 };

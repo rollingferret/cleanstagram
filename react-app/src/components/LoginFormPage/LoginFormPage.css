@@ -1,29 +1,33 @@
 .login_form_main_container {
-  height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transform: translateY(-125px);
+
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    transform: translateY(-125px);
+
 }
 
 .login_form_demo_user_container_inner {
-  text-align: center;
-  border-radius: 3px;
-  background-color: rgba(178, 223, 252, 1);
-  width: 300px;
-  padding: 10px 20px;
-  margin: 5px 0;
-  color: white;
-  font-weight: 900;
-  transition-duration: 500ms;
+    text-align: center;
+    border-radius: 3px;
+    background-color: rgba(178, 223, 252, 1);
+    width: 300px;
+    padding: 10px 20px;
+    margin: 5px 0;
+    color: white;
+    font-weight: 900;
+    transition-duration:500ms;
+  }
+  
+.login_form_demo_user_container_inner:hover {
+    background-color: rgba(0, 149, 246, 0.8);
+    cursor: pointer;
 }
 
-.login_form_demo_user_container_inner:hover {
-  background-color: rgba(0, 149, 246, 0.8);
-  cursor: pointer;
-}
 
 .login_form_inner_container_bot {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+
 }
