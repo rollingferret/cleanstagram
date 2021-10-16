@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
 import Search from "./Search";
+import { useHistory } from "react-router";
 
 import styles from "./NavBar.module.css";
 
@@ -11,8 +12,9 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
+  let history = useHistory()
   const onLogout = async (e) => {
-    await dispatch(logout());
+    await dispatch(logout()).then(history.push("/"));
   };
 
   const openMenu = () => {
