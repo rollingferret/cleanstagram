@@ -1,0 +1,25 @@
+.modal_body {
+  height: 400px;
+  width: 400px;
+  padding: 10px;
+}
+
+.header_bar {
+  border-bottom: 1px solid black;
+  height: 30px;
+  text-align: center;
+}
+
+.username_and_follow {
+  height: 54px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+}
+
+.title_display i {
+  position: relative;
+  right: -185px;
+  top: -19px;
+}
