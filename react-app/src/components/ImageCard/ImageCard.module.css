@@ -127,3 +127,10 @@ input:focus {
 .card_name {
 	font-weight: bold;
 }
+
+.profile_pic {
+	border: 1px solid lightgrey;
+	border-radius: 50%;
+	height: 100%;
+	margin-left: 15px;
+}

@@ -31,11 +31,14 @@ function ImageCard({ image }) {
 		}
 	};
 
+	if (!image){
+		return null;
+	} else {
 	return (
 		<div className={css['card-container']}>
 			<div className={css['user-container']}>
 				<img alt="profile_picture"
-					src={image?.user.profile_pic} />
+					src={image.user.profile_pic?image.user.profile_pic:'https://img.freepik.com/free-vector/cute-welsh-corgi-dog-waving-paw-cartoon_42750-623.jpg?size=338&ext=jpg'}  className={css.profile_pic}/>
 				<Link to={`/users/${image.user.id}`}>
 					{image?.user.username}
 				</Link>
@@ -81,5 +84,5 @@ function ImageCard({ image }) {
 		</div>
 	);
 }
-
+}
 export default ImageCard;
