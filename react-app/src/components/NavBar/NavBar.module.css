@@ -52,9 +52,27 @@
 }
 
 input.search_bar {
+  position: relative;
+  left: 38px;
   background-color: rgb(245, 245, 245, .3);
   border: 1px solid rgba(219, 219, 219, 1);
-  width: 145%;
+  width: 225px;
   height: 1.75rem;
   border-radius: 3px;
+  text-align: center;
+}
+
+
+.logobackground {
+
+  position: absolute;
+  top: -15px;
+  left: -5px;
+  background-image: url("../../assets/images/CleanstaGram.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-width: 200px;
+  min-height: 80px;
+
 }

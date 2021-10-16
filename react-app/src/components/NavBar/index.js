@@ -81,9 +81,8 @@ const NavBar = () => {
     <nav className={styles.navbar}>
       <div className={styles.home_button}>
         <li>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Cleanstagram
-          </NavLink>
+          <a href="/" exact={true} activeClassName="active" className={styles.logobackground}>
+          </a>
         </li>
       </div>
       <div>
