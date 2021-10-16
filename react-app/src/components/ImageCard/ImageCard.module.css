@@ -144,10 +144,9 @@ input:focus {
 .link_to_user {
 	text-align: center;
 	position: relative;
-	top: 15px;
-	left: 15px;
+	top: -50px;
+	left: 90px;
 	max-width: 150px;
-	border: 1px solid lightgrey;
 	border-radius: 3px;
 	background-color: rgba(178, 223, 252, 1);
 	padding: 5px;
@@ -179,6 +178,7 @@ input:focus {
 	height: 80px;
 	width: 80px;
 	border-radius: 50%;
+	transition-duration:500ms;
 
 
 
