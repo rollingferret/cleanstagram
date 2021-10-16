@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+import CommentDisplayComponent from "../CommentDisplayComponent";
 import LikeButton from "../LikeButton";
 import { addCommentThunk } from "../../store/comments";
 
 import css from "./ImageCard.module.css";
 
 function ImageCard({ image }) {
+  console.log(image);
   const dispatch = useDispatch();
   const [content, setContent] = useState("");
   const sessionUser = useSelector((state) => state.session.user);
@@ -73,7 +75,7 @@ function ImageCard({ image }) {
           <button className={css["interaction-button"]} id={css.blue}></button>
         </div>
         <div className={css["like-display-container"]}>
-          {/* show who is liking this image */}
+          {/* refactor later! only images slice of state is currently updated, and userFeed likes count is not updated. */}
           {updatedImageForLikesDisplay.likes_count} likes
         </div>
         <div className={css["caption-container"]}>
@@ -81,6 +83,10 @@ function ImageCard({ image }) {
             {image?.user.username}
           </Link>{" "}
           {image?.caption}
+        </div>
+        <div>
+          comment displays down here
+          <CommentDisplayComponent imageId={image.id.toString()} />
         </div>
         <div className={css["date-comment-container"]}>
           Posted {image?.created_at}

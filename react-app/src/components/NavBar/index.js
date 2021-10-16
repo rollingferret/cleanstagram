@@ -12,7 +12,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
-  let history = useHistory()
+  let history = useHistory();
   const onLogout = async (e) => {
     await dispatch(logout()).then(history.push("/"));
   };
@@ -39,12 +39,12 @@ const NavBar = () => {
       return (
         <div className={styles.logged_in_buttons}>
           <li>
-            <NavLink to="/add_image" exact={true} activeClassName="active">
+            <NavLink to="/add_image">
               <i className={`far fa-plus-square ${styles.add_image}`}></i>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/" exact={true} activeClassName="active">
+            <NavLink to="/">
               <i className={`fas fa-home ${styles.home_icon}`}></i>
             </NavLink>
           </li>
@@ -71,9 +71,7 @@ const NavBar = () => {
       return (
         <div className={styles.logged_out_buttons}>
           <li>
-            <NavLink to="/sign-up" exact={true} activeClassName="active">
-              Sign Up
-            </NavLink>
+            <NavLink to="/sign-up">Sign Up</NavLink>
           </li>
         </div>
       );
@@ -86,12 +84,7 @@ const NavBar = () => {
     <nav className={styles.navbar}>
       <div className={styles.home_button}>
         <li>
-          <a
-            href="/"
-            exact={true}
-            activeClassName="active"
-            className={styles.logobackground}
-          ></a>
+          <a href="/" className={styles.logobackground}></a>
         </li>
       </div>
       <div>
