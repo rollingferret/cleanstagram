@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getResults } from "../../store/results";
+
+import ResultCard from "./ResultCard";
+
+import styles from "./Results.module.css"
 
 function Result() {
     const dispatch = useDispatch();
@@ -19,15 +23,13 @@ function Result() {
 
     return (
         <>
-            <h1>We've hit the results page!</h1>
-            <ul>
+            <ul className={styles.list}>
                 {" "}
-                Search Results:
+                <p className={styles.results_title
+                }>Search Results:</p>
                 {filterArr.map((user) => (
                     <li>
-                        <Link to={`/users/${user.id}`} key={user.id}>
-                            {user.username}
-                        </Link>
+                        <ResultCard user={user} />
                     </li>
                 ))}
             </ul>
