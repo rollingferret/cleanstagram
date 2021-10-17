@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getCommentByIdThunk } from "../../store/comments";
 import EditCommentModal from "../EditCommentForm";
 import DeleteCommentModal from "../DeleteCommentButton";
@@ -11,7 +11,6 @@ function GetAllCommentsForSinglePhoto({ imageId }) {
     imageId
   );
   const dispatch = useDispatch();
-  const history = useHistory();
   const currentUser = useSelector((state) => state.session.user);
 
   useEffect(() => {

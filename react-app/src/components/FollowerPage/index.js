@@ -14,7 +14,7 @@ function FollowerPageModal({ user }) {
 
   useEffect(() => {
     dispatch(getUsers());
-  }, [showModal]);
+  }, [showModal, dispatch]);
 
   return (
     <>
