@@ -98,6 +98,7 @@ export const addImage = (formData) => async (dispatch) => {
 
 export const getImageById = (imageId) => async (dispatch) => {
   const res = await fetch(`/api/images/${imageId}`);
+  console.log("\n\n\n", res, "\n\n\n");
 
   if (res.ok) {
     const query = await res.json();
@@ -126,8 +127,6 @@ export const updateCaption = (data) => async (dispatch) => {
     },
     body: JSON.stringify(data.caption),
   });
-
-  console.log("RES FROM BACKEND FLASK", res);
 
   if (res.ok) {
     const query = await res.json();
