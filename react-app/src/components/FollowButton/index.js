@@ -26,7 +26,7 @@ const FollowButton = ({ userIdToFollow }) => {
         currentUser.following.includes(+userIdToFollow)
       );
     }
-  }, []);
+  }, [currentUser, userIdToFollow]);
 
   return (
     <>

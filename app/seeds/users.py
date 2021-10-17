@@ -1,8 +1,16 @@
+from faker import Faker
+
 from app.models import db, User
 
 DEFAULT_AVATAR_URL = 'https://www.premiumseatsusa.com/special-events/wp-content/uploads/2019/03/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg'
 
 # Adds a demo user, you can add other users here if you want
+
+fake = Faker()
+# fake.image_url() for random image avatar_url
+# fake.user_name() for random username
+# fake.free_email() for random email
+# use 'password' as password, else use 'aaAA11!!' as password
 
 
 def seed_users():
@@ -12,6 +20,13 @@ def seed_users():
         username='marnie', email='marnie@aa.io', password='password', avatar_url=DEFAULT_AVATAR_URL)
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password', avatar_url=DEFAULT_AVATAR_URL)
+    for i in range(0, 20):
+        new_user = User(
+            username=fake.user_name(),
+            email=fake.free_email(), password='password',
+            avatar_url=fake.image_url()
+        )
+        db.session.add(new_user)
 
     db.session.add(demo)
     db.session.add(marnie)

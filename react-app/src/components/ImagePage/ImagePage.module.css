@@ -34,7 +34,7 @@
     background-size: cover;
     max-width: 500px;
     min-width: 500px;
-    height: auto;
+    height: 100%;
     max-height: 100%;
 }
 
@@ -86,9 +86,10 @@
 }
 
 .user_profile_pic {
-    max-width: 34px;
-    max-height: 40px;
-    border-radius: 1000px;
+    max-width: 35px;
+    max-height: 35px;
+    border-radius: 50%;
+    object-fit:cover;
 }
 
 .username {
