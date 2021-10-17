@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     bio = db.Column(db.String(255), nullable=True)
-    avatar_url = db.Column(db.String(255), nullable=True,
+    avatar_url = db.Column(db.String(255), nullable=False,
                            default=DEFAULT_AVATAR_URL)
     hashed_password = db.Column(db.String(255), nullable=False)
 
