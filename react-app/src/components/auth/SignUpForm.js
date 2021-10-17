@@ -30,134 +30,134 @@ const SignUpForm = () => {
       const data = await dispatch(
         signUp(username, email, bio, profile_url, password)
       );
-      if (data) {
-        setErrors(data);
-      }
-    } else {
-      setErrors(["Password must be the same as confirm password."]);
+    if (data) {
+      setErrors(data);
     }
+  } else {
+    setErrors(["Password must be the same as confirm password."]);
+}
   };
 
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
+const updateUsername = (e) => {
+  setUsername(e.target.value);
+};
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
+const updateEmail = (e) => {
+  setEmail(e.target.value);
+};
 
-  const updateBio = (e) => {
-    setBio(e.target.value);
-  };
+const updateBio = (e) => {
+  setBio(e.target.value);
+};
 
-  const updateProfile_Url = (e) => {
-    setProfile_Url(e.target.value);
-  };
+const updateProfile_Url = (e) => {
+  setProfile_Url(e.target.value);
+};
 
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
+const updatePassword = (e) => {
+  setPassword(e.target.value);
+};
 
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
-  };
+const updateRepeatPassword = (e) => {
+  setRepeatPassword(e.target.value);
+};
 
-  if (user) {
-    return <Redirect to="/" />;
-  }
+if (user) {
+  return <Redirect to="/" />;
+}
 
-  return (
-    <div className={styles.formBody}>
-      <div className={styles.formDiv}>
-        <div
-          style={{
-            backgroundImage: `url(${logo})`,
-          }}
-          className={styles.logoDiv}
-        ></div>
-        <div className={styles.caption}>
-          <h1>Sign up to see photos and videos from your friends.</h1>
-        </div>
-        <form onSubmit={onSignUp} className={styles.form}>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
-          <div className={styles.inputDiv}>
-            <input
-              placeholder="Username"
-              type="text"
-              name="username"
-              onChange={updateUsername}
-              value={username}
-              required={true}
-              className={styles.input}
-            ></input>
-          </div>
-          <div className={styles.inputDiv}>
-            <input
-              placeholder="Profile Image URL"
-              type="text"
-              name="profile_url"
-              onChange={updateProfile_Url}
-              value={profile_url}
-              className={styles.input}
-            ></input>
-          </div>
-          <div className={styles.inputDiv}>
-            <input
-              placeholder="Email"
-              type="text"
-              name="email"
-              onChange={updateEmail}
-              value={email}
-              required={true}
-              className={styles.input}
-            ></input>
-          </div>
-          <div className={styles.inputDiv}>
-            <input
-              placeholder="Bio"
-              type="text"
-              name="bio"
-              onChange={updateBio}
-              value={bio}
-              className={styles.input}
-            ></input>
-          </div>
-          <div className={styles.inputDiv}>
-            <input
-              placeholder="Password"
-              type="password"
-              name="password"
-              onChange={updatePassword}
-              value={password}
-              required={true}
-              className={styles.input}
-            ></input>
-          </div>
-          <div className={styles.inputDiv}>
-            <input
-              placeholder="Confirm Password"
-              type="password"
-              name="repeat_password"
-              onChange={updateRepeatPassword}
-              value={repeatPassword}
-              required={true}
-              className={styles.input}
-            ></input>
-          </div>
-          <button type="submit" className={styles.button}>
-            Sign Up
-          </button>
-          <button onClick={demoUser} className={styles.button}>
-            Demo User
-          </button>
-        </form>
+return (
+  <div className={styles.formBody}>
+    <div className={styles.formDiv}>
+      <div
+        style={{
+          backgroundImage: `url(${logo})`,
+        }}
+        className={styles.logoDiv}
+      ></div>
+      <div className={styles.caption}>
+        <h1>Sign up to see photos and videos from your friends.</h1>
       </div>
+      <form onSubmit={onSignUp} className={styles.form}>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+        <div className={styles.inputDiv}>
+          <input
+            placeholder="Username"
+            type="text"
+            name="username"
+            onChange={updateUsername}
+            value={username}
+            required={true}
+            className={styles.input}
+          ></input>
+        </div>
+        <div className={styles.inputDiv}>
+          <input
+            placeholder="Profile Image URL"
+            type="text"
+            name="profile_url"
+            onChange={updateProfile_Url}
+            value={profile_url}
+            className={styles.input}
+          ></input>
+        </div>
+        <div className={styles.inputDiv}>
+          <input
+            placeholder="Email"
+            type="text"
+            name="email"
+            onChange={updateEmail}
+            value={email}
+            required={true}
+            className={styles.input}
+          ></input>
+        </div>
+        <div className={styles.inputDiv}>
+          <input
+            placeholder="Bio"
+            type="text"
+            name="bio"
+            onChange={updateBio}
+            value={bio}
+            className={styles.input}
+          ></input>
+        </div>
+        <div className={styles.inputDiv}>
+          <input
+            placeholder="Password"
+            type="password"
+            name="password"
+            onChange={updatePassword}
+            value={password}
+            required={true}
+            className={styles.input}
+          ></input>
+        </div>
+        <div className={styles.inputDiv}>
+          <input
+            placeholder="Confirm Password"
+            type="password"
+            name="repeat_password"
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+            className={styles.input}
+          ></input>
+        </div>
+        <button type="submit" className={styles.button}>
+          Sign Up
+        </button>
+        <button onClick={demoUser} className={styles.button}>
+          Demo User
+        </button>
+      </form>
     </div>
-  );
+  </div>
+);
 };
 
 export default SignUpForm;
