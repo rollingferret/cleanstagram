@@ -20,7 +20,7 @@ def seed_users():
         username='marnie', email='marnie@aa.io', password='password', avatar_url=DEFAULT_AVATAR_URL)
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password', avatar_url=DEFAULT_AVATAR_URL)
-    for i in range(0, 50):
+    for i in range(0, 10):
         new_user = User(
             username=fake.user_name(),
             email=fake.free_email(), password='password',

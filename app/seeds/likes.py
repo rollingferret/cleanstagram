@@ -12,9 +12,9 @@ fake = Faker()
 
 def seed_likes():
     user_likes = {}
-    for i in range(0, 7000):
-        user = randint(1, 53)
-        image = randint(1, 250)
+    for i in range(0, 100):
+        user = randint(1, 13)
+        image = randint(1, 30)
         if (user, image) not in user_likes:
             new_comment = ImageLike(
                 user_id=user,

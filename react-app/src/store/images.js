@@ -98,7 +98,6 @@ export const addImage = (formData) => async (dispatch) => {
 
 export const getImageById = (imageId) => async (dispatch) => {
   const res = await fetch(`/api/images/${imageId}`);
-  console.log("\n\n\n", res, "\n\n\n");
 
   if (res.ok) {
     const query = await res.json();
@@ -119,7 +118,6 @@ export const deleteImage = (imageId) => async (dispatch) => {
 };
 
 export const updateCaption = (data) => async (dispatch) => {
-  console.log("data id from edit button", data.id);
   const res = await fetch(`/api/images/${data.id}`, {
     method: "PATCH",
     headers: {

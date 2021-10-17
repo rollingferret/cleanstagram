@@ -9,7 +9,6 @@ import { addCommentThunk } from "../../store/comments";
 import css from "./ImageCard.module.css";
 
 function ImageCard({ image }) {
-  console.log(image);
   const dispatch = useDispatch();
   const [content, setContent] = useState("");
   const sessionUser = useSelector((state) => state.session.user);
@@ -33,9 +32,11 @@ function ImageCard({ image }) {
       if (res) {
         setContent("");
       } else {
+        //FIXME
         console.log("error");
       }
     } else {
+      //FIXME
       console.log("missing content");
     }
   };

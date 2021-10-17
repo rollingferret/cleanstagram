@@ -12,10 +12,10 @@ fake = Faker()
 
 
 def seed_comments():
-    for i in range(0, 700):
+    for i in range(0, 60):
         new_comment = Comment(
-            user_id=randint(1, 53),
-            image_id=randint(1, 250),
+            user_id=randint(1, 13),
+            image_id=randint(1, 30),
             content=fake.sentence(),
             created_at=datetime.now(),
             updated_at=datetime.now()

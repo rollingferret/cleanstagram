@@ -10,10 +10,8 @@ const ProfileBody = ({ user }) => {
   if (allImages) {
     userImages = user.image_ids.map((id) => allImages[id]);
     let sortedUserImages = userImages.sort((a, b) => {
-      return Date.parse(b.created_at) - Date.parse(a.created_at)
-    })
-
-    console.log(sortedUserImages)
+      return Date.parse(b.created_at) - Date.parse(a.created_at);
+    });
   }
 
   return (

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addCommentThunk } from "../../store/comments";
 
-import css from './NewCommentForm.module.css'
+import css from "./NewCommentForm.module.css";
 
 function CommentForm() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -19,7 +19,7 @@ function CommentForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!sessionUser) {
-      history.push("/")
+      history.push("/");
     } else {
       if (content) {
         let comment = {
@@ -33,9 +33,11 @@ function CommentForm() {
         if (res) {
           setContent("");
         } else {
+          //FIXME
           console.log("error");
         }
       } else {
+        //FIXME
         console.log("missing content");
       }
     }
@@ -52,9 +54,9 @@ function CommentForm() {
             onChange={(e) => setContent(e.target.value)}
             className={css.comment_text}
           />
-          <button type="submit"
-            className={css.comment_btn}
-          >Post</button>
+          <button type="submit" className={css.comment_btn}>
+            Post
+          </button>
         </div>
       </form>
     </>
