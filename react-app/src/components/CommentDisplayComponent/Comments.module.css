@@ -1,6 +1,7 @@
 .comment_container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .inner_comment {
@@ -24,6 +25,8 @@
 .comment_content {
     font-size: small;
     word-break: break-all;
+    width: 200px;
+    min-width: 100%;
 }
 
 .comment_date {

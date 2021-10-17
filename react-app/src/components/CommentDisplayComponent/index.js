@@ -34,18 +34,20 @@ function GetAllCommentsForSinglePhoto({ imageId }) {
       return (
         <div key={comment.id} className={`single-comment ${css.outer_container}`}>
           <div className={css.comment_container}>
-            {/* <div class={css.inner_comment}> */}
-            <img alt="user_profile_image"
-              src={comment.user.profile_url}
-              className={css.user_profile_pic}
-            />
-            <Link to={`/users/${comment.user_id}`}
-              className={css.user_name}>
-              {comment.user.username}
-            </Link>
-            <div className={css.comment_content}>
-              {comment.content}
-              {/* </div> */}
+            <div class={css.inner_comment}>
+              <img alt="user_profile_image"
+                src={comment.user.profile_url}
+                className={css.user_profile_pic}
+              />
+              <div className={css.username_content}>
+                <Link to={`/users/${comment.user_id}`}
+                  className={css.user_name}>
+                  {comment.user.username}
+                </Link>
+                <div className={css.comment_content}>
+                  {comment.content}
+                </div>
+              </div>
             </div>
             <div className={css.edit_del_buttons}>
               {currentUser && currentUser.id === comment.user_id && (
