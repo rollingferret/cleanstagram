@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { loadFeedThunk } from "../../store/userFeed";
 import ImageCard from "../ImageCard/index";
@@ -13,8 +14,10 @@ function Feed() {
   let feed;
 
   feed = useSelector((state) =>
-    Object.values(state.userFeed).filter((image) =>
-      currentUser?.following.includes(image.user_id) || currentUser?.image_ids.includes(image.user_id)
+    Object.values(state.userFeed).filter(
+      (image) =>
+        currentUser?.following.includes(image.user_id) ||
+        image.user_id === currentUser.id
     )
   );
 
@@ -35,8 +38,11 @@ function Feed() {
 
   return (
     <>
-      <p className={css.my_feed}>My Feed:</p>
-      <div className={css["feed-container"]}>{imageCards}</div>
+      {imageCards.length ? (
+        <div className={css["feed-container"]}>{imageCards}</div>
+      ) : (
+        <Link to="/add_image">Start Posting</Link>
+      )}
     </>
   );
 }

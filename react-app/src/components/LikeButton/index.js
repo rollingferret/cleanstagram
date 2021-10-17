@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { checkLikeStatus, dislikeImage, likeImage } from '../../store/images';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { checkLikeStatus, dislikeImage, likeImage } from "../../store/images";
 
-import css from './LikeComponent.module.css';
+import css from "./LikeComponent.module.css";
 
 function LikeButton({ id }) {
 	const dispatch = useDispatch();
