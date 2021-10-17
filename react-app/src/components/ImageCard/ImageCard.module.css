@@ -14,13 +14,13 @@
 }
 
 .image-container {
-	height: 768px;
-	border-bottom: 1px solid black;
+	height: 705px;
+	border-bottom: 1px solid rgba(90, 90, 90, 0.699);
 }
 
 .btn-container {
 	/* height: 54px; */
-	height: 40px;
+	height: 25px;
 	margin-top: 4px;
 	padding-left: 16px;
 	padding-right: 16px;
@@ -48,7 +48,7 @@
 	display: flex;
 	align-items: center;
 	height: 24px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid rgba(90, 90, 90, 0.699);
 	margin-bottom: 8px;
 	padding-left: 16px;
 	padding-right: 16px;
@@ -58,14 +58,14 @@
 }
 
 .caption-container {
+	padding-left: 2%;
 	height: 60px;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid rgba(90, 90, 90, 0.699);
 }
 
 .date-comment-container {
 	height: 20px;
 	/* border-bottom: 1px solid #efefef; */
-	margin-bottom: 16px;
 	padding-left: 16px;
 	font-size: 10px;
 	color: #8e8e8e;
@@ -77,7 +77,7 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	height: 54px;
+	/* height: 54px; */
 	padding-top: 6px;
 	padding-bottom: 6px;
 	padding-left: 16px;
@@ -118,7 +118,7 @@ input:focus {
 	box-sizing: border-box;
 	max-width: 100%;
 	/* max-height: 100%; */
-	height: 768px;
+	height: 700px;
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -161,8 +161,15 @@ input:focus {
     transition: 0.8s ease-in-out;
 
 	/* z-index: -1; */
+}
 
-
+.comment_container {
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  max-height: 90px;
+  padding: 1%;
 }
 
 .link_to_user:hover {
@@ -173,7 +180,6 @@ input:focus {
 }
 
 .profilepiclink {
-
 	background-color: rgba(178, 223, 252, 1);
 	display: flex;
 	position: relative;
@@ -187,13 +193,9 @@ input:focus {
     background-size: 200%;
     transition: 0.8s ease-in-out;
 	z-index: +1;
-
-
-
 }
 
 .profilepiclink:hover {
 	background-color: rgba(0, 149, 246, 0.8);
 	background-position: right;
-
   }
