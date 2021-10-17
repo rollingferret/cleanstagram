@@ -3,6 +3,10 @@
     align-items: center;
 }
 
+.inner_comment {
+    display: flex;
+}
+
 .user_profile_pic {
     width: 35px;
     height: 35px;
@@ -13,6 +17,13 @@
 
 .user_name {
     font-weight: bold;
+    font-size: small;
+    margin-right: 2%;
+}
+
+.comment_content {
+    font-size: small;
+    word-break: break-all;
 }
 
 .comment_date {

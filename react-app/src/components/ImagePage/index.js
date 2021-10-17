@@ -81,7 +81,7 @@ function ImagePage() {
   let editDelBtns;
   if (editButtons) {
     editDelBtns = (
-      <div>
+      <div className={imageForm.edit_delete}>
         <button
           className={`${imageForm.btns}, far fa-edit`} onClick={onEdit}>
         </button>
@@ -115,8 +115,8 @@ function ImagePage() {
     addComments = (
       <div>
         <Link
-        className={imageForm.login_btn}
-        to="/">Log In</Link> to post a comment
+          className={imageForm.login_btn}
+          to="/">Log In</Link> to post a comment
       </div>
     );
   }
@@ -145,8 +145,8 @@ function ImagePage() {
                 {image.user.username}
               </Link>
               {editForm}
-              {editDelBtns}
             </div>
+            {editDelBtns}
           </div>
           <div className={imageForm.commentcontainer}>
             <GetAllCommentsForSinglePhoto imageId={imageId} />

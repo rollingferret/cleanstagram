@@ -34,6 +34,7 @@ function GetAllCommentsForSinglePhoto({ imageId }) {
       return (
         <div key={comment.id} className={`single-comment ${css.outer_container}`}>
           <div className={css.comment_container}>
+            {/* <div class={css.inner_comment}> */}
             <img alt="user_profile_image"
               src={comment.user.profile_url}
               className={css.user_profile_pic}
@@ -42,8 +43,9 @@ function GetAllCommentsForSinglePhoto({ imageId }) {
               className={css.user_name}>
               {comment.user.username}
             </Link>
-            <div>
+            <div className={css.comment_content}>
               {comment.content}
+              {/* </div> */}
             </div>
             <div className={css.edit_del_buttons}>
               {currentUser && currentUser.id === comment.user_id && (
@@ -57,7 +59,7 @@ function GetAllCommentsForSinglePhoto({ imageId }) {
           <div className={css.comment_date}>
             {newDate[2]} {newDate[1]}, {newDate[3]}
           </div>
-        </div>
+        </div >
       );
     });
 
