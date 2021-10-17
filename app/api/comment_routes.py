@@ -29,7 +29,7 @@ def comment_route(id):
     '''
     comments = Comment.query.filter(Comment.image_id == id).all()
     if not comments:
-        return 'No comment here!'
+        return 'No comment here!', 404
     else:
         return {comment.id: comment.to_dict() for comment in comments}
 
