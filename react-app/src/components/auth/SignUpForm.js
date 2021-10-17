@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-
+import { getUsers } from '../../store/users'
 import { signUp } from "../../store/session";
 import { login } from "../../store/session";
 import styles from "./SignUpForm.module.css";
@@ -30,12 +30,13 @@ const SignUpForm = () => {
       const data = await dispatch(
         signUp(username, email, bio, profile_url, password)
       );
-    if (data) {
-      setErrors(data);
+      await dispatch(getUsers())
+      if (data) {
+        setErrors(data);
+      }
+    } else {
+      setErrors(["Password must be the same as confirm password."]);
     }
-  } else {
-    setErrors(["Password must be the same as confirm password."]);
-}
   };
 
 const updateUsername = (e) => {

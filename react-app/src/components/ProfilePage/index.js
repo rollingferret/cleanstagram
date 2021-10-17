@@ -23,6 +23,9 @@ function ProfilePage() {
   if (Object.keys(users).length !== 0 && users[userId] === undefined) {
     history.push("/errors");
   }
+
+
+
   return (
     <div className={styles.profile_block}>
       {users && users[userId] && (
