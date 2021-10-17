@@ -23,7 +23,8 @@ def seed_users():
     for i in range(0, 10):
         new_user = User(
             username=fake.user_name(),
-            email=fake.free_email(), password='password',
+            email=fake.free_email(), 
+            password='password',
             avatar_url=fake.image_url()
         )
         db.session.add(new_user)
