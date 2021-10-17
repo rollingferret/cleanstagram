@@ -1,0 +1,42 @@
+.comment_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inner_comment {
+    display: flex;
+}
+
+.user_profile_pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 1%;
+    object-fit:cover;
+}
+
+.user_name {
+    font-weight: bold;
+    font-size: small;
+    margin-right: 2%;
+}
+
+.comment_content {
+    font-size: small;
+    word-break: break-all;
+    width: 200px;
+    min-width: 100%;
+}
+
+.comment_date {
+    font-size: x-small;
+    color: grey;
+    margin: 1% 1%;
+}
+
+.edit_del_buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

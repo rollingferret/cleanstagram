@@ -39,7 +39,7 @@ function LikeButton({ id }) {
     <div>
       {image && image?.isLiked ? (
         <button
-          className={`far fa-heart ${css.redlikebutton}`}
+          className={`fas fa-heart ${css.redlikebutton}`}
           onClick={handleDislike}
         ></button>
       ) : (

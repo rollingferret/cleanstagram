@@ -1,9 +1,11 @@
 .redlikebutton {
-	background-color: red;
+	background-color: white;
 	color: red;
+	font-size: large;
 }
 
 .whitelikebutton {
 	background-color: white;
 	color: black;
+	font-size: large;
 }
