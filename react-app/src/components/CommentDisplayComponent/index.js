@@ -6,10 +6,6 @@ import EditCommentModal from "../EditCommentForm";
 import DeleteCommentModal from "../DeleteCommentButton";
 
 function GetAllCommentsForSinglePhoto({ imageId }) {
-  console.log(
-    "we are in the feed, and now in the comment display comp, this is the imageId",
-    imageId
-  );
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.session.user);
 

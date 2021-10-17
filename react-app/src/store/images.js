@@ -118,7 +118,6 @@ export const deleteImage = (imageId) => async (dispatch) => {
 };
 
 export const updateCaption = (data) => async (dispatch) => {
-  console.log("data id from edit button", data.id);
   const res = await fetch(`/api/images/${data.id}`, {
     method: "PATCH",
     headers: {
@@ -126,8 +125,6 @@ export const updateCaption = (data) => async (dispatch) => {
     },
     body: JSON.stringify(data.caption),
   });
-
-  console.log("RES FROM BACKEND FLASK", res);
 
   if (res.ok) {
     const query = await res.json();
