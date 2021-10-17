@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import LoginFormPage from "../LoginFormPage";
 import phoneborder from "../../assets/images/phoneborder.png";
 import githublogo from "../../assets/images/github.png";
@@ -9,6 +8,12 @@ import logo from "../../assets/images/CleanstaGram.png";
 import splash_page from "./splash_page.css";
 import logoBig from "../../assets/images/cleanstagramBig.png";
 import animatedLogo from "../../assets/images/cleanstagramBig.gif";
+import bunbun from "../../assets/images/bunbun.jpg";
+import cat from "../../assets/images/cat.jpg";
+import prin from "../../assets/images/princessdoggo.jpg";
+import raccoon from "../../assets/images/raccoon.jpg";
+import sparkz from "../../assets/images/sparkzwind.jpg";
+
 
 function SplashPage() {
   //test
@@ -24,31 +29,31 @@ function SplashPage() {
               <div
                 className="inner_carousel"
                 style={{
-                  backgroundImage: `url(https://cleanstagram.s3.amazonaws.com/d8183d8e9fcc4484b3656b060f9665f6.jpg)`,
+                  backgroundImage: `url(${bunbun})`,
                 }}
               ></div>
               <div
                 className="inner_carousel"
                 style={{
-                  backgroundImage: `url(https://cleanstagram.s3.amazonaws.com/385692a0d7df4522a758e55beb106d93.jpg)`,
+                  backgroundImage: `url(${cat})`,
                 }}
               ></div>
               <div
                 className="inner_carousel"
                 style={{
-                  backgroundImage: `url(https://cleanstagram.s3.amazonaws.com/7bcb7dd1ca1e41579d8fd36f8abfb668.jpg)`,
+                  backgroundImage: `url(${prin})`,
                 }}
               ></div>
               <div
                 className="inner_carousel"
                 style={{
-                  backgroundImage: `url(https://cleanstagram.s3.amazonaws.com/a8b78c941d0d49a59ee18252dca056fb.jpg)`,
+                  backgroundImage: `url(${raccoon})`,
                 }}
               ></div>
               <div
                 className="inner_carousel"
                 style={{
-                  backgroundImage: `url(https://cleanstagram.s3.amazonaws.com/2a52403dbff841b69bc954e20aef1997.jpg)`,
+                  backgroundImage: `url(${sparkz})`,
                 }}
               ></div>
             </div>

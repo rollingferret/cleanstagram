@@ -41,7 +41,11 @@ function Feed() {
       {imageCards.length ? (
         <div className={css["feed-container"]}>{imageCards}</div>
       ) : (
-        <Link to="/add_image">Start Posting</Link>
+        <div className={css.vertalign}>
+        <div className={css.centernoposts}>
+        <Link to="/add_image" className={css.noposts}>Start Posting</Link>
+        </div>
+        </div>
       )}
     </>
   );
