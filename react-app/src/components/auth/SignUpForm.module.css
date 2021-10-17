@@ -27,28 +27,31 @@
   background-image: url("../../assets/images/cleanstagramBig.png");
 }
 
-
 .logoDiv:hover {
-
-/* background-image: url("../../assets/images/cleanstagramBig.png");
+  /* background-image: url("../../assets/images/cleanstagramBig.png");
 background-image: url("../../assets/images/cleanstagramBig.gif"); */
-animation-name: change-background-image-hover;
-animation-duration: 3s;
-background-image: url("../../assets/images/cleanstagramBig.png");
-
-} 
+  animation-name: change-background-image-hover;
+  animation-duration: 3s;
+  background-image: url("../../assets/images/cleanstagramBig.png");
+}
 
 @keyframes change-background-image {
-  0% { background-image: url("../../assets/images/cleanstagramBig.png"); }
-  1%   { background-image: url("../../assets/images/cleanstagramBig.gif"); }
-  100% { background-image: url("../../assets/images/cleanstagramBig.png"); }
+  0% {
+    background-image: url("../../assets/images/cleanstagramBig.png");
+  }
+  1% {
+    background-image: url("../../assets/images/cleanstagramBig.gif");
+  }
+  100% {
+    background-image: url("../../assets/images/cleanstagramBig.png");
+  }
 }
 
 @keyframes change-background-image-hover {
-  0%   { background-image: url("../../assets/images/cleanstagramBig.gif"); }
+  0% {
+    background-image: url("../../assets/images/cleanstagramBig.gif");
+  }
 }
-
-
 
 .caption {
   width: 70%;
@@ -81,6 +84,10 @@ background-image: url("../../assets/images/cleanstagramBig.png");
   border: 1px solid rgba(0, 0, 0, 0.2);
   width: 100%;
   border-radius: 3px;
+}
+
+.input::placeholder {
+  padding-left: 10px;
 }
 
 .button {

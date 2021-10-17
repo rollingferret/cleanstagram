@@ -1,5 +1,4 @@
 .profile_header {
-  border: 1px solid black; /* for debugging use */
   width: 100vw;
   font-size: 1rem;
   padding: 0 100px;
@@ -13,6 +12,7 @@
   display: flex;
   margin: 44px 0;
   justify-content: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .avatar_div {
@@ -24,6 +24,10 @@
   height: 150px;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.user_info {
+  margin-bottom: 100px;
 }
 
 .username_and_buttons {

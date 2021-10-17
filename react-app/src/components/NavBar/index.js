@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
 import Search from "./Search";
@@ -84,7 +84,7 @@ const NavBar = () => {
     <nav className={styles.navbar}>
       <div className={styles.home_button}>
         <li>
-          <a href="/" className={styles.logobackground}></a>
+          <Link to="/" className={styles.logobackground}></Link>
         </li>
       </div>
       <div>

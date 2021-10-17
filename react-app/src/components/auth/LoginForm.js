@@ -40,7 +40,6 @@ const LoginForm = () => {
           ))}
         </div>
         <div className={styles.authloginform_inner_container}>
-          {/* <div className={styles.flex_end}> */}
           <div>
             <input
               name="login_param"
@@ -63,7 +62,9 @@ const LoginForm = () => {
           </div>
           {/* </div> */}
           <div>
-            <button className={styles.button} type="submit">Login</button>
+            <button className={styles.button} type="submit">
+              Login
+            </button>
           </div>
         </div>
       </form>
