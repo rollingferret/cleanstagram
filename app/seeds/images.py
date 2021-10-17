@@ -6,7 +6,7 @@ from random import randint
 from datetime import datetime
 
 from app.models import db, Image
-
+from app.seeds.image_seed import image_seed
 
 fake = Faker()
 
@@ -14,11 +14,12 @@ image_ids = []
 
 
 def seed_images():
+    image_list = list(image_seed)
     # around 100 images for 23 users in the seed
     for i in range(0, 30):
         new_image = Image(
             user_id=randint(1, 13),
-            image_url=fake.image_url(),
+            image_url=image_list[i],
             caption=fake.sentence(nb_words=10),
             likes_count=0,
             comments_count=0,
