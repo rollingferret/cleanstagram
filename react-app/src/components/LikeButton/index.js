@@ -9,19 +9,19 @@ function LikeButton({ id }) {
 
   const [liked, setLiked] = useState(false);
 
-  const image = useSelector((state) => {
-    const isLiked = state.images[id].isLiked;
+  const image = useSelector((state) => state.images[id]);
+  let isLiked;
+  if (Object.keys(image).length > 0) {
+    isLiked = image.isLiked;
 
     if (isLiked !== liked) {
       setLiked(isLiked);
     }
-
-    return state.images[id];
-  });
+  }
 
   useEffect(() => {
     (async () => {
-      await dispatch(checkLikeStatus(id));
+      dispatch(checkLikeStatus(id));
     })();
   }, [dispatch, id]);
 

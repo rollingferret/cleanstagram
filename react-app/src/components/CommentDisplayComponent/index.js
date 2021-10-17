@@ -5,7 +5,7 @@ import { getCommentByIdThunk } from "../../store/comments";
 import EditCommentModal from "../EditCommentForm";
 import DeleteCommentModal from "../DeleteCommentButton";
 
-import css from './Comments.module.css'
+import css from "./Comments.module.css";
 
 function GetAllCommentsForSinglePhoto({ imageId }) {
   const dispatch = useDispatch();
@@ -28,21 +28,25 @@ function GetAllCommentsForSinglePhoto({ imageId }) {
       const newDate = comment?.created_at.split(" ");
 
       return (
-        <div key={comment.id} className={`single-comment ${css.outer_container}`}>
+        <div
+          key={comment.id}
+          className={`single-comment ${css.outer_container}`}
+        >
           <div className={css.comment_container}>
-            <div class={css.inner_comment}>
-              <img alt="user_profile_image"
+            <div className={css.inner_comment}>
+              <img
+                alt="user_profile_image"
                 src={comment.user.profile_url}
                 className={css.user_profile_pic}
               />
               <div className={css.username_content}>
-                <Link to={`/users/${comment.user_id}`}
-                  className={css.user_name}>
+                <Link
+                  to={`/users/${comment.user_id}`}
+                  className={css.user_name}
+                >
                   {comment.user.username}
                 </Link>
-                <div className={css.comment_content}>
-                  {comment.content}
-                </div>
+                <div className={css.comment_content}>{comment.content}</div>
               </div>
             </div>
             <div className={css.edit_del_buttons}>
@@ -57,7 +61,7 @@ function GetAllCommentsForSinglePhoto({ imageId }) {
           <div className={css.comment_date}>
             {newDate[2]} {newDate[1]}, {newDate[3]}
           </div>
-        </div >
+        </div>
       );
     });
 
