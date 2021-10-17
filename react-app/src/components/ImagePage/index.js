@@ -82,11 +82,10 @@ function ImagePage() {
   if (editButtons) {
     editDelBtns = (
       <div>
-        <button className={imageForm.btns} onClick={onEdit}>
-          Edit
+        <button
+          className={`${imageForm.btns}, far fa-edit`} onClick={onEdit}>
         </button>
-        <button className={imageForm.btns} onClick={onDelete}>
-          Delete
+        <button className={`${imageForm.btns}, fas fa-trash-alt`} onClick={onDelete}>
         </button>
       </div>
     );
@@ -115,7 +114,9 @@ function ImagePage() {
   } else {
     addComments = (
       <div>
-        <Link to="/">Log In</Link> to post a comment
+        <Link
+        className={imageForm.login_btn}
+        to="/">Log In</Link> to post a comment
       </div>
     );
   }
@@ -126,23 +127,29 @@ function ImagePage() {
     <div className={imageForm.outercontainer}>
       <div className={imageForm.innercontainer}>
         <div className={imageForm.imgcontainer}>
-          <img
+          <div
+            style={{
+              backgroundImage: `url(${image.image_url})`,
+            }}
             className={imageForm.img}
-            src={image.image_url}
-            alt={image.caption}
-          />
+          ></div>
         </div>
         <div className={imageForm.rightcontainer}>
           <div className={imageForm.usercontainer}>
-            <Link to={`/users/${image.user_id}`} className={imageForm.username}>
-              {image.user.username}
-            </Link>
-            {editForm}
-            {editDelBtns}
+            <div>
+              <img alt="user_profile_picture"
+                className={imageForm.user_profile_pic}
+                src={image.user.profile_url} />
+              <Link to={`/users/${image.user_id}`}
+                className={imageForm.username}>
+                {image.user.username}
+              </Link>
+              {editForm}
+              {editDelBtns}
+            </div>
           </div>
           <div className={imageForm.commentcontainer}>
             <GetAllCommentsForSinglePhoto imageId={imageId} />
-            {addComments}
           </div>
           <div className={imageForm.likecommentcontainer}>
             <div>
@@ -154,9 +161,12 @@ function ImagePage() {
                 {commentlength} comments
               </span>
             </div>
-            <p>
+            <p className={imageForm.dates}>
               {newDate[2]} {newDate[1]}, {newDate[3]}
             </p>
+            <div>
+              {addComments}
+            </div>
           </div>
         </div>
       </div>

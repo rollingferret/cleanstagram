@@ -20,6 +20,13 @@ def seed_users():
         username='marnie', email='marnie@aa.io', password='password', avatar_url=DEFAULT_AVATAR_URL)
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password', avatar_url=DEFAULT_AVATAR_URL)
+    for i in range(0, 20):
+        new_user = User(
+            username=fake.user_name(),
+            email=fake.free_email(), password='password',
+            avatar_url=fake.image_url()
+        )
+        db.session.add(new_user)
 
     db.session.add(demo)
     db.session.add(marnie)

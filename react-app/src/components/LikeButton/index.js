@@ -38,13 +38,15 @@ function LikeButton({ id }) {
   return (
     <div>
       {image && image?.isLiked ? (
-        <button className={css.redlikebutton} onClick={handleDislike}>
-          <i className="far fa-heart"></i>
-        </button>
+        <button
+          className={`far fa-heart ${css.redlikebutton}`}
+          onClick={handleDislike}
+        ></button>
       ) : (
-        <button className={css.whitelikebutton} onClick={handleLike}>
-          <i className="far fa-heart"></i>
-        </button>
+        <button
+          className={`far fa-heart ${css.whitelikebutton}`}
+          onClick={handleLike}
+        ></button>
       )}
     </div>
   );
