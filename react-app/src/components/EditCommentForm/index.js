@@ -9,7 +9,9 @@ function EditCommentModal(props) {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Edit Comment</button>
+      <button
+        className={`far fa-edit`}
+      onClick={() => setShowModal(true)}></button>
       {showModal && (
         <Modal onClose={onClose}>
           <EditCommentForm onClose={onClose} commentId={props.commentId}/>

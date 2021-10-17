@@ -1,0 +1,15 @@
+.comment_container {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.comment_text {
+    width: 115%;
+    height: 1.5rem;
+}
+
+.comment_btn {
+    color: royalblue;
+    font-weight: bold;
+}

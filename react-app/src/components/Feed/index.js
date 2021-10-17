@@ -18,8 +18,6 @@ function Feed() {
     )
   );
 
-
-
   useEffect(() => {
     (async () => {
       await dispatch(loadFeedThunk());
@@ -35,7 +33,6 @@ function Feed() {
     return <ImageCard image={image} key={idx} />;
   });
 
-  console.log(imageCards);
   return (
     <>
       <p className={css.my_feed}>My Feed:</p>

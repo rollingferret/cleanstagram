@@ -7,7 +7,8 @@ function DeleteCommentModal(props) {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Delete Comment!</button>
+      <button className={`fas fa-trash-alt`}
+      onClick={() => setShowModal(true)}></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <DeleteCommentButton commentId={props.commentId}/>

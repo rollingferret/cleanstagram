@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addCommentThunk } from "../../store/comments";
 
+import css from './NewCommentForm.module.css'
+
 function CommentForm() {
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -42,15 +44,18 @@ function CommentForm() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Comment</label>
+        <div className={css.comment_container}>
           <input
             type="content"
             value={content}
+            placeholder="Add a comment..."
             onChange={(e) => setContent(e.target.value)}
+            className={css.comment_text}
           />
+          <button type="submit"
+            className={css.comment_btn}
+          >Post</button>
         </div>
-        <button type="submit">Post!</button>
       </form>
     </>
   );
