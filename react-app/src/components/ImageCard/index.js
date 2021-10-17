@@ -73,7 +73,7 @@ function ImageCard({ image }) {
         </div>
         <div className={css["btn-container"]}>
           <LikeButton id={image.id} />
-          <button className={css["interaction-button"]} id={css.blue}></button>
+          {/* <button className={css["interaction-button"]} id={css.blue}></button> */}
         </div>
         <div className={css["like-display-container"]}>
           {/* refactor later! only images slice of state is currently updated, and userFeed likes count is not updated. */}
@@ -85,12 +85,11 @@ function ImageCard({ image }) {
           </Link>{" "}
           {image?.caption}
         </div>
-        <div>
-          comment displays down here
-          <CommentDisplayComponent imageId={image.id.toString()} />
-        </div>
         <div className={css["date-comment-container"]}>
           Posted {image?.created_at}
+        </div>
+        <div className={css.comment_container}>
+          <CommentDisplayComponent imageId={image.id.toString()} />
         </div>
         <div className={css["add-comment-container"]}>
           <form onSubmit={handleSubmit}>
