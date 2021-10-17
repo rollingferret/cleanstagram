@@ -29,13 +29,13 @@ def comment_route(id):
     '''
     comments = Comment.query.filter(Comment.image_id == id).all()
     if not comments:
-        return 'No comment here!', 404
+        return {}
     else:
         return {comment.id: comment.to_dict() for comment in comments}
 
 
-@comment_routes.route('/new', methods=['POST'])
-@login_required
+@ comment_routes.route('/new', methods=['POST'])
+@ login_required
 def add_new_comment():
     '''
     Comment POST route.
@@ -45,11 +45,11 @@ def add_new_comment():
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         comment = Comment(
-            user_id=userId,
-            image_id=form.data['image_id'],
-            content=form.data['content'],
-            created_at=datetime.now(),
-            updated_at=datetime.now()
+            user_id = userId,
+            image_id = form.data['image_id'],
+            content = form.data['content'],
+            created_at = datetime.now(),
+            updated_at = datetime.now()
         )
         db.session.add(comment)
         db.session.commit()
@@ -59,22 +59,22 @@ def add_new_comment():
         return form.errors
 
 
-@comment_routes.route('/edit/<int:id>', methods=['PATCH'])
-@login_required
+@ comment_routes.route('/edit/<int:id>', methods = ['PATCH'])
+@ login_required
 def edit(id):
     '''
     Comment PATCH route.
     '''
-    userId = current_user.get_id()
-    form = EditCommentForm()
-    form["csrf_token"].data = request.cookies["csrf_token"]
+    userId=current_user.get_id()
+    form=EditCommentForm()
+    form["csrf_token"].data=request.cookies["csrf_token"]
     if form.validate_on_submit():
-        edited_comment = Comment.query.get(id)
+        edited_comment=Comment.query.get(id)
         if int(userId) == int(edited_comment.user_id):
             print('-'*100, userId)
             print('='*100, edited_comment.user_id)
-            edited_comment.content = form.data['content']
-            edited_comment.updated_at = datetime.now()
+            edited_comment.content=form.data['content']
+            edited_comment.updated_at=datetime.now()
             db.session.commit()
 
             return edited_comment.to_dict()
@@ -85,13 +85,13 @@ def edit(id):
         return form.errors
 
 
-@comment_routes.route('/delete/<int:id>', methods=['DELETE'])
-@login_required
+@ comment_routes.route('/delete/<int:id>', methods = ['DELETE'])
+@ login_required
 def delete(id):
     '''
     Comment DELETE route.
     '''
-    comment_to_delete = Comment.query.filter(Comment.id == id).first()
+    comment_to_delete=Comment.query.filter(Comment.id == id).first()
 
     if not comment_to_delete:
         return 'Nothing to delete'

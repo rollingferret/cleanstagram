@@ -3,38 +3,50 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, Link } from "react-router-dom";
 
 import LikeButton from "../LikeButton/index";
-import { getImageById, deleteImage, updateCaption } from "../../store/images";
+import {
+  getImageById,
+  deleteImage,
+  updateCaption,
+  checkLikeStatus,
+} from "../../store/images";
 
 import imageForm from "./ImagePage.module.css";
 import GetAllCommentsForSinglePhoto from "../CommentDisplayComponent";
 import NewCommentForm from "../NewCommentForm";
 
 function ImagePage() {
-  const sessionUser = useSelector((state) => state.session.user);
-  const images = useSelector((state) => state.images);
   const history = useHistory();
   const dispatch = useDispatch();
   const { imageId } = useParams();
-  const comments = useSelector((state) => state.comments);
 
-  const image = images[imageId];
+  const comments = useSelector((state) => state.comments);
+  const sessionUser = useSelector((state) => state.session.user);
+  const images = useSelector((state) => state.images);
+  // const imagelikes = useSelector((state) => state.images);
+  let image;
+
+  const [editButtons, setEditButtons] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [caption, setCaption] = useState(image?.caption);
+
+  if (Object.keys(images).length > 0) {
+    image = images[imageId];
+  }
 
   let imagefilter = Object.entries(comments).filter(
     (x) => x[1].image_id === +imageId
   );
   let commentlength = Object.keys(imagefilter).length;
 
-  const imagelikes = useSelector((state) => state.images);
-
-  const [editButtons, setEditButtons] = useState(false);
-  const [edit, setEdit] = useState(false);
-  const [caption, setCaption] = useState(image?.caption);
-
   const newDate = image?.created_at.split(" ");
 
   useEffect(() => {
     dispatch(getImageById(imageId));
-  }, [dispatch, imageId]);
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(checkLikeStatus(imageId));
+  }, [image]);
 
   useEffect(() => {
     if (sessionUser?.id) {
@@ -83,10 +95,13 @@ function ImagePage() {
     editDelBtns = (
       <div className={imageForm.edit_delete}>
         <button
-          className={`${imageForm.btns}, far fa-edit`} onClick={onEdit}>
-        </button>
-        <button className={`${imageForm.btns}, fas fa-trash-alt`} onClick={onDelete}>
-        </button>
+          className={`${imageForm.btns}, far fa-edit`}
+          onClick={onEdit}
+        ></button>
+        <button
+          className={`${imageForm.btns}, fas fa-trash-alt`}
+          onClick={onDelete}
+        ></button>
       </div>
     );
   }
@@ -114,9 +129,10 @@ function ImagePage() {
   } else {
     addComments = (
       <div>
-        <Link
-          className={imageForm.login_btn}
-          to="/">Log In</Link> to post a comment
+        <Link className={imageForm.login_btn} to="/">
+          Log In
+        </Link>{" "}
+        to post a comment
       </div>
     );
   }
@@ -137,11 +153,15 @@ function ImagePage() {
         <div className={imageForm.rightcontainer}>
           <div className={imageForm.usercontainer}>
             <div>
-              <img alt="user_profile_picture"
+              <img
+                alt="user_profile_picture"
                 className={imageForm.user_profile_pic}
-                src={image.user.profile_url} />
-              <Link to={`/users/${image.user_id}`}
-                className={imageForm.username}>
+                src={image.user.profile_url}
+              />
+              <Link
+                to={`/users/${image.user_id}`}
+                className={imageForm.username}
+              >
                 {image.user.username}
               </Link>
               {editForm}
@@ -155,7 +175,7 @@ function ImagePage() {
             <div>
               <LikeButton id={image.id} />
               <span className={imageForm.likecomment}>
-                {imagelikes[imageId].likes_count} likes
+                {image.likes_count} likes
               </span>
               <span className={imageForm.likecomment}>
                 {commentlength} comments
@@ -164,9 +184,7 @@ function ImagePage() {
             <p className={imageForm.dates}>
               {newDate[2]} {newDate[1]}, {newDate[3]}
             </p>
-            <div>
-              {addComments}
-            </div>
+            <div>{addComments}</div>
           </div>
         </div>
       </div>

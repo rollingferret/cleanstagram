@@ -57,10 +57,6 @@ function SplashPage() {
         <div className="splashpage_container_main_right">
           <div className="splashpage_container_inner_right">
             <div className="splashpage_container_logo"></div>
-
-            {/* <div className="splashpage_container_logo" style={{backgroundImage: `url(${logoBig})`}}></div> */}
-            {/* <div class="fas fa-chevron-circle-left"></div>
-            <div class="fas fa-chevron-circle-right"></div> */}
             <LoginFormPage />
           </div>
           <Link className="splash_page_link_to_sign_up" to="/sign-up">
