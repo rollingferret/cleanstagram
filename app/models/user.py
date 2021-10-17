@@ -3,13 +3,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 DEFAULT_AVATAR_URL = 'https://www.premiumseatsusa.com/special-events/wp-content/uploads/2019/03/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg'
+# This is primarily used for seeder -> default value for front-end is in session store
 
 follows = db.Table(
     "follows",
     db.Column("follower_id", db.Integer, db.ForeignKey("users.id")),
     db.Column("followed_id", db.Integer, db.ForeignKey("users.id"))
 )
-
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'

@@ -69,6 +69,13 @@ export const logout = () => async (dispatch) => {
 
 export const signUp =
   (username, email, bio, profile_url, password) => async (dispatch) => {
+    let defaultImage
+    if (profile_url === "") {
+      defaultImage = "https://www.premiumseatsusa.com/special-events/wp-content/uploads/2019/03/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
+    } else {
+      defaultImage = profile_url
+    }
+
     const response = await fetch("/api/auth/signup", {
       method: "POST",
       headers: {
@@ -78,10 +85,11 @@ export const signUp =
         username,
         email,
         bio,
-        profile_url,
+        profile_url: defaultImage,
         password,
       }),
-    });
+    }
+    );
 
     if (response.ok) {
       const data = await response.json();
