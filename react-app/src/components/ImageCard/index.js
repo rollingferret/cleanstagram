@@ -73,7 +73,7 @@ function ImageCard({ image }) {
         </div>
         <div className={css["like-display-container"]}>
           {/* refactor later! only images slice of state is currently updated, and userFeed likes count is not updated. */}
-          {updatedImageForLikesDisplay.likes_count} likes
+          {updatedImageForLikesDisplay?.likes_count} likes
         </div>
         <div className={css["caption-container"]}>
           <Link to={`/users/${image.user.id}`} className={css.card_name}>
