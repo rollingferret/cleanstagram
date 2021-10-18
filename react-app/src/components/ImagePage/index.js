@@ -22,7 +22,6 @@ function ImagePage() {
   const comments = useSelector((state) => state.comments);
   const sessionUser = useSelector((state) => state.session.user);
   const images = useSelector((state) => state.images);
-  // const imagelikes = useSelector((state) => state.images);
   let image;
 
   const [editButtons, setEditButtons] = useState(false);
@@ -42,11 +41,11 @@ function ImagePage() {
 
   useEffect(() => {
     dispatch(getImageById(imageId));
-  }, [dispatch]);
+  }, [dispatch, imageId]);
 
   useEffect(() => {
     dispatch(checkLikeStatus(imageId));
-  }, [image]);
+  }, [dispatch, imageId, image]);
 
   useEffect(() => {
     if (sessionUser?.id) {
@@ -154,17 +153,17 @@ function ImagePage() {
           <div className={imageForm.usercontainer}>
             <div>
               <div className={imageForm.rowtest}>
-              <div
-                alt="user_profile_picture"
-                className={imageForm.user_profile_pic}
-                style={{ backgroundImage: `url(${image.user.profile_url})` }}
-              />
-              <Link
-                to={`/users/${image.user_id}`}
-                className={imageForm.username}
-              >
-                {image.user.username}
-              </Link>
+                <div
+                  alt="user_profile_picture"
+                  className={imageForm.user_profile_pic}
+                  style={{ backgroundImage: `url(${image.user.profile_url})` }}
+                />
+                <Link
+                  to={`/users/${image.user_id}`}
+                  className={imageForm.username}
+                >
+                  {image.user.username}
+                </Link>
               </div>
               {editForm}
             </div>
