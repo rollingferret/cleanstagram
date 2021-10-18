@@ -17,6 +17,12 @@
     margin-top: 3%;
 }
 
+.profile_picture_buffer {
+
+    width: 65px;
+    height: 65px;
+}
+
 .profile_picture {
     width: 65px;
     height: 65px;
