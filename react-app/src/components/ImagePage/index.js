@@ -153,10 +153,11 @@ function ImagePage() {
         <div className={imageForm.rightcontainer}>
           <div className={imageForm.usercontainer}>
             <div>
-              <img
+              <div className={imageForm.rowtest}>
+              <div
                 alt="user_profile_picture"
                 className={imageForm.user_profile_pic}
-                src={image.user.profile_url}
+                style={{ backgroundImage: `url(${image.user.profile_url})` }}
               />
               <Link
                 to={`/users/${image.user_id}`}
@@ -164,6 +165,7 @@ function ImagePage() {
               >
                 {image.user.username}
               </Link>
+              </div>
               {editForm}
             </div>
             {editDelBtns}
