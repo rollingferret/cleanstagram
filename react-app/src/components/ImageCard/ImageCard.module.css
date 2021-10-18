@@ -126,6 +126,7 @@ input:focus {
 	border: 1px solid lightgrey;
 	border-radius: 50%;
 	height: 65px;
+	width: 65px;
 	margin-left: 10px;
 	display: flex;
 	position: relative;
