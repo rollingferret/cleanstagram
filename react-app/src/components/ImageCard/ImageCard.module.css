@@ -145,7 +145,7 @@ input:focus {
 	text-align: center;
 	position: relative;
 	top: -50px;
-	left: 90px;
+	left: 95px;
 	max-width: 150px;
 	border-radius: 3px;
 	background-color: rgba(178, 223, 252, 1);
@@ -192,7 +192,6 @@ input:focus {
 	background: linear-gradient(to right, rgba(178, 223, 252, 1) 50%, rgba(0, 149, 246, 0.8) 50%) left;
     background-size: 200%;
     transition: 0.8s ease-in-out;
-	z-index: +1;
 }
 
 .profilepiclink:hover {
