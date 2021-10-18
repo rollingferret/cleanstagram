@@ -1,0 +1,58 @@
+.outtereditcommentdiv {
+    height: 150px;
+    width: 400px;
+    display: flex;
+}
+
+.innercommentdivs {
+
+    height: 60%;
+    width: 100%;
+}
+
+.commentdivform {
+    background-color: rgba(240, 240, 240, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+}
+
+#topborderlinecommentdiv {
+
+    border-top: 6px solid black;
+
+}
+
+.innercommentdivs-2 {
+
+    height: 20%;
+    width: 100%;
+    display: flex;
+    direction: row;
+    /* background-color: red; */
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.contentcommentdiv {
+
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+}
+
+.buttoncommentdivmodal {
+    width: 100%;
+    height: 100%;
+    transition-duration:500ms;
+}
+
+.buttoncommentdivmodal:hover {
+    background-color: rgba(0, 149, 246, 0.8);
+    cursor: pointer;
+  }
