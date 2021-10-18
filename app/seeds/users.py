@@ -1,6 +1,8 @@
 from faker import Faker
+from random import randint
 
 from app.models import db, User
+from app.seeds.user_image_seed import user_images
 
 DEFAULT_AVATAR_URL = 'https://www.premiumseatsusa.com/special-events/wp-content/uploads/2019/03/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg'
 
@@ -14,18 +16,20 @@ fake = Faker()
 
 
 def seed_users():
+    image_list = list(user_images)
+
     demo = User(
-        username='Demo', email='demo@aa.io', password='password', avatar_url=DEFAULT_AVATAR_URL)
+        username='Demo', email='demo@aa.io', password='password', avatar_url=image_list[randint(1, 20)])
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password', avatar_url=DEFAULT_AVATAR_URL)
+        username='marnie', email='marnie@aa.io', password='password', avatar_url=image_list[randint(1, 20)])
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password', avatar_url=DEFAULT_AVATAR_URL)
+        username='bobbie', email='bobbie@aa.io', password='password', avatar_url=image_list[randint(1, 20)])
     for i in range(0, 10):
         new_user = User(
             username=fake.user_name(),
             email=fake.free_email(),
             password='password',
-            avatar_url=fake.image_url(),
+            avatar_url=image_list[randint(1, 20)],
             bio=fake.sentences(nb=3)
         )
         db.session.add(new_user)
