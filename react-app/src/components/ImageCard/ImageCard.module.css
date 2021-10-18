@@ -133,6 +133,9 @@ input:focus {
 	top: -12px;
 	margin-top: 10px;
 	margin-bottom: 24px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .link_to_user {
