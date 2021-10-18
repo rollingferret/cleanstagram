@@ -6,6 +6,7 @@
 
 .inner_comment {
     display: flex;
+    width: 100%;
 }
 
 .user_profile_pic {
@@ -14,19 +15,23 @@
     border-radius: 50%;
     margin: 0 1%;
     object-fit:cover;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .user_name {
     font-weight: bold;
     font-size: small;
     margin-right: 2%;
+
 }
 
 .comment_content {
     font-size: small;
-    word-break: break-all;
-    width: 200px;
+    word-break: break-word;
     min-width: 100%;
+    display: flex;
 }
 
 .comment_date {

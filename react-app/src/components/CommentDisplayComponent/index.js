@@ -34,9 +34,9 @@ function GetAllCommentsForSinglePhoto({ imageId }) {
         >
           <div className={css.comment_container}>
             <div className={css.inner_comment}>
-              <img
+              <div
                 alt="user_profile_image"
-                src={comment.user.profile_url}
+                style={{ backgroundImage: `url(${comment.user.profile_url})`}}
                 className={css.user_profile_pic}
               />
               <div className={css.username_content}>
