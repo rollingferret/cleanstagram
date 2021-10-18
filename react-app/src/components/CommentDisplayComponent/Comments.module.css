@@ -6,6 +6,7 @@
 
 .inner_comment {
     display: flex;
+    width: 100%;
 }
 
 .user_profile_pic {
@@ -27,6 +28,7 @@
     font-size: small;
     word-break: break-word;
     min-width: 100%;
+    display: flex;
 }
 
 .comment_date {
