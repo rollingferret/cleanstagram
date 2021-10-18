@@ -4,17 +4,15 @@ import LoginFormPage from "../LoginFormPage";
 import phoneborder from "../../assets/images/phoneborder.png";
 import githublogo from "../../assets/images/github.png";
 // these 4 following lines seem like they were not used, but they are needed
-import logo from "../../assets/images/CleanstaGram.png";
-import splash_page from "./splash_page.css";
-import logoBig from "../../assets/images/cleanstagramBig.png";
-import animatedLogo from "../../assets/images/cleanstagramBig.gif";
-
+// import logo from "../../assets/images/CleanstaGram.png";
+import "./splash_page.css";
+import "../../assets/images/cleanstagramBig.png";
+import "../../assets/images/cleanstagramBig.gif";
 import bunbun from "../../assets/images/bunbun.jpg";
 import cat from "../../assets/images/cat.jpg";
 import prin from "../../assets/images/princessdoggo.jpg";
 import raccoon from "../../assets/images/raccoon.jpg";
 import sparkz from "../../assets/images/sparkzwind.jpg";
-
 
 function SplashPage() {
   //test
@@ -81,8 +79,13 @@ function SplashPage() {
           <a
             href="https://github.com"
             className="splashpage_github_logo"
-            style={{ backgroundImage: `url(${githublogo})` }}
-          ></a>
+            style={{
+              backgroundImage: `url(${githublogo})`,
+              color: "transparent",
+            }}
+          >
+            GitHub Link
+          </a>
           <a href="https://github.com/rollingferret" className="githubfooter">
             Peter Joh
           </a>
