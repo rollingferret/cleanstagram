@@ -51,13 +51,11 @@ function ImageCard({ image }) {
 						to={`/users/${image.user.id}`}
 						className={css.profilepiclink}
 					>
-						<img
+
+						<div
 							alt="profile_picture"
-							src={
-								image.user.profile_url
-									? image.user.profile_url
-									: 'https://img.freepik.com/free-vector/cute-welsh-corgi-dog-waving-paw-cartoon_42750-623.jpg?size=338&ext=jpg'
-							}
+							style={{ backgroundImage: `url(${image.user.profile_url?image.user.profile_url:'https://img.freepik.com/free-vector/cute-welsh-corgi-dog-waving-paw-cartoon_42750-623.jpg?size=338&ext=jpg'})` }}
+
 							className={css.profile_pic}
 						/>
 					</Link>

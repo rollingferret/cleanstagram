@@ -126,12 +126,16 @@ input:focus {
 	border: 1px solid lightgrey;
 	border-radius: 50%;
 	height: 65px;
+	width: 65px;
 	margin-left: 10px;
 	display: flex;
 	position: relative;
 	top: -12px;
 	margin-top: 10px;
 	margin-bottom: 24px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .link_to_user {

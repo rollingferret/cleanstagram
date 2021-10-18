@@ -93,14 +93,19 @@
 }
 
 .user_profile_pic {
-  max-width: 35px;
-  max-height: 35px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .username {
+  display: flex;
+  padding-left: 5px;
   font-weight: bold;
+  align-items: center;
 }
 
 .dates {
@@ -110,4 +115,12 @@
 
 .login_btn {
   color: royalblue;
+}
+
+.rowtest {
+
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+
 }
