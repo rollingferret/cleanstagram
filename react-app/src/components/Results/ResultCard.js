@@ -6,11 +6,13 @@ import styles from "./Results.module.css";
 function ResultCard({ user }) {
   return (
     <div className={styles.card_container}>
-      <img
+      <div className={styles.profile_picture_buffer}>
+      <div
         alt="user_profile_pic"
-        src={user.profile_url}
+        style={{ backgroundImage: `url(${user.profile_url})` }}
         className={styles.profile_picture}
       />
+      </div>
       <div className={styles.user_info}>
         <Link to={`/users/${user.id}`} className={styles.user_name}>
           {user.username}
@@ -22,3 +24,4 @@ function ResultCard({ user }) {
 }
 
 export default ResultCard;
+
