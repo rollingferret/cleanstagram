@@ -109,7 +109,6 @@ export const deleteImage = (imageId) => async (dispatch) => {
   const res = await fetch(`/api/images/${imageId}`, {
     method: "DELETE",
   });
-
   if (res.ok) {
     const query = await res.json();
     dispatch(del(query));

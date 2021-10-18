@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { delCommentThunk } from "../../store/comments";
-import deletecommentbutton from "./deletecommentbutton.css"
-
+import styles from "./deletecommentbutton.module.css";
 
 function DeleteCommentButton(props) {
   const dispatch = useDispatch();
@@ -13,9 +12,13 @@ function DeleteCommentButton(props) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="deletecommentbuttoncss">
-        <div className="deletebuttoninnercss">Are you sure you want to delete?</div>
-        <button type="submit" className='deletebuttonsubmitcss'>Delete!</button>
+      <form onSubmit={handleSubmit} className={styles.deletecommentbuttoncss}>
+        <div className={styles.deletebuttoninnercss}>
+          Are you sure you want to delete?
+        </div>
+        <button type="submit" className={styles.deletebuttonsubmitcss}>
+          Delete!
+        </button>
       </form>
     </>
   );

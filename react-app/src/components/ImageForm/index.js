@@ -15,7 +15,7 @@ function ImageForm() {
   const [image, setImage] = useState(null);
   const [imageLoading, setImageLoading] = useState(false);
   const [error, setError] = useState("");
-  const [imageFile, setImageFile] = useState("Current Image: ")
+  const [imageFile, setImageFile] = useState("Current Image: ");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,9 +44,9 @@ function ImageForm() {
   const updateImage = (e) => {
     const file = e.target.files[0];
     setImage(file);
-    const path = e.target.value.split("\\")
-    const fileName = path[path.length - 1]
-    setImageFile("Current Image: " + fileName)
+    const path = e.target.value.split("\\");
+    const fileName = path[path.length - 1];
+    setImageFile("Current Image: " + fileName);
   };
 
   return (
@@ -57,8 +57,9 @@ function ImageForm() {
         {error && <h3 className={css.error}>{error}</h3>}
         <div className={css.add_image}>
           <div className={css.add_image_label}>
-            <label className={`fas fa-plus ${css.file_input}`}
-              for="pic_upload"
+            <label
+              className={`fas fa-plus ${css.file_input}`}
+              htmlFor="pic_upload"
             ></label>
           </div>
           <div>
@@ -82,12 +83,12 @@ function ImageForm() {
           />
         </div>
         <div>
-          <button type="submit"
-            className={css.btns}
-          >Share</button>
-          <Link to="/"
-            className={css.btns}
-          >Cancel</Link>
+          <button type="submit" className={css.btns}>
+            Share
+          </button>
+          <Link to="/" className={css.btns}>
+            Cancel
+          </Link>
           {imageLoading && <p>Loading...</p>}
         </div>
       </form>

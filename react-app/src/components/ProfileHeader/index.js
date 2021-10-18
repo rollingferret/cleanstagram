@@ -26,11 +26,13 @@ function ProfileHeader({ user }) {
           <div className={styles.username_and_buttons}>
             <div className={styles.username}>
               <h1>{user.username}</h1>
-              <p>{user.bio}</p>
             </div>
             {currentUser && currentUser.id !== +userId && (
               <FollowButton currentUser={currentUser} userIdToFollow={userId} />
             )}
+          </div>
+          <div className={styles.bio}>
+            <p>{user.bio}</p>
           </div>
           <div className={styles.profile_stats}>
             <div className={styles.following_stats}>
