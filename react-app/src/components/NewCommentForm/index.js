@@ -32,13 +32,7 @@ function CommentForm() {
 
         if (res) {
           setContent("");
-        } else {
-          //FIXME
-          console.log("error");
         }
-      } else {
-        //FIXME
-        console.log("missing content");
       }
     }
   };
