@@ -11,7 +11,7 @@ function LikeButton({ id }) {
 
   const image = useSelector((state) => state.images[id]);
   let isLiked;
-  if (Object.keys(image).length > 0) {
+  if (image && Object.keys(image).length > 0) {
     isLiked = image.isLiked;
 
     if (isLiked !== liked) {
