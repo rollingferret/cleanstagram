@@ -25,7 +25,6 @@ def check_password(form, field):
     # Checking if password contains !@#$%^&*(),./?
     special_sym = '!@#$%^&*(),./?'
     password = field.data
-    print(field.data, '99999999999999999999999999999999999999999999999999999')
 
     if len(password) < 8 or len(password) > 32:
         raise ValidationError(
