@@ -4,8 +4,11 @@
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-  height: 80%;
+  height: calc(100vh - 200px);
+  /* transform: translateY(175px); */
 }
+
+
 
 .formDiv {
   display: flex;

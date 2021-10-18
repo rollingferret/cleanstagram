@@ -34,11 +34,13 @@ function GetAllCommentsForSinglePhoto({ imageId }) {
         >
           <div className={css.comment_container}>
             <div className={css.inner_comment}>
+              <div className={css.minsizeprofile}>
               <div
                 alt="user_profile_image"
                 style={{ backgroundImage: `url(${comment.user.profile_url})`}}
                 className={css.user_profile_pic}
               />
+              </div>
               <div className={css.username_content}>
                 <Link
                   to={`/users/${comment.user_id}`}

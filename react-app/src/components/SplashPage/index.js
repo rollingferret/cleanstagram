@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import LoginFormPage from "../LoginFormPage";
 import phoneborder from "../../assets/images/phoneborder.png";
 import githublogo from "../../assets/images/github.png";
-// these 4 following lines seem like they were not used, but they are needed
 // import logo from "../../assets/images/CleanstaGram.png";
 import "./splash_page.css";
 import "../../assets/images/cleanstagramBig.png";
