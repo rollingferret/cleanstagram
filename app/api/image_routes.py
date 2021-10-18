@@ -77,14 +77,11 @@ def delete_image(id):
     else:
 
         image_url = image_to_delete.image_url
-        bucket_deletion = delete_from_s3(image_url)
+        delete_from_s3(image_url)
 
-        if bucket_deletion['ok']:
-            db.session.delete(image_to_delete)
-            db.session.commit()
-            return {'deleted': True}
-        else:
-            return bucket_deletion
+        db.session.delete(image_to_delete)
+        db.session.commit()
+        return {'deleted': True}
 
 
 @image_routes.route('/<int:id>/counts', methods=['GET'])
@@ -176,7 +173,8 @@ def get_feed():
     user = User.query.get(user_id).to_dict()
     followed = user['following']
     followed.append(user_id)
-    images = Image.query.filter(Image.user_id.in_(followed)).order_by(Image.created_at.desc()).limit(10).all()
+    images = Image.query.filter(Image.user_id.in_(followed)).order_by(
+        Image.created_at.desc()).limit(10).all()
     image_list = [image.to_dict() for image in images]
     image_dict = {'ordered_feed': image_list}
     return image_dict

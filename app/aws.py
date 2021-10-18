@@ -44,7 +44,12 @@ def upload_file_to_s3(file, acl="public-read"):
 
 
 def delete_from_s3(image_url):
-    filename = image_url.split(S3_LOCATION)[1]
+    split_url = image_url.split(S3_LOCATION)
+    if len(split_url) == 2:
+        filename = image_url.split(S3_LOCATION)[1]
+    else:
+        # filename not from s3
+        return {'ok': True}
     try:
         s3.delete_object(Bucket=BUCKET_NAME, Key=filename)
         return {'ok': True}
