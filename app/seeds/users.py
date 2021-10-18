@@ -30,7 +30,7 @@ def seed_users():
             email=fake.free_email(),
             password='password',
             avatar_url=image_list[randint(1, 20)],
-            bio=fake.sentences(nb=3)
+            bio=' '.join(fake.sentences(nb=3))
         )
         db.session.add(new_user)
 
