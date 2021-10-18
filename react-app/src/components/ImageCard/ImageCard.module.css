@@ -1,7 +1,10 @@
 .card-container {
+	display: flex;
+	flex-direction: column;
 	width: 615px;
 	/* height: 1040px; */
-	height: 1067px;
+	/* height: 1067px; */
+	height: auto;
 	border: 1px solid #dbdbdb;
 	border-radius: 3px;
 	margin-bottom: 24px;
@@ -10,11 +13,11 @@
 
 .user-container {
 	height: 60px;
-	/* border-bottom: 1px solid black; */
 }
 
 .image-container {
-	height: 705px;
+	/* height: 705px; */
+	height: auto;
 	border-bottom: 1px solid rgba(90, 90, 90, 0.699);
 }
 
@@ -118,7 +121,8 @@ input:focus {
 	box-sizing: border-box;
 	max-width: 100%;
 	/* max-height: 100%; */
-	height: 700px;
+	/* height: 700px; */
+	height: 300px;
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
@@ -138,7 +142,6 @@ input:focus {
 	position: relative;
 	top: -12px;
 	margin-top: 10px;
-
 }
 
 .link_to_user {
@@ -152,31 +155,35 @@ input:focus {
 	padding: 5px;
 	color: white;
 	font-weight: 900;
-	transition-duration:500ms;
+	transition-duration: 500ms;
 	display: flex;
 	justify-content: center;
 
-	background: linear-gradient(to left, rgba(178, 223, 252, 1) 50%, rgba(0, 149, 246, 0.8) 50%) right;
-    background-size: 200%;
-    transition: 0.8s ease-in-out;
+	background: linear-gradient(
+			to left,
+			rgba(178, 223, 252, 1) 50%,
+			rgba(0, 149, 246, 0.8) 50%
+		)
+		right;
+	background-size: 200%;
+	transition: 0.8s ease-in-out;
 
 	/* z-index: -1; */
 }
 
 .comment_container {
-  box-sizing: border-box;
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 100%;
-  max-height: 90px;
-  padding: 1%;
+	box-sizing: border-box;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 100%;
+	max-height: 90px;
+	padding: 1%;
 }
 
 .link_to_user:hover {
-  background-color: rgba(0, 149, 246, 0.8);
-  cursor: pointer;
-  background-position: left;
-
+	background-color: rgba(0, 149, 246, 0.8);
+	cursor: pointer;
+	background-position: left;
 }
 
 .profilepiclink {
@@ -189,13 +196,18 @@ input:focus {
 	width: 80px;
 	border-radius: 50%;
 	/* transition-duration:500ms; */
-	background: linear-gradient(to right, rgba(178, 223, 252, 1) 50%, rgba(0, 149, 246, 0.8) 50%) left;
-    background-size: 200%;
-    transition: 0.8s ease-in-out;
+	background: linear-gradient(
+			to right,
+			rgba(178, 223, 252, 1) 50%,
+			rgba(0, 149, 246, 0.8) 50%
+		)
+		left;
+	background-size: 200%;
+	transition: 0.8s ease-in-out;
 	z-index: +1;
 }
 
 .profilepiclink:hover {
 	background-color: rgba(0, 149, 246, 0.8);
 	background-position: right;
-  }
+}
