@@ -6,9 +6,9 @@ import styles from "./Results.module.css";
 function ResultCard({ user }) {
   return (
     <div className={styles.card_container}>
-      <img
+      <div
         alt="user_profile_pic"
-        src={user.profile_url}
+        style={{ backgroundImage: `url(${user.profile_url})` }}
         className={styles.profile_picture}
       />
       <div className={styles.user_info}>
@@ -22,3 +22,4 @@ function ResultCard({ user }) {
 }
 
 export default ResultCard;
+
