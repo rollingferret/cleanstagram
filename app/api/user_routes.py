@@ -44,7 +44,6 @@ def unfollow_user(id):
     '''
     user that is currently logged in can unfollow the user whose id is in the params
     '''
-    print('0'*100, 'hitting the unfollow route')
     curr_user = User.query.get(current_user.get_id())
     if not curr_user:
         return {'errors': 'Current user does not exist.'}, 401
