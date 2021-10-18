@@ -8,6 +8,7 @@ import logo from "../../assets/images/CleanstaGram.png";
 import splash_page from "./splash_page.css";
 import logoBig from "../../assets/images/cleanstagramBig.png";
 import animatedLogo from "../../assets/images/cleanstagramBig.gif";
+
 import bunbun from "../../assets/images/bunbun.jpg";
 import cat from "../../assets/images/cat.jpg";
 import prin from "../../assets/images/princessdoggo.jpg";
