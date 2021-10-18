@@ -70,10 +70,15 @@ function ImageCard({ image }) {
 				</div>
 				<div className={css['image-container']}>
 					<Link to={`/images/${image.id}`}>
-						<div
+						{/* <div
 							style={{
 								backgroundImage: `url(${image?.image_url})`,
 							}}
+							alt={`${image?.user.username}'s pic'`}
+							className={css.image}
+						/> */}
+						<img
+							src={image.image_url}
 							alt={`${image?.user.username}'s pic'`}
 							className={css.image}
 						/>
@@ -96,11 +101,11 @@ function ImageCard({ image }) {
 					</Link>{' '}
 					{image?.caption}
 				</div>
-				<div className={css['date-comment-container']}>
-					Posted {image?.created_at}
-				</div>
 				<div className={css.comment_container}>
 					<CommentDisplayComponent imageId={image.id.toString()} />
+				</div>
+				<div className={css['date-comment-container']}>
+					Posted {image?.created_at}
 				</div>
 				<div className={css['add-comment-container']}>
 					<form onSubmit={handleSubmit}>
