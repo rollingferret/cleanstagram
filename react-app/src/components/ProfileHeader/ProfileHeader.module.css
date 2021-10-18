@@ -43,6 +43,12 @@
   font-weight: 300;
 }
 
+.bio {
+  /* FIXME */
+  height: 30px;
+  width: 30px;
+}
+
 .profile_stats {
   display: flex;
 }
