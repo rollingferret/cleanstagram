@@ -10,8 +10,6 @@ from app.seeds.image_seed import image_seed
 
 fake = Faker()
 
-image_ids = []
-
 
 def seed_images():
     image_list = list(image_seed)
