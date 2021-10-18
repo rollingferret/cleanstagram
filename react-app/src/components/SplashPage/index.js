@@ -84,7 +84,7 @@ function SplashPage() {
               color: "transparent",
             }}
           >
-            GitHub
+            GitHub Link
           </a>
           <a href="https://github.com/rollingferret" className="githubfooter">
             Peter Joh

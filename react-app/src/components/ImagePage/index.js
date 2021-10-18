@@ -26,7 +26,7 @@ function ImagePage() {
 
   const [editButtons, setEditButtons] = useState(false);
   const [edit, setEdit] = useState(false);
-  const [caption, setCaption] = useState(image?.caption);
+  const [caption, setCaption] = useState(image?.caption ? image.caption : "");
 
   if (Object.keys(images).length > 0) {
     image = images[imageId];
