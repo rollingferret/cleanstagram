@@ -5,7 +5,7 @@ import { login } from "../../store/session";
 import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const [login_param, setLoginParam] = useState("");
   const [password, setPassword] = useState("");
   const user = useSelector((state) => state.session.user);
@@ -15,6 +15,7 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(login_param, password));
     if (data) {
+      console.log(data);
       setErrors(data);
     }
   };
@@ -31,14 +32,16 @@ const LoginForm = () => {
     return <Redirect to="/home" />;
   }
 
+  const enabled_submit = login_param && password;
+
   return (
     <div className={styles.authloginform_outter_container}>
       <form onSubmit={onLogin}>
-        <div className={styles.authloginform_errors}>
+        {/* <div className={styles.authloginform_errors}>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
-        </div>
+        </div> */}
         <div className={styles.authloginform_inner_container}>
           <div>
             <input
@@ -49,6 +52,7 @@ const LoginForm = () => {
               onChange={updateLoginParam}
               className={styles.input_div}
             />
+            {errors && <p className={styles.errors}>{errors["login_param"]}</p>}
           </div>
           <div>
             <input
@@ -59,10 +63,16 @@ const LoginForm = () => {
               onChange={updatePassword}
               className={styles.input_div}
             />
+            {errors && <p className={styles.errors}>{errors["password"]}</p>}
           </div>
-          {/* </div> */}
           <div>
-            <button className={styles.button} type="submit">
+            <button
+              className={`${styles.button} ${
+                enabled_submit ? null : styles.disabled
+              }`}
+              disabled={!enabled_submit}
+              type="submit"
+            >
               Login
             </button>
           </div>
