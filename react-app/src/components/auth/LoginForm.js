@@ -32,6 +32,8 @@ const LoginForm = () => {
     return <Redirect to="/home" />;
   }
 
+  const enabled_submit = login_param && password;
+
   return (
     <div className={styles.authloginform_outter_container}>
       <form onSubmit={onLogin}>
@@ -64,7 +66,13 @@ const LoginForm = () => {
             {errors && <p className={styles.errors}>{errors["password"]}</p>}
           </div>
           <div>
-            <button className={styles.button} type="submit">
+            <button
+              className={`${styles.button} ${
+                enabled_submit ? null : styles.disabled
+              }`}
+              disabled={!enabled_submit}
+              type="submit"
+            >
               Login
             </button>
           </div>

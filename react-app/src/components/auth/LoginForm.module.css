@@ -31,12 +31,6 @@
 }
 
 .input_div {
-  /* width: 300px;
-  height: 35px;
-  text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  background-color: rgba(178, 223, 252, 0.2);
-  font-size: 1rem; */
   height: 40px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   width: 300px;
@@ -56,4 +50,18 @@
   border-radius: 15px;
   position: relative;
   left: 20px;
+}
+
+.errors {
+  padding: 5px 0;
+  font-size: 0.9rem;
+  color: red;
+}
+
+.disabled {
+  background-color: rgb(214, 214, 214);
+}
+.disabled:hover {
+  background-color: rgb(214, 214, 214);
+  cursor: default;
 }
