@@ -3,9 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
-  height: calc(100vh - 200px);
-  /* transform: translateY(175px); */
+  margin-top: 40px;
 }
 
 .formDiv {
@@ -18,7 +16,7 @@
 }
 
 .logoDiv {
-  height: 120px;
+  height: 70px;
   width: 70%;
   background-position: center;
   background-size: 100%;
@@ -30,8 +28,6 @@
 }
 
 .logoDiv:hover {
-  /* background-image: url("../../assets/images/cleanstagramBig.png");
-background-image: url("../../assets/images/cleanstagramBig.gif"); */
   animation-name: change-background-image-hover;
   animation-duration: 3s;
   background-image: url("../../assets/images/cleanstagramBig.png");
@@ -77,7 +73,7 @@ background-image: url("../../assets/images/cleanstagramBig.gif"); */
 }
 
 .inputDiv {
-  margin: 5px 0;
+  margin: 2px 0;
   width: 70%;
 }
 
@@ -113,4 +109,10 @@ background-image: url("../../assets/images/cleanstagramBig.gif"); */
 .disabled:hover {
   background-color: rgb(214, 214, 214);
   cursor: default;
+}
+
+.errors {
+  color: red;
+  font-size: 0.8rem;
+  text-align: center;
 }

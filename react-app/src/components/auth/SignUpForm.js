@@ -8,7 +8,7 @@ import styles from "./SignUpForm.module.css";
 import logo from "../../assets/images/cleanstagramBig.png";
 
 const SignUpForm = () => {
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
@@ -84,11 +84,6 @@ const SignUpForm = () => {
           <h1>Sign up to see photos and videos from your friends.</h1>
         </div>
         <form onSubmit={onSignUp} className={styles.form}>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
           <div className={styles.inputDiv}>
             <input
               placeholder="Username"
@@ -99,6 +94,7 @@ const SignUpForm = () => {
               required={true}
               className={styles.input}
             ></input>
+            {errors && <p className={styles.errors}>{errors["username"]}</p>}
           </div>
           <div className={styles.inputDiv}>
             <input
@@ -120,6 +116,7 @@ const SignUpForm = () => {
               required={true}
               className={styles.input}
             ></input>
+            {errors && <p className={styles.errors}>{errors["email"]}</p>}
           </div>
           <div className={styles.inputDiv}>
             <input
@@ -152,6 +149,7 @@ const SignUpForm = () => {
               required={true}
               className={styles.input}
             ></input>
+            {errors && <p className={styles.errors}>{errors["password"]}</p>}
           </div>
           <button
             type="submit"

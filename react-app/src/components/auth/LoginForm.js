@@ -5,7 +5,7 @@ import { login } from "../../store/session";
 import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState({});
   const [login_param, setLoginParam] = useState("");
   const [password, setPassword] = useState("");
   const user = useSelector((state) => state.session.user);
