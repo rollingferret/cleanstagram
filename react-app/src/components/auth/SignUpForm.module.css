@@ -8,8 +8,6 @@
   /* transform: translateY(175px); */
 }
 
-
-
 .formDiv {
   display: flex;
   flex-direction: column;
@@ -107,4 +105,12 @@ background-image: url("../../assets/images/cleanstagramBig.gif"); */
 .button:hover {
   background-color: rgba(0, 149, 246, 0.8);
   cursor: pointer;
+}
+
+.disabled {
+  background-color: rgb(214, 214, 214);
+}
+.disabled:hover {
+  background-color: rgb(214, 214, 214);
+  cursor: default;
 }
