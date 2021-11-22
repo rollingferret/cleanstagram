@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { connectAdvanced, useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, Link } from "react-router-dom";
 
 import LikeButton from "../LikeButton/index";
@@ -23,14 +23,13 @@ function ImagePage() {
   const sessionUser = useSelector((state) => state.session.user);
   const images = useSelector((state) => state.images);
   let image;
+  if (Object.keys(images).length > 0) {
+    image = images[imageId];
+  }
 
   const [editButtons, setEditButtons] = useState(false);
   const [edit, setEdit] = useState(false);
   const [caption, setCaption] = useState(image?.caption ? image.caption : "");
-
-  if (Object.keys(images).length > 0) {
-    image = images[imageId];
-  }
 
   let imagefilter = Object.entries(comments).filter(
     (x) => x[1].image_id === +imageId
@@ -107,6 +106,7 @@ function ImagePage() {
 
   let editForm;
   if (edit) {
+    console.log(caption);
     editForm = (
       <form onSubmit={updateSubmit}>
         <input
