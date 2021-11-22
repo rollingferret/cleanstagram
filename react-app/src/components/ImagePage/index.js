@@ -10,7 +10,7 @@ import {
   checkLikeStatus,
 } from "../../store/images";
 
-import imageForm from "./ImagePage.module.css";
+import styles from "./ImagePage.module.css";
 import GetAllCommentsForSinglePhoto from "../CommentDisplayComponent";
 import NewCommentForm from "../NewCommentForm";
 
@@ -91,31 +91,32 @@ function ImagePage() {
   let editDelBtns;
   if (editButtons) {
     editDelBtns = (
-      <div className={imageForm.edit_delete}>
-        <button
-          className={`${imageForm.btns}, far fa-edit`}
-          onClick={onEdit}
-        ></button>
-        <button
-          className={`${imageForm.btns}, fas fa-trash-alt`}
-          onClick={onDelete}
-        ></button>
+      <div className={styles.edit_delete}>
+        <button className={`${styles.btns}`} onClick={onEdit}>
+          Edit
+        </button>
+        <button className={`${styles.btns}`} onClick={onDelete}>
+          Delete
+        </button>
       </div>
     );
   }
 
   let editForm;
   if (edit) {
-    console.log(caption);
     editForm = (
-      <form onSubmit={updateSubmit}>
+      <form className={styles.editForm} onSubmit={updateSubmit}>
         <input
           type="text"
           value={caption}
           onChange={(e) => setCaption(e.target.value)}
         />
-        <button type="submit">Update</button>
-        <button onClick={() => setEdit(false)}>Cancel</button>
+        <button className={styles.btns} type="submit">
+          Update
+        </button>
+        <button className={styles.btns} onClick={() => setEdit(false)}>
+          Cancel
+        </button>
       </form>
     );
   } else {
@@ -128,7 +129,7 @@ function ImagePage() {
   } else {
     addComments = (
       <div>
-        <Link className={imageForm.login_btn} to="/">
+        <Link className={styles.login_btn} to="/">
           Log In
         </Link>{" "}
         to post a comment
@@ -139,28 +140,28 @@ function ImagePage() {
   if (!image) return null;
 
   return (
-    <div className={imageForm.outercontainer}>
-      <div className={imageForm.innercontainer}>
-        <div className={imageForm.imgcontainer}>
+    <div className={styles.outercontainer}>
+      <div className={styles.innercontainer}>
+        <div className={styles.imgcontainer}>
           <div
             style={{
               backgroundImage: `url(${image.image_url})`,
             }}
-            className={imageForm.img}
+            className={styles.img}
           ></div>
         </div>
-        <div className={imageForm.rightcontainer}>
-          <div className={imageForm.usercontainer}>
+        <div className={styles.rightcontainer}>
+          <div className={styles.usercontainer}>
             <div>
-              <div className={imageForm.rowtest}>
+              <div className={styles.rowtest}>
                 <div
                   alt="user_profile_picture"
-                  className={imageForm.user_profile_pic}
+                  className={styles.user_profile_pic}
                   style={{ backgroundImage: `url(${image.user.profile_url})` }}
                 />
                 <Link
                   to={`/users/${image.user_id}`}
-                  className={imageForm.username}
+                  className={styles.username}
                 >
                   {image.user.username}
                 </Link>
@@ -169,20 +170,20 @@ function ImagePage() {
             </div>
             {editDelBtns}
           </div>
-          <div className={imageForm.commentcontainer}>
+          <div className={styles.commentcontainer}>
             <GetAllCommentsForSinglePhoto imageId={imageId} />
           </div>
-          <div className={imageForm.likecommentcontainer}>
+          <div className={styles.likecommentcontainer}>
             <div>
               <LikeButton id={image.id} />
-              <span className={imageForm.likecomment}>
+              <span className={styles.likecomment}>
                 {image.likes_count} likes
               </span>
-              <span className={imageForm.likecomment}>
+              <span className={styles.likecomment}>
                 {commentlength} comments
               </span>
             </div>
-            <p className={imageForm.dates}>
+            <p className={styles.dates}>
               {newDate[2]} {newDate[1]}, {newDate[3]}
             </p>
             <div>{addComments}</div>
