@@ -187,7 +187,7 @@ function ImagePage() {
             <p className={styles.dates}>
               {newDate[2]} {newDate[1]}, {newDate[3]}
             </p>
-            <div>{addComments}</div>
+            <div className={styles.new_comment}>{addComments}</div>
           </div>
         </div>
       </div>
