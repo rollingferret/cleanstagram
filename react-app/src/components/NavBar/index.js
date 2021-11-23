@@ -50,14 +50,14 @@ const NavBar = () => {
           </li>
           <li>
             <button onClick={openMenu}>
-              <i className={`fas fa-user ${styles.test}`}></i>
+              <i className={`fas fa-user ${styles.profile}`}></i>
             </button>
           </li>
           {showMenu && (
             <div className={`profile-dropdown ${styles.dropdown}`}>
               <ul className={styles.user_menu}>
                 <NavLink to={`/users/${currentUser.id}`}>
-                  <li>username: {currentUser.username}</li>
+                  <li>My profile</li>
                 </NavLink>
                 <button className={styles.button} onClick={onLogout}>
                   Log Out

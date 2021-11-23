@@ -39,7 +39,7 @@ function CommentForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className={css.form} onSubmit={handleSubmit}>
         <div className={css.comment_container}>
           <input
             type="content"

@@ -1,15 +1,19 @@
 .comment_container {
-    display: flex;
-    box-sizing: border-box;
-    width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .comment_text {
-    width: 115%;
-    height: 1.5rem;
+  width: 115%;
+  height: 40px;
 }
 
 .comment_btn {
-    color: royalblue;
-    font-weight: bold;
+  color: royalblue;
+  font-weight: bold;
+}
+
+.comment_btn {
+  cursor: pointer;
 }

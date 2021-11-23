@@ -32,8 +32,11 @@ const FollowButton = ({ userIdToFollow }) => {
     <>
       {isFollowing && (
         <div className={styles.follow_button_div}>
-          <button className={styles.follow_button} onClick={unfollowUser}>
-            Unfollow
+          <button
+            className={`${styles.follow_button} ${styles.following}`}
+            onClick={unfollowUser}
+          >
+            Following
           </button>
         </div>
       )}

@@ -14,7 +14,14 @@
 
 .follow_button:hover {
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 .follow_button:active {
   background-color: #0078c7;
+}
+
+.following {
+  background-color: white;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }

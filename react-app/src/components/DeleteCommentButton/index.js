@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
-import { Modal } from '../../context/modal';
-import DeleteCommentButton from './deletecommentbutton';
+import React, { useState } from "react";
+
+import { Modal } from "../../context/modal";
+import DeleteCommentButton from "./deletecommentbutton";
+import styles from "./DeleteButton.module.css";
 
 function DeleteCommentModal(props) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button className={`fas fa-trash-alt`}
-      onClick={() => setShowModal(true)}></button>
+      <button className={styles.btns} onClick={() => setShowModal(true)}>
+        Delete
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <DeleteCommentButton commentId={props.commentId}/>
+          <DeleteCommentButton commentId={props.commentId} />
         </Modal>
       )}
     </>

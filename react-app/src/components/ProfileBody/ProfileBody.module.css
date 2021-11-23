@@ -13,6 +13,7 @@
   box-sizing: border-box;
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   max-width: 293px;
   min-width: 293px;
   height: 30%;
