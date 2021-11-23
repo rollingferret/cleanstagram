@@ -1,53 +1,51 @@
 .comment_container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .inner_comment {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 
 .user_profile_pic {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    margin: 0 1%;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin: 0 1%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .minsizeprofile {
-
-    min-width: 35px;
-    min-height: 35px;
-    margin-right: 5px;
+  min-width: 35px;
+  min-height: 35px;
+  margin-right: 5px;
 }
 
 .user_name {
-    font-weight: bold;
-    font-size: small;
-    margin-right: 2%;
-
+  font-weight: bold;
+  font-size: small;
+  margin-right: 2%;
 }
 
 .comment_content {
-    font-size: small;
-    word-break: break-word;
-    min-width: 100%;
-    display: flex;
+  font-size: small;
+  word-break: break-word;
+  min-width: 100%;
+  display: flex;
 }
 
 .comment_date {
-    font-size: x-small;
-    color: grey;
-    margin: 1% 1%;
+  font-size: x-small;
+  color: grey;
+  margin: 1% 1%;
 }
 
 .edit_del_buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }

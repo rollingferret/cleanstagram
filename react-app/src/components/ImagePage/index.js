@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { connectAdvanced, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, Link } from "react-router-dom";
 
 import LikeButton from "../LikeButton/index";
@@ -103,6 +103,7 @@ function ImagePage() {
   }
 
   let editForm;
+
   if (edit) {
     editForm = (
       <form className={styles.editForm} onSubmit={updateSubmit}>
