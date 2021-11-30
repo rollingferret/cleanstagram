@@ -3,21 +3,22 @@ import { useDispatch } from "react-redux";
 import { updateCommentThunk } from "../../store/comments";
 import "./editcommentform.css";
 
-function EditCommentForm({ ...props }) {
+function EditCommentForm({ onClose, commentId, comment }) {
   const dispatch = useDispatch();
+  console.log("\n\n\n\n\n", comment, "\n\n\n\n\n");
 
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState(comment.content);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     let edited_comment = {
-      id: props.commentId,
+      id: commentId,
       content: content,
     };
 
     return dispatch(updateCommentThunk(edited_comment)).then(async () =>
-      props.onClose()
+      onClose()
     );
   };
 

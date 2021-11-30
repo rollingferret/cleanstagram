@@ -16,7 +16,11 @@ function EditCommentModal(props) {
       </button>
       {showModal && (
         <Modal onClose={onClose}>
-          <EditCommentForm onClose={onClose} commentId={props.commentId} />
+          <EditCommentForm
+            onClose={onClose}
+            commentId={props.commentId}
+            comment={props.comment}
+          />
         </Modal>
       )}
     </>
