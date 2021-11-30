@@ -14,7 +14,7 @@ function DeleteCommentButton(props) {
     <>
       <form onSubmit={handleSubmit} className={styles.deletecommentbuttoncss}>
         <div className={styles.deletebuttoninnercss}>
-          Are you sure you want to delete?
+          Are you sure you want to delete your comment?
         </div>
         <button type="submit" className={styles.deletebuttonsubmitcss}>
           Delete!
