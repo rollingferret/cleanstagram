@@ -56,7 +56,7 @@ function GetAllCommentsForSinglePhoto({ imageId }) {
             <div className={css.edit_del_buttons}>
               {currentUser && currentUser.id === comment.user_id && (
                 <>
-                  <EditCommentModal commentId={comment.id} />
+                  <EditCommentModal commentId={comment.id} comment={comment} />
                   <DeleteCommentModal commentId={comment.id} />
                 </>
               )}
