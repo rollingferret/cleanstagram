@@ -155,8 +155,7 @@ def edit_caption(id):
     Route to edit caption for specfied image.
     '''
     update_image = Image.query.filter(id == Image.id).first()
-    # Temporary solution -- * WILL COMEBACK AND REFACTOR *
-    update_image.caption = request.data.decode('UTF-8')[1:-1]
+    update_image.caption = request.json
 
     db.session.commit()
 
