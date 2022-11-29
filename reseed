@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e 
+
+DATABASE_URL=$PROD_DATABASE_URL
+
+flask db upgrade
+flask seed all
