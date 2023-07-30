@@ -27,12 +27,6 @@ COPY --from=build-stage /react-app/build/* app/static/
 RUN pip install -r requirements.txt
 RUN pip install psycopg2
 
-#Testing if I have access to DATABASE_URL
-RUN echo "DATABASE_URL: $DATABASE_URL"
-
-#Upgrade migrations and seed
-RUN flask db upgrade
-RUN flask seed all
 
 # Run flask environment
 CMD gunicorn app:app
