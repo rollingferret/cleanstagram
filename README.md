@@ -4,7 +4,7 @@ Cleanstagram is a single-page Instagram clone. It allows users to post images, l
 
 ## Live site
 
-https://cleanstagram.herokuapp.com/
+https://cleanstagram-3po0.onrender.com/
 
 ## Technologies used
 
